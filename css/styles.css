@@ -1,4 +1,31 @@
-/* font-family: 'Roboto', sans-serif; */
+
+img.carHealthLogo {
+  width: 50%;
+}
+
+span {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+span.logoCarText {
+  font-size: 2rem;
+}
+
+span.logoHealthText,
+.logoPlus {
+  font-size: 2.7rem;
+  color: #f00;
+}
+
+button.getStarted {
+  border: 4px solid black;
+  height: 60px;
+  width: 150px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: white;
+}
 
 .container {
   max-width: 950px;
@@ -9,19 +36,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-img {
-  width: 50%;
-}
-
-button.getStarted {
-  border: 4px solid black;
-  height: 60px;
-  width: 150px;
-  font-size: 18px;
-  font-weight: bold;
-  background-color: white;
 }
 
 .get-started-button {
