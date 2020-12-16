@@ -1,0 +1,14 @@
+
+.container {
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 375px) {
+  .container {
+    margin: 45% auto;
+  }
+
+  .column-full {
+    width: 100%;
+  }
+}
