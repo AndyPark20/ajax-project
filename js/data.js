@@ -4,13 +4,13 @@ var carInfo ={
   make:'',
   model:'',
   mileage:0,
-  test:[]
+  complaints:[],
+  service:[]
 };
 
-var getParsed=localStorage.getItem('audoDetail')
-var objectResult =JSON.parse(getParsed);
-if(getParsed !==null){
-  carInfo=objectResult;
+var getParsed=localStorage.getItem('autoDetail')
+if (getParsed !==null){
+  carInfo=JSON.parse(getParsed);
 }
 
 window.addEventListener('beforeunload', function(){
