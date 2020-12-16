@@ -3,6 +3,8 @@ var $getStartedBtn = document.querySelector('.getStarted');
 var $introPage =document.querySelector('.introduction');
 var $vehicleFinder = document.querySelector('.find-vehicle');
 var $carSearch = document.querySelector('#car-search-input');
+var test=[];
+var testMileage=[];
 
 
 
@@ -11,8 +13,6 @@ function recall(year, make, model) {
   xhrs.open('GET', 'https://api.codetabs.com/v1/proxy?quest=https://webapi.nhtsa.gov/api/Complaints/vehicle/modelyear/' + year + '/make/' + make + '/model/' + model + '?format=json')
   xhrs.responseType = 'json';
   xhrs.addEventListener('load', function () {
-    console.log(xhrs.status);
-    console.log(xhrs.response);
     if (carInfo.complaints.length === 1) {
       carInfo.complaints.shift();
       carInfo.complaints.push(xhrs.response);
@@ -49,6 +49,18 @@ function swapView(e) {
   }
 }
 
+function getDataObject(event){
+  for (var i=0; i<event.service[0].data.length;i++){
+    if((event.service[0].data[i].due_mileage)-5000>= carInfo.mileage){
+        test.push(event.service[0].data[i].desc);
+        testMileage.push(event.service[0].data[i].due_mileage)
+
+    }
+
+  }
+  return testMileage;
+}
+
 $getStartedBtn.addEventListener('click', function(){
 // if (carInfo.make ==='' && carInfo.year ===0 && carInfo.model===''){
     swapView('searchCar')
@@ -63,7 +75,7 @@ $carSearch.addEventListener('submit',function(e){
   carInfo.mileage =$carSearch.elements.mileage.value;
   var parsedYear =parseInt($carSearch.elements.year.value);
   var parsedMileage = parseInt($carSearch.elements.mileage.value);
-  recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
-  serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
+  // recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
+  // serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   $carSearch.reset();
 })
