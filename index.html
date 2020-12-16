@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div class="container introduction" data-view="intro">
+  <div class="container introduction hidden" data-view="intro">
     <div class="row">
       <div class="column-full">
         <h1><span class="logoCarText">CAR</span><span class="logoHealthText">HEALTH</span><span
@@ -48,13 +48,13 @@
             <label for="make">
               <p>MAKE:</p>
             </label>
-            <input id="make" type="text" class="userInputCar" name="make"required placeholder="Bmw">
+            <input id="make" type="text" class="userInputCar" name="make" required placeholder="Bmw">
           </div>
           <div class="inputSearch">
             <label for="model">
               <p>MODEL:</p>
             </label>
-            <input id="model" type="text" class="userInputCar" name="model"required placeholder="M3">
+            <input id="model" type="text" class="userInputCar" name="model" required placeholder="M3">
           </div>
           <div class="inputSearch">
             <label for="mileage">
@@ -70,7 +70,8 @@
     </div>
     <div class="row-navi">
       <div class="column-quarter" data-view="intro">
-        <img class="home-icon" data-view="intro"src="images/160-1605130_android-navigation-bar-icons-png-navigation-bar-home.png" alt="home-icon">
+        <img class="home-icon" data-view="intro"
+          src="images/160-1605130_android-navigation-bar-icons-png-navigation-bar-home.png" alt="home-icon">
         <p data-view="intro">HOME</p>
       </div>
       <div class="column-quarter">
@@ -78,15 +79,69 @@
         <p>SERVICE</p>
       </div>
       <div class="column-quarter">
-        <img class="home-icon" src="images/128606486-vector-hazard-warning-symbol-isolated-on-white-background-warning-icon-sign-of-problem-for-use-on-we.jpg" alt="warning-icon">
+        <img class="home-icon"
+          src="images/128606486-vector-hazard-warning-symbol-isolated-on-white-background-warning-icon-sign-of-problem-for-use-on-we.jpg"
+          alt="warning-icon">
         <p>COMPLAINTS</p>
       </div>
-        <div class="column-quarter">
+      <div class="column-quarter">
         <img class="home-icon" src="images/data-log.png" alt="warning-icon">
         <p>DATA LOG</p>
       </div>
     </div>
   </div>
+
+
+  <div class="container-nonIntro serviceResult" data-view="serviceList">
+    <div class="userInputTitle">
+      <div class="column-full">
+        <h2 id="carTitle"></h2>
+        <p class="userMileage">Current Mileage:<span class="mi"></span>mi</p>
+      </div>
+      <div class="column-full service">
+        <img class="service-icon" src="images/0b09f808f6d5439e1f39c76615c49480x.png" alt="checkEngine">
+        <p class="serviceText">NEXT SERVICE REQUIRED:</p>
+      </div>
+      <div class="column-full serviceListings">
+        <p>Due_Mileage:<span class="mis"></span>mi</p>
+        <ol class="servicePoint">
+          <!-- <li>Change Engine Oil and Filter</li>
+          <li>Change Engine Oil and Filter</li>
+          <li>Change Engine Oil and Filter</li>
+          <li>Change Engine Oil and Filter</li>
+          <li>Change Engine Oil and Filter</li> -->
+        </ol>
+      </div>
+    </div>
+
+
+
+    <div class="row-navi">
+      <div class="column-quarter" data-view="intro">
+        <img class="home-icon" data-view="intro"
+          src="images/160-1605130_android-navigation-bar-icons-png-navigation-bar-home.png" alt="home-icon">
+        <p data-view="intro">HOME</p>
+      </div>
+      <div class="column-quarter">
+        <img class="home-icon" src="images/images.png" alt="service-icon">
+        <p>SERVICE</p>
+      </div>
+      <div class="column-quarter">
+        <img class="home-icon"
+          src="images/128606486-vector-hazard-warning-symbol-isolated-on-white-background-warning-icon-sign-of-problem-for-use-on-we.jpg"
+          alt="warning-icon">
+        <p>COMPLAINTS</p>
+      </div>
+      <div class="column-quarter">
+        <img class="home-icon" src="images/data-log.png" alt="warning-icon">
+        <p>DATA LOG</p>
+      </div>
+    </div>
+  </div>
+
+
+
+
   <main>
   </main>
   <script src="js/data.js"></script>

@@ -3,8 +3,14 @@ var $getStartedBtn = document.querySelector('.getStarted');
 var $introPage =document.querySelector('.introduction');
 var $vehicleFinder = document.querySelector('.find-vehicle');
 var $carSearch = document.querySelector('#car-search-input');
-var test=[];
-var testMileage=[];
+var $serviceListPage =document.querySelector('.serviceResult');
+var serviceSoon=[];
+var mileage=[];
+
+var $pageTitle = document.querySelector('#carTitle');
+var $carMiles= document.querySelector('.mi');
+var $serviceList = document.querySelector('.servicePoint')
+var $servicemile =document.querySelector('.mis')
 
 
 
@@ -45,20 +51,47 @@ function swapView(e) {
   if (e === 'searchCar') {
     $introPage.classList.add('hidden');
     $vehicleFinder.classList.remove('hidden');
+    $serviceListPage.classList.add('hidden');
     carInfo.dataView = 'searchCar';
+  } else if (e ==='serviceList'){
+    $introPage.classList.add('hidden');
+    $vehicleFinder.classList.add('hidden');
+    $serviceListPage.classList.remove('hidden');
+    carInfo.dataView = 'serviceList';
+  }else if( e==='intro'){
+    $introPage.classList.remove('hidden');
+    $vehicleFinder.classList.add('hidden');
+    $serviceListPage.classList.add('hidden');
   }
 }
 
+function renderServiceElement(info,event){
+  var $createList =document.createElement('li');
+  $pageTitle.textContent = info.year + ' ' + info.make + ' ' + info.model;
+  $carMiles.textContent = info.mileage;
+
+
+    $createList.textContent =event.desc
+    $servicemile.textContent=info.serviceAppend[0].due_mileage;
+      $serviceList.appendChild($createList);
+
+  return $serviceList
+}
+
+
 function getDataObject(event){
+  carInfo.serviceAppend = [];
   for (var i=0; i<event.service[0].data.length;i++){
-    if((event.service[0].data[i].due_mileage)-5000>= carInfo.mileage){
-        test.push(event.service[0].data[i].desc);
-        testMileage.push(event.service[0].data[i].due_mileage)
-
+    if (event.service[0].data[i].due_mileage === carInfo.mileage || !((event.service[0].data[i].due_mileage) - 5000 >= carInfo.mileage) || ((event.service[0].data[i].due_mileage) - 5000 >= carInfo.mileage) ){
+        serviceSoon.push(event.service[0].data[i]);
     }
-
   }
-  return testMileage;
+  for (var j=0; j<serviceSoon.length;j++){
+    if (serviceSoon[j].due_mileage >= carInfo.mileage){
+      carInfo.serviceAppend.push(serviceSoon[j])
+    }
+  }
+  return carInfo;
 }
 
 $getStartedBtn.addEventListener('click', function(){
@@ -77,5 +110,11 @@ $carSearch.addEventListener('submit',function(e){
   var parsedMileage = parseInt($carSearch.elements.mileage.value);
   // recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
   // serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
+  getDataObject(carInfo);
   $carSearch.reset();
+  for (var i = 0; i < carInfo.serviceAppend.length; i++) {
+    renderServiceElement(carInfo,carInfo.serviceAppend[i]);
+  }
+  swapView('serviceList')
+
 })

@@ -4,9 +4,10 @@ var carInfo ={
   make:'',
   model:'',
   mileage:0,
-  dataView:'',
+  dataView:'intro',
   complaints:[],
-  service:[]
+  service:[],
+  serviceAppend:[]
 };
 
 var getParsed=localStorage.getItem('autoDetail')
