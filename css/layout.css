@@ -3,17 +3,41 @@
   margin: 0 auto;
 }
 
+.column-quarter {
+  flex-basis: 25%;
+}
+
+
 @media screen and (max-width: 375px) {
   .container {
     margin: 45% auto;
   }
 
-  .column-full {
+.column-full {
     width: 100%;
-  }
+}
+
+h2{
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size:30px;
+ }
+
+p{
+  font-size:15px;
+}
+
+img.home-icon{
+  width:30px;
+  height:30px;
+}
+
+.row-navi{
+  margin-top:33%;
+}
 
   img.find-my-vehicle-picture{
-  width:40%;
+  width:20%;
 }
 
 }

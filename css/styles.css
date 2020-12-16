@@ -8,6 +8,11 @@ img.find-my-vehicle-picture{
   width:50%;
 }
 
+img.home-icon{
+  width:45px;
+  height:45px;
+}
+
 
 h2{
   font-family: 'Roboto', sans-serif;
@@ -56,6 +61,13 @@ button:hover {
   align-items: center;
 }
 
+.row-navi {
+  cursor: pointer;
+  display:flex;
+  justify-content: center;
+  margin-top:10%;
+}
+
 .get-started-button {
   margin-top: 4%;
 }
@@ -64,17 +76,6 @@ button:hover {
   display:none;
 }
 
-@media screen and (max-width: 375px) {
-
-  h2{
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-  font-size:30px;
-}
-
-
-  img.find-my-vehicle-picture{
-  width:20%;
-}
-
+.userInputCar {
+  width:400px;
 }
