@@ -16,6 +16,12 @@ if (carInfo.make ==='' && carInfo.year ===0 && carInfo.model===''){
 $carSearch.addEventListener('submit',function(e){
 
   e.preventDefault();
-  console.log('hello')
+  carInfo.year = $carSearch.elements.year.value;
+  carInfo.make = $carSearch.elements.make.value;
+  carInfo.model = $carSearch.elements.model.value;
+  carInfo.mileage =$carSearch.elements.mileage.value;
+  // function recall(year, make,model){
 
+  // }
+  $carSearch.reset();
 })
