@@ -1,5 +1,5 @@
 
-.container {
+.container, .container-nonIntro {
   margin: 0 auto;
 }
 
@@ -11,4 +11,9 @@
   .column-full {
     width: 100%;
   }
+
+  img.find-my-vehicle-picture{
+  width:40%;
+}
+
 }

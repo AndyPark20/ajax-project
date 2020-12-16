@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container introduction">
+  <div class="container introduction hidden">
     <div class="row">
       <div class="column-full">
         <h1><span class="logoCarText">CAR</span><span class="logoHealthText">HEALTH</span><span class="logoPlus">+</span></h1>
@@ -23,7 +23,41 @@
         <button class="getStarted" type="submit" >Check Status</button>
       </div>
     </div>
+  </div>
 
+  <div class="container-nonIntro find-vehicle">
+    <div class="row">
+      <div class="column-full">
+        <h2>Find My Vehicle</h2>
+      </div>
+      <div class="column-full">
+        <img class="find-my-vehicle-picture" src="images/magnifying glass.png" alt="magnifying glass">
+      </div>
+      <div class="column-full">
+        <form>
+          <div>
+          <label for="year"><p>YEAR</p></label>
+          <input id="year" type="text" class="userInputCar" name="year">
+          </div>
+          <div>
+            <label for="make"><p>MAKE</p>
+            </label>
+            <input id="make" type="text" class="userInputCar" name="make">
+          </div>
+          <div>
+            <label for="model"><p>MODEL</p></label>
+            <input id="model" type="text" class="userInputCar" name="model">
+          </div>
+          <div>
+            <label for="mileage"><p>MILEAGE</p></label>
+            <input id="mileage" type="text" class="userInputCar" name="mileage">
+          </div>
+          <div>
+            <button type="submit" class="carSubmitBtn">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
   <main>
   </main>

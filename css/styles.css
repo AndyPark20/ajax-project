@@ -4,6 +4,17 @@ img.carHealthLogo {
 
 }
 
+img.find-my-vehicle-picture{
+  width:50%;
+}
+
+
+h2{
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size:35px;
+}
+
 span {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
@@ -34,7 +45,7 @@ button:hover {
   transform: scale(1.5);
 }
 
-.container {
+.container, .container-nonIntro {
   max-width: 950px;
   text-align: center;
 }
@@ -51,4 +62,19 @@ button:hover {
 
 .hidden {
   display:none;
+}
+
+@media screen and (max-width: 375px) {
+
+  h2{
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size:30px;
+}
+
+
+  img.find-my-vehicle-picture{
+  width:20%;
+}
+
 }
