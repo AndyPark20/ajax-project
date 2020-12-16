@@ -1,14 +1,45 @@
 
-.container {
+.container, .container-nonIntro {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 375px) {
-  .container {
-    margin: 45% auto;
-  }
+.column-quarter {
+  flex-basis: 25%;
+}
 
-  .column-full {
+
+@media screen and (max-width: 375px) {
+.column-full {
     width: 100%;
-  }
+}
+h2{
+  font-size:30px;
+ }
+
+p{
+  font-size:12px;
+}
+
+img.home-icon{
+  width:30px;
+  height:auto;
+}
+
+.row-navi{
+  margin-top:3%;
+}
+
+.inputMargin {
+  padding-left:10%;
+}
+
+img.find-my-vehicle-picture{
+width:20%;
+}
+
+.searchBtn{
+  margin-top:-2%;
+  margin-right:10%;
+}
+
 }

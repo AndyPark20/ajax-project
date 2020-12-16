@@ -1,33 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX Project</title>
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/layout.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <div class="container introduction">
+  <div class="container introduction" data-view="intro">
     <div class="row">
       <div class="column-full">
-        <h1><span class="logoCarText">CAR</span><span class="logoHealthText">HEALTH</span><span class="logoPlus">+</span></h1>
+        <h1><span class="logoCarText">CAR</span><span class="logoHealthText">HEALTH</span><span
+            class="logoPlus">+</span></h1>
       </div>
       <div class="column-full">
         <img class="carHealthLogo" src="images/carhealth logo.jpg" alt="picture of a rendered car">
       </div>
       <div class="column-full get-started-button">
-        <button class="getStarted" type="submit" >Check Status</button>
+        <button class="getStarted" type="submit">Check Status</button>
       </div>
     </div>
+  </div>
 
+  <div class="container-nonIntro find-vehicle hidden" data-view="searchCar">
+    <div class="row">
+      <div class="column-full">
+        <h2>Find My Vehicle</h2>
+      </div>
+      <div class="column-full">
+        <img class="find-my-vehicle-picture" src="images/magnifying glass.png" alt="magnifying glass">
+      </div>
+      <div class="column-full inputMargin">
+        <form id="car-search-input">
+          <div class="inputSearch">
+            <label for="year">
+              <p>YEAR:</p>
+            </label>
+            <input id="year" type="text" class="userInputCar" name="year" required placeholder="2016">
+          </div>
+          <div class="inputSearch">
+            <label for="make">
+              <p>MAKE:</p>
+            </label>
+            <input id="make" type="text" class="userInputCar" name="make"required placeholder="Bmw">
+          </div>
+          <div class="inputSearch">
+            <label for="model">
+              <p>MODEL:</p>
+            </label>
+            <input id="model" type="text" class="userInputCar" name="model"required placeholder="M3">
+          </div>
+          <div class="inputSearch">
+            <label for="mileage">
+              <p>MILEAGE:</p>
+            </label>
+            <input id="mileage" type="text" class="userInputCar" name="mileage" required placeholder="50000(No-Comma)">
+          </div>
+          <div class="searchBtn">
+            <button type="submit" class="carSubmitBtn">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row-navi">
+      <div class="column-quarter" data-view="intro">
+        <img class="home-icon" data-view="intro"src="images/160-1605130_android-navigation-bar-icons-png-navigation-bar-home.png" alt="home-icon">
+        <p data-view="intro">HOME</p>
+      </div>
+      <div class="column-quarter">
+        <img class="home-icon" src="images/images.png" alt="service-icon">
+        <p>SERVICE</p>
+      </div>
+      <div class="column-quarter">
+        <img class="home-icon" src="images/128606486-vector-hazard-warning-symbol-isolated-on-white-background-warning-icon-sign-of-problem-for-use-on-we.jpg" alt="warning-icon">
+        <p>COMPLAINTS</p>
+      </div>
+        <div class="column-quarter">
+        <img class="home-icon" src="images/data-log.png" alt="warning-icon">
+        <p>DATA LOG</p>
+      </div>
+    </div>
   </div>
   <main>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
