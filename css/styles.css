@@ -1,6 +1,7 @@
 
 img.carHealthLogo {
   width: 50%;
+
 }
 
 span {
@@ -25,6 +26,12 @@ button.getStarted {
   font-size: 18px;
   font-weight: bold;
   background-color: white;
+  transition: all .5s ease-in-out;
+  cursor:pointer;
+}
+
+button:hover {
+  transform: scale(1.5);
 }
 
 .container {
