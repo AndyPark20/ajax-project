@@ -4,6 +4,7 @@ var carInfo ={
   make:'',
   model:'',
   mileage:0,
+  dataView:'',
   complaints:[],
   service:[]
 };
