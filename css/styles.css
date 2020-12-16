@@ -48,3 +48,7 @@ button:hover {
 .get-started-button {
   margin-top: 4%;
 }
+
+.hidden {
+  display:none;
+}

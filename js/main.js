@@ -1,12 +1,10 @@
-$introImage = document.querySelector('.carHealthLogo');
 
-var intervalId =null;
+var $getStartedBtn = document.querySelector('.getStarted');
+var $introPage =document.querySelector('.introduction')
 
-function introAnimation(){
+$getStartedBtn.addEventListener('click', function(){
 
-  $introImage.classList.add('seeOpacity')
-
-}
+$introPage.classList.add('hidden');
 
 
-intervalId=setTimeout(introAnimation, 1000)
+})
