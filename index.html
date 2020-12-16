@@ -36,33 +36,33 @@
       <div class="column-full">
         <img class="find-my-vehicle-picture" src="images/magnifying glass.png" alt="magnifying glass">
       </div>
-      <div class="column-full">
+      <div class="column-full inputMargin">
         <form>
-          <div>
+          <div class="inputSearch">
             <label for="year">
-              <p>YEAR</p>
+              <p>YEAR:</p>
             </label>
-            <input id="year" type="text" class="userInputCar" name="year">
+            <input id="year" type="text" class="userInputCar" name="year" required placeholder="2016">
           </div>
-          <div>
+          <div class="inputSearch">
             <label for="make">
-              <p>MAKE</p>
+              <p>MAKE:</p>
             </label>
-            <input id="make" type="text" class="userInputCar" name="make">
+            <input id="make" type="text" class="userInputCar" name="make"required placeholder="Bmw">
           </div>
-          <div>
+          <div class="inputSearch">
             <label for="model">
-              <p>MODEL</p>
+              <p>MODEL:</p>
             </label>
-            <input id="model" type="text" class="userInputCar" name="model">
+            <input id="model" type="text" class="userInputCar" name="model"required placeholder="M3">
           </div>
-          <div>
+          <div class="inputSearch">
             <label for="mileage">
-              <p>MILEAGE</p>
+              <p>MILEAGE:</p>
             </label>
-            <input id="mileage" type="text" class="userInputCar" name="mileage">
+            <input id="mileage" type="text" class="userInputCar" name="mileage" required placeholder="50000(No-Comma)">
           </div>
-          <div>
+          <div class="searchBtn">
             <button type="submit" class="carSubmitBtn">SUBMIT</button>
           </div>
         </form>
