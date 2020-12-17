@@ -11,86 +11,142 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <div class="container introduction" data-view="intro">
-    <div class="row">
-      <div class="column-full">
-        <h1><span class="logoCarText">CAR</span><span class="logoHealthText">HEALTH</span><span
-            class="logoPlus">+</span></h1>
-      </div>
-      <div class="column-full">
-        <img class="carHealthLogo" src="images/carhealth logo.jpg" alt="picture of a rendered car">
-      </div>
-      <div class="column-full get-started-button">
-        <button class="getStarted" type="submit">Check Status</button>
+  <header>
+    <div class="container header hidden">
+      <div class="userInputTitle">
+        <div class="column-full">
+          <h2 id="carTitle"></h2>
+          <p class="userMileage">Current Mileage: <span class="mi"></span> mi</p>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="container-nonIntro find-vehicle hidden" data-view="searchCar">
-    <div class="row">
-      <div class="column-full">
-        <h2>Find My Vehicle</h2>
-      </div>
-      <div class="column-full">
-        <img class="find-my-vehicle-picture" src="images/magnifying glass.png" alt="magnifying glass">
-      </div>
-      <div class="column-full inputMargin">
-        <form id="car-search-input">
-          <div class="inputSearch">
-            <label for="year">
-              <p>YEAR:</p>
-            </label>
-            <input id="year" type="text" class="userInputCar" name="year" required placeholder="2016">
-          </div>
-          <div class="inputSearch">
-            <label for="make">
-              <p>MAKE:</p>
-            </label>
-            <input id="make" type="text" class="userInputCar" name="make"required placeholder="Bmw">
-          </div>
-          <div class="inputSearch">
-            <label for="model">
-              <p>MODEL:</p>
-            </label>
-            <input id="model" type="text" class="userInputCar" name="model"required placeholder="M3">
-          </div>
-          <div class="inputSearch">
-            <label for="mileage">
-              <p>MILEAGE:</p>
-            </label>
-            <input id="mileage" type="text" class="userInputCar" name="mileage" required placeholder="50000(No-Comma)">
-          </div>
-          <div class="searchBtn">
-            <button type="submit" class="carSubmitBtn">SUBMIT</button>
-          </div>
-        </form>
+  </header>
+  <section>
+    <div class="container introduction" data-view="intro">
+      <div class="row">
+        <div class="column-full">
+          <h1><span class="logoCarText">CAR</span><span class="logoHealthText">HEALTH</span><span
+              class="logoPlus">+</span></h1>
+        </div>
+        <div class="column-full">
+          <img class="carHealthLogo" src="images/carhealth logo.jpg" alt="picture of a rendered car">
+        </div>
+        <div class="column-full get-started-button">
+          <button class="getStarted" type="submit">Check Status</button>
+        </div>
       </div>
     </div>
-    <div class="row-navi">
-      <div class="column-quarter" data-view="intro">
-        <img class="home-icon" data-view="intro"src="images/160-1605130_android-navigation-bar-icons-png-navigation-bar-home.png" alt="home-icon">
-        <p data-view="intro">HOME</p>
-      </div>
-      <div class="column-quarter">
-        <img class="home-icon" src="images/images.png" alt="service-icon">
-        <p>SERVICE</p>
-      </div>
-      <div class="column-quarter">
-        <img class="home-icon" src="images/128606486-vector-hazard-warning-symbol-isolated-on-white-background-warning-icon-sign-of-problem-for-use-on-we.jpg" alt="warning-icon">
-        <p>COMPLAINTS</p>
-      </div>
-        <div class="column-quarter">
-        <img class="home-icon" src="images/data-log.png" alt="warning-icon">
-        <p>DATA LOG</p>
+  </section>
+  <section>
+    <div class="container-nonIntro find-vehicle hidden" data-view="searchCar">
+      <div class="row">
+        <div class="column-full">
+          <img class="find-my-vehicle-picture" src="images/magnifying glass.png" alt="magnifying glass">
+        </div>
+        <div class="column-full inputMargin">
+          <form id="car-search-input">
+            <div class="inputSearch">
+              <label for="year">
+                <p>YEAR:</p>
+              </label>
+              <input id="year" type="text" class="userInputCar" name="year" required placeholder="2016">
+            </div>
+            <div class="inputSearch">
+              <label for="make">
+                <p>MAKE:</p>
+              </label>
+              <input id="make" type="text" class="userInputCar" name="make" required placeholder="Bmw">
+            </div>
+            <div class="inputSearch">
+              <label for="model">
+                <p>MODEL:</p>
+              </label>
+              <input id="model" type="text" class="userInputCar" name="model" required placeholder="M3">
+            </div>
+            <div class="inputSearch">
+              <label for="mileage">
+                <p>MILEAGE:</p>
+              </label>
+              <input id="mileage" type="text" class="userInputCar" name="mileage" required
+                placeholder="50000(No-Comma)">
+            </div>
+            <div class="searchBtn">
+              <button type="submit" class="carSubmitBtn">SUBMIT</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  <main>
-  </main>
+  </section>
+  <section>
+    <div class="container-nonIntro serviceResult hidden" data-view="serviceList">
+      <div class="userInputTitle">
+        <div class="column-full service">
+          <img class="service-icon" src="images/0b09f808f6d5439e1f39c76615c49480x.png" alt="checkEngine"
+            data-view="searchCar">
+          <p class="serviceText">NEXT SERVICE REQUIRED:</p>
+        </div>
+        <div class="column-full serviceListings">
+          <p>NEXT SERVICE INTERVAL: <span class="mis"></span> mi</p>
+          <ol class="servicePoint">
+          </ol>
+        </div>
+      </div>
+      <div class="userInputTitle">
+        <div class="column-full service">
+          <img class="service-icon"
+            src="images/invoice-icon-line-style-symbol-shopping-icon-collection-invoice-creative-element-logo-infographic-ux-ui-invoice-icon-169076566.jpg"
+            alt="invoice">
+          <p class="serviceText">ESTIMATED PARTS &amp; LABOR COST:</p>
+        </div>
+        <div class="column-full serviceListings">
+          <ol class="servicePoint costBreakDown">
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container-nonIntro complaintResult hidden" data-view="complaintList">
+      <div class="column-full service">
+        <img class="service-icon-Warning" src="images/istockphoto-1047357876-170667a.jpg" alt="warningLight"
+          data-view="searchCar">
+        <p class="serviceText">NHTSA Complaint Log:</p>
+      </div>
+      <div class="column-full serviceListings">
+        <p>NUMBER OF RECORDS FOUND:<span class="comp"></span> complaints</p>
+        <ol class="complaintListing">
+        </ol>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container home-buttons hidden">
+      <div class="row-navi">
+        <div class="column-quarter" data-view="intro">
+          <img class="home-icon" data-view="intro"
+            src="images/160-1605130_android-navigation-bar-icons-png-navigation-bar-home.png" alt="home-icon">
+          <p data-view="intro">HOME</p>
+        </div>
+        <div class="column-quarter" data-view="serviceList">
+          <img class="home-icon" data-view="serviceList" src="images/images.png" alt="service-icon">
+          <p data-view="serviceList">SERVICE</p>
+        </div>
+        <div class="column-quarter" data-view="complaintList">
+          <img class="home-icon" data-view="complaintList"
+            src="images/128606486-vector-hazard-warning-symbol-isolated-on-white-background-warning-icon-sign-of-problem-for-use-on-we.jpg"
+            alt="warning-icon">
+          <p data-view="complaintList">COMPLAINTS</p>
+        </div>
+        <div class="column-quarter" data-view="dataLog">
+          <img data-view="dataLog" class="home-icon" src="images/data-log.png" alt="warning-icon">
+          <p>DATA LOG</p>
+        </div>
+      </div>
+    </div>
+  </footer>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
-
 </html>

@@ -13,9 +13,37 @@ img.home-icon{
   height:45px;
 }
 
+img.arrow {
+  widows: 30px;
+  height:25px;
+}
+
+img.service-icon{
+  width:15%;
+  height:15%;
+}
+
+img.service-icon-Warning{
+  width:11%;
+  height:11%;
+}
+
+
+p.userMileage {
+  font-family: 'Roboto', sans-serif;
+  font-size:20px;
+}
+
 P {
  font-family: 'Roboto', sans-serif;
  font-weight:700;
+}
+
+li {
+   font-family: 'Roboto', sans-serif;
+   font-size:15px;
+   font-weight:500;
+   text-align: start;
 }
 
 
@@ -51,7 +79,29 @@ button.getStarted {
   cursor:pointer;
 }
 
+span.mi, span.mis, span.comp{
+  font-weight:bold;
+  color:red;
+}
+.complained{
+  font-weight:bold;
+  font-size:15px;
 
+}
+
+.border{
+  border-bottom:1px solid black;
+}
+
+
+.complaintListing li {
+  font-weight:400;
+  line-height:1.5;
+}
+
+.complaintListing{
+  line-height:1.2;
+}
 
 .container, .container-nonIntro {
   max-width: 950px;
@@ -108,5 +158,28 @@ button.getStarted {
   font-size:15px;
   font-weight:500;
   color:#FFA500;
+  cursor: pointer;
+}
+
+.userInputTitle{
+  display:flex;
+  flex-direction:column;
+
+}
+
+.service {
+  display:flex;
+  align-items: center;
+}
+
+.serviceListings {
+ border:2px solid black;
+ display:flex;
+ flex-direction: column;
+ /* justify-content: center; */
+align-items:center;
+}
+
+.service-icon, .service-icon-Warning{
   cursor: pointer;
 }
