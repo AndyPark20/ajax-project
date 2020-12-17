@@ -265,14 +265,12 @@ function getDataObject(event) {
 }
 
 $getStartedBtn.addEventListener('click', function () {
-  // if (carInfo.make ==='' && carInfo.year ===0 && carInfo.model==='' && carInfo.mileage ===0){
+
   $homeButton.classList.remove('hidden');
   $title.classList.remove('hidden')
   renderTitleSearch();
   swapView('searchCar')
-  // }else {
-  //   swapView('intro')
-  // }
+
 })
 
 $carSearch.addEventListener('submit', function (e) {
