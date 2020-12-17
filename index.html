@@ -171,14 +171,40 @@
     </div>
   </section>
 
+    <!------------------------------------HTML section for DATA View----------->
+    <section>
+      <div class="container-nonIntro entryInput" data-view="dataView">
+        <div class="row">
+          <div class="column-full">
+            <div class="data-log-title">
+              <img class="data-log-notebook"
+                src="images/download.png"
+                alt="notebook" data-view="data-log">
+              <h3>SERVICE HISTORY:</h3>
+            </div>
+          </div>
+          <div class="column-full">
+            <table>
+              <tr>
+                <th>Date</th>
+                <th>Mileage</th>
+                <th>Category</th>
+                <th>Description</th>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
   <section>
     <!------------------------------------HTML section for DATA loggging----------->
-    <div class="container-nonIntro data-log" data-view="data-log">
+    <div class="container-nonIntro data-log hidden" data-view="data-log">
       <div class="row">
         <div class="column-full">
           <div class="data-log-title">
             <img class="data-log-pencil" src="images/2_-_1_-_Pencil.jpg" alt="pencil">
-            <h3>LOG Service History:</h3>
+            <h3>LOG SERVICE HISTORY:</h3>
           </div>
         </div>
         <div class="column-full inputMargin">
@@ -206,7 +232,8 @@
               <label for="comments">
                 <p>DESCRIPTION:</p>
               </label>
-              <textarea id="comments" type="text" class="userFeedback" name="comments" rows="10" cols="60" required> Brief Comments Here</textarea>
+              <textarea id="comments" type="text" class="userFeedback" name="comments" rows="10" cols="60"
+                required> Brief Comments Here</textarea>
             </div>
             <div class="searchBtn">
               <button type="submit" class="carSubmitBtn">SUBMIT</button>
@@ -216,7 +243,6 @@
       </div>
     </div>
   </section>
-
   <footer>
     <div class="container home-buttons hidden">
       <div class="row-navi">

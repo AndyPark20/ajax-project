@@ -32,7 +32,8 @@ var $carOverStats = document.querySelector('.sizing');
 var $homePageService = document.querySelector('.homeServiceOverview')
 var $intervalFront = document.querySelector('.frontPage');
 var $dataLog = document.querySelector('.data-log');
-var $dataLogSubmitBtn = document.querySelector('#data-log-submit')
+var $dataLogSubmitBtn = document.querySelector('#data-log-submit');
+var $dataRecordPage = document.querySelector('.entryInput')
 var nhtsaResponse = 0;
 
 
@@ -192,6 +193,7 @@ function swapView(e) {
     $complaintPage.classList.add('hidden');
     $homePage.classList.add('hidden');
     $dataLog.classList.add('hidden');
+    $dataRecordPage.classList.add('hidden');
     carInfo.dataView = 'searchCar';
   } else if (e === 'serviceList') {
     $introPage.classList.add('hidden');
@@ -200,6 +202,7 @@ function swapView(e) {
     $complaintPage.classList.add('hidden');
     $homePage.classList.add('hidden');
     $dataLog.classList.add('hidden');
+    $dataRecordPage.classList.add('hidden');
     carInfo.dataView = 'serviceList';
   } else if (e === 'intro') {
     $introPage.classList.remove('hidden');
@@ -208,6 +211,7 @@ function swapView(e) {
     $complaintPage.classList.add('hidden');
     $homePage.classList.add('hidden');
     $dataLog.classList.add('hidden');
+    $dataRecordPage.classList.add('hidden');
     carInfo.dataView = 'intro'
   } else if (e === 'complaintList') {
     $introPage.classList.add('hidden');
@@ -216,6 +220,7 @@ function swapView(e) {
     $complaintPage.classList.remove('hidden');
     $homePage.classList.add('hidden');
     $dataLog.classList.add('hidden');
+    $dataRecordPage.classList.add('hidden');
     carInfo.dataView = 'complaintList'
   } else if (e ==='home'){
     $introPage.classList.add('hidden');
@@ -224,6 +229,7 @@ function swapView(e) {
     $complaintPage.classList.add('hidden');
     $homePage.classList.remove('hidden');
     $dataLog.classList.add('hidden');
+    $dataRecordPage.classList.add('hidden');
     carInfo.dataView = 'home'
   }else if(e==='dataView'){
     $introPage.classList.add('hidden');
@@ -232,6 +238,7 @@ function swapView(e) {
     $complaintPage.classList.add('hidden');
     $homePage.classList.add('hidden');
     $dataLog.classList.add('hidden');
+    $dataRecordPage.classList.remove('hidden');
     carInfo.dataView = 'dataView'
   }else if (e==='data-log'){
     $introPage.classList.add('hidden');
@@ -240,7 +247,17 @@ function swapView(e) {
     $complaintPage.classList.add('hidden');
     $homePage.classList.add('hidden');
     $dataLog.classList.remove('hidden');
+    $dataRecordPage.classList.add('hidden');
     carInfo.dataView = 'data-log'
+  }else if (e=== 'dataView'){
+    $introPage.classList.add('hidden');
+    $vehicleFinder.classList.add('hidden');
+    $serviceListPage.classList.add('hidden');
+    $complaintPage.classList.add('hidden');
+    $homePage.classList.add('hidden');
+    $dataLog.classList.add('hidden');
+    $dataRecordPage.classList.remove('hidden');
+    carInfo.dataView = 'dataView';
   }
 }
 
@@ -274,6 +291,13 @@ document.addEventListener('click', function (e) {
       renderHomePageService(carInfo, carInfo.serviceAppend[i]);
     }
     swapView('home');
+  }else if (userDataView ==='data-log'){
+    renderTitleComplaint(carInfo)
+    swapView('data-log')
+
+  }else if (userDataView ==='dataView'){
+    renderTitleComplaint(carInfo)
+    swapView('dataView')
   }
 })
 
@@ -304,8 +328,8 @@ $carSearch.addEventListener('submit', function (e) {
   carInfo.mileage = $carSearch.elements.mileage.value;
   var parsedYear = parseInt($carSearch.elements.year.value);
   var parsedMileage = parseInt($carSearch.elements.mileage.value);
-  recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
-  serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
+  // recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
+  // serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   $carSearch.reset();
 })
 
@@ -316,9 +340,10 @@ $dataLogSubmitBtn.addEventListener('submit', function(e){
     mileage: $dataLogSubmitBtn.elements.mileage.value,
     category:$dataLogSubmitBtn.elements.category.value,
     description: $dataLogSubmitBtn.elements.comments.value
-  }
+  };
 
   carInfo.userDataLog.log.push(desc);
+  swapView('dataView')
   $dataLogSubmitBtn.reset();
 })
 

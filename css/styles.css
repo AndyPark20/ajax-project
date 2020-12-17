@@ -43,6 +43,12 @@ img.data-log-pencil{
   height:15%;
 }
 
+img.data-log-notebook{
+  width:15%;
+  height:15%;
+  cursor: pointer;
+}
+
 p.userMileage {
   font-family: 'Roboto', sans-serif;
   font-size:20px;
@@ -101,7 +107,7 @@ button.getStarted {
   cursor:pointer;
 }
 
-span.mi, span.mis, span.comp{
+span.mi, span.mis, span.scomp{
   font-weight:bold;
   color:red;
 }
@@ -115,7 +121,11 @@ span.mi, span.mis, span.comp{
   border-bottom:1px solid black;
 }
 
+.logServiceStyle{
+ display:flex;
 
+
+}
 .complaintListing li {
   font-weight:400;
   line-height:1.5;
@@ -163,8 +173,6 @@ span.mi, span.mis, span.comp{
 }
 
 
-
-
 .inputSearch {
   display:flex;
   flex-direction: column;
@@ -187,6 +195,7 @@ span.mi, span.mis, span.comp{
   color:#FFA500;
   cursor: pointer;
 }
+
 
 .userInputTitle{
   display:flex;
