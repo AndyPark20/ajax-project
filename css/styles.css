@@ -1,7 +1,6 @@
 
 img.carHealthLogo {
   width: 50%;
-
 }
 
 img.find-my-vehicle-picture{
@@ -13,10 +12,15 @@ img.home-icon{
   height:45px;
 }
 
-
 img.service-icon{
   width:15%;
   height:15%;
+}
+
+img.service-icon-home{
+  padding-right:2%;
+  width:13%;
+  height:13%;
 }
 
 img.service-icon-Warning{
@@ -25,8 +29,8 @@ img.service-icon-Warning{
 }
 
 img.pictureCheck{
-  width:20%;
-  height:20%;
+  width:15%;
+  height:15%;
 }
 
 img.engine-oil{

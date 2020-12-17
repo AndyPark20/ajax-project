@@ -25,9 +25,12 @@ var $costDelete = document.querySelector('.costBreakDown');
 var $homeButton =document.querySelector('.home-buttons');
 var $title = document.querySelector('.header');
 var $homePage = document.querySelector('.overView');
-var $carStatusSymbol = document.querySelector('.userInputTitle')
+var $carStatusSymbol = document.querySelector('.homeTitleStatus')
 var $statsTest = document.querySelector('.statusBar');
-var $statsTire = document.querySelector('.statusBarTire')
+var $statsTire = document.querySelector('.statusBarTire');
+var $carOverStats = document.querySelector('.sizing');
+var $homePageService = document.querySelector('.homeServiceOverview')
+var $intervalFront = document.querySelector('.frontPage')
 var nhtsaResponse = 0;
 
 
@@ -81,26 +84,35 @@ function renderComplaintLogs(info, event, criteria) {
   return $complaintListing;
 }
 
+function renderHomePageService(info, event){
+  var $createList = document.createElement('li');
+
+  $intervalFront .textContent = info.serviceAppend[0].due_mileage;
+  $createList.textContent = event.desc;
+  $homePageService.appendChild($createList);
+
+  return $homePageService;
+}
+
 function renderTitleSearch(){
   $userCarTitle.innerHTML ='<span="bigTitle">' + ' FIND MY VEHICLE' + '<span>';
 }
 
 function renderCarStatus(info) {
+
+  $carOverStats.textContent = '';
   var $carStatusHeader =document.createElement('h3');
   var $imageStatus=document.createElement('img');
-  var $okStatsWrapper =document.createElement('div');
 
   $userCarTitle.textContent = info.year + ' ' + info.make + ' ' + info.model;
   $userMileage.textContent = info.mileage;
 
-  $okStatsWrapper.setAttribute('class','sizing')
   $carStatusHeader.textContent='CAR STATUS';
   $imageStatus.setAttribute('src', 'images/better check.jpg');
   $imageStatus.setAttribute('class','pictureCheck')
   $imageStatus.setAttribute('alt','checkOk');
-  $okStatsWrapper.appendChild($carStatusHeader);
-  $okStatsWrapper.appendChild($imageStatus);
-  $carStatusSymbol.appendChild($okStatsWrapper);
+  $carOverStats .appendChild($imageStatus);
+  $carOverStats.appendChild($carStatusHeader);
 
 }
 
@@ -209,12 +221,12 @@ function swapView(e) {
   }
 }
 
-
 document.addEventListener('click', function (e) {
   var userDataView = e.target.getAttribute('data-view')
   if (userDataView === 'searchCar') {
     swapView('searchCar');
   } else if (userDataView === 'serviceList') {
+    $carOverStats.textContent = '';
     $eraseInput.textContent='';
     $costDelete.textContent='';
     getDataObject(carInfo);
@@ -222,10 +234,10 @@ document.addEventListener('click', function (e) {
     for (var i = 0; i < carInfo.serviceAppend.length; i++) {
       renderServiceElement(carInfo, carInfo.serviceAppend[i]);
     }
-
     renderCostBreakElement(carInfo);
     swapView('serviceList')
   } else if (userDataView === 'complaintList') {
+    $carOverStats.textContent = '';
     $complaintListing.textContent=''
     for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
       renderComplaintLogs(carInfo.complaints[0].Results[i], carInfo.complaints[0], carInfo.complaints[0].Results[i])
@@ -234,11 +246,13 @@ document.addEventListener('click', function (e) {
     swapView('complaintList')
   } else if (userDataView === 'home') {
     $title.classList.remove('hidden')
-    renderCarStatus(carInfo)
+    renderCarStatus(carInfo);
+    for (var i = 0; i < 5; i++) {
+      renderHomePageService(carInfo, carInfo.serviceAppend[i]);
+    }
     swapView('home');
   }
 })
-
 
 function getDataObject(event) {
   carInfo.serviceAppend = [];
