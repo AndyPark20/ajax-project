@@ -13,10 +13,6 @@ img.home-icon{
   height:45px;
 }
 
-img.arrow {
-  widows: 30px;
-  height:25px;
-}
 
 img.service-icon{
   width:15%;
@@ -28,6 +24,15 @@ img.service-icon-Warning{
   height:11%;
 }
 
+img.pictureCheck{
+  width:20%;
+  height:20%;
+}
+
+img.engine-oil{
+  width:8%;
+  height:8%;
+}
 
 p.userMileage {
   font-family: 'Roboto', sans-serif;
@@ -51,6 +56,12 @@ h2{
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size:35px;
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size:35
 }
 
 span {
@@ -176,10 +187,31 @@ span.mi, span.mis, span.comp{
  border:2px solid black;
  display:flex;
  flex-direction: column;
- /* justify-content: center; */
 align-items:center;
 }
 
 .service-icon, .service-icon-Warning{
   cursor: pointer;
+}
+
+.statusBarOil, .statusBarTire, .statusBarPressure{
+  border-radius:15px ;
+  background-color:#FE0000;
+  border:none;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  color:white;
+  font-size:15px;
+}
+
+.sizing {
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.checkStatusText{
+   font-family: 'Roboto', sans-serif;
+   font-size:20px;
 }
