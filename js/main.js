@@ -25,13 +25,10 @@ var $costDelete = document.querySelector('.costBreakDown');
 // var $buttonDelete =document.querySelector('.row-navi');
 
 
-
-
 var repairTotalHours = 0;
 var laborCost = 0
 var totalPartCost = 0;
 var nhtsaResponse = 0;
-
 
 
 function renderCostBreakElement(event) {
@@ -60,7 +57,6 @@ function renderCostBreakElement(event) {
 
 function renderComplaintLogs(info, event, criteria) {
 
-
   var $link = document.createElement('li');
   var $complaintPara = document.createElement('p');
   var $complaintParaTwo = document.createElement('p');
@@ -88,7 +84,6 @@ function renderServiceElement(info, event) {
   $nextMileage.textContent = info.serviceAppend[0].due_mileage;
   $createList.textContent = event.desc;
   $serviceList.appendChild($createList);
-
 
 
   return $serviceList;
@@ -269,7 +264,6 @@ document.addEventListener('click', function (e) {
     swapView('dataLog');
   }
 })
-
 
 
 function getDataObject(event) {
