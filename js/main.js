@@ -6,13 +6,86 @@ var $carSearch = document.querySelector('#car-search-input');
 var $serviceListPage =document.querySelector('.serviceResult');
 var serviceSoon=[];
 var mileage=[];
-
 var $pageTitle = document.querySelector('#carTitle');
 var $carMiles= document.querySelector('.mi');
 var $serviceList = document.querySelector('.servicePoint')
 var $servicemile =document.querySelector('.mis')
+var $serviceContainer =document.querySelector('.serviceResult')
+var $userMileage = document.querySelector('.mi');
+var $nextMileage=document.querySelector('.mis');
+var $serviceList = document.querySelector('.servicePoint')
 
 
+function renderServiceElement(info, event) {
+  var $createList = document.createElement('li');
+  $userMileage.textContent=info.mileage;
+  $nextMileage.textContent=info.serviceAppend[0].due_mileage;
+  $createList.textContent=event.desc;
+  $serviceList.appendChild($createList);
+
+  return $serviceContainer
+}
+
+function homeIconRender(){
+  var $mainDiv =document.createElement('div');
+  var $firstDiv =document.createElement('div');
+  var $homeImage =document.createElement('img')
+  var $homeParagraph =document.createElement('p');
+  var $secondDiv=document.createElement('div');
+  var $serviceImage =document.createElement('img')
+  var $serviceParagraph =document.createElement('p');
+  var $thirdDiv =document.createElement('div');
+  var $complaintImage =document.createElement('img');
+  var $complaintPara= document.createElement('p');
+  var $fourthDiv=document.createElement('div');
+  var $dataImage =document.createElement('img');
+  var $dataPara=document.createElement('p');
+
+
+  $mainDiv.setAttribute('class','row-navi')
+  $firstDiv.setAttribute('class', 'column-quarter');
+  $firstDiv.setAttribute('data-view', 'intro');
+  $homeImage.setAttribute('class', 'home-icon');
+  $homeImage.setAttribute('data-view','intro');
+  $homeImage.setAttribute('src','images/160-1605130_android-navigation-bar-icons-png-navigation-bar-home.png')
+  $homeImage.setAttribute('alt','home-icon');
+  $homeParagraph.setAttribute('data-view','intro');
+  $homeParagraph.textContent="HOME";
+  $secondDiv.setAttribute('class', 'column-quarter');
+  $serviceImage.setAttribute('class', 'home-icon');
+  $serviceImage.setAttribute('src','images/images.png');
+  $serviceImage.setAttribute('alt', 'service-icon');
+  $serviceParagraph.setAttribute('data-view', 'serviceList');
+  $serviceParagraph.textContent="SERVICE";
+  $thirdDiv.setAttribute('class','column-quarter');
+  $complaintImage.setAttribute('class','home-icon');
+  $complaintImage.setAttribute('src', 'images/128606486-vector-hazard-warning-symbol-isolated-on-white-background-warning-icon-sign-of-problem-for-use-on-we.jpg')
+  $complaintImage.setAttribute('alt', 'warning-icon')
+  $complaintPara.textContent="COMPLAINTS"
+  $fourthDiv.setAttribute('class','column-quarter');
+  $dataImage.setAttribute('class','home-icon');
+  $dataImage.setAttribute('src','images/data-log.png');
+  $dataImage.setAttribute('alt', 'warning-icon');
+  $dataPara.textContent="DATA LOG";
+
+
+  $serviceContainer.appendChild($mainDiv);
+  $mainDiv.appendChild($firstDiv);
+  $firstDiv.appendChild($homeImage);
+  $firstDiv.appendChild($homeParagraph);
+  $mainDiv.appendChild($secondDiv);
+  $secondDiv.appendChild($serviceImage);
+  $secondDiv.appendChild($serviceParagraph)
+  $mainDiv.appendChild($thirdDiv);
+  $thirdDiv.appendChild($complaintImage);
+  $thirdDiv.appendChild($complaintPara);
+  $mainDiv.appendChild($fourthDiv);
+  $fourthDiv.appendChild($dataImage);
+  $fourthDiv.appendChild($dataPara);
+
+
+  return $mainDiv
+}
 
 function recall(year, make, model) {
   var xhrs = new XMLHttpRequest();
@@ -43,6 +116,15 @@ function serviceInterval(year, make, model, mileage) {
     } else {
       carInfo.service.push(xhr.response);
     }
+
+    if (xhr.status ===200){
+      getDataObject(carInfo);
+      for (var i = 0; i < carInfo.serviceAppend.length; i++) {
+        renderServiceElement(carInfo, carInfo.serviceAppend[i]);
+      }
+      $serviceContainer.appendChild(homeIconRender())
+      swapView('serviceList');
+    }
   })
   xhr.send();
 }
@@ -65,32 +147,15 @@ function swapView(e) {
   }
 }
 
-function renderServiceElement(info,event){
-  var $createList =document.createElement('li');
-  $pageTitle.textContent = info.year + ' ' + info.make + ' ' + info.model;
-  $carMiles.textContent = info.mileage;
-
-
-    $createList.textContent =event.desc
-    $servicemile.textContent=info.serviceAppend[0].due_mileage;
-      $serviceList.appendChild($createList);
-
-  return $serviceList
-}
-
 
 function getDataObject(event){
   carInfo.serviceAppend = [];
   for (var i=0; i<event.service[0].data.length;i++){
-    if (event.service[0].data[i].due_mileage === carInfo.mileage || !((event.service[0].data[i].due_mileage) - 5000 >= carInfo.mileage) || ((event.service[0].data[i].due_mileage) - 5000 >= carInfo.mileage) ){
-        serviceSoon.push(event.service[0].data[i]);
+    if (event.service[0].data[i].due_mileage >= carInfo.mileage){
+        carInfo.serviceAppend.push(event.service[0].data[i]);
     }
   }
-  for (var j=0; j<serviceSoon.length;j++){
-    if (serviceSoon[j].due_mileage >= carInfo.mileage){
-      carInfo.serviceAppend.push(serviceSoon[j])
-    }
-  }
+
   return carInfo;
 }
 
@@ -108,13 +173,9 @@ $carSearch.addEventListener('submit',function(e){
   carInfo.mileage =$carSearch.elements.mileage.value;
   var parsedYear =parseInt($carSearch.elements.year.value);
   var parsedMileage = parseInt($carSearch.elements.mileage.value);
-  // recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
-  // serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
-  getDataObject(carInfo);
+  recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
+  serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   $carSearch.reset();
-  for (var i = 0; i < carInfo.serviceAppend.length; i++) {
-    renderServiceElement(carInfo,carInfo.serviceAppend[i]);
-  }
-  swapView('serviceList')
+
 
 })

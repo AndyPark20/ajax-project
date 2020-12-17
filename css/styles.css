@@ -73,7 +73,7 @@ button.getStarted {
   cursor:pointer;
 }
 
-span.mi{
+span.mi, span.mis{
   font-weight:bold;
   color:red;
 }
