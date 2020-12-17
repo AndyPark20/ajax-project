@@ -16,9 +16,14 @@ var $nextMileage=document.querySelector('.mis');
 var $serviceList = document.querySelector('.servicePoint');
 var $costBreak = document.querySelector('.costBreakDown');
 var $userCarTitle=document.querySelector('#carTitle');
+var $complaintPage = document.querySelector('.complaintResult');
+var $complaintListing = document.querySelector('.complaintListing');
+var $complaintNumber = document.querySelector('.comp');
 var repairTotalHours=0;
 var laborCost=0
 var totalPartCost=0;
+var nhtsaResponse=0;
+
 
 
 function renderCostBreakElement(event){
@@ -43,6 +48,26 @@ function renderCostBreakElement(event){
   $costBreak.appendChild($estLaborCost);
   $costBreak.appendChild($estPartCost);
   $costBreak.appendChild($estTotalCost);
+}
+
+function renderComplaintLogs(info,event,criteria){
+
+  var $link =document.createElement('li');
+  var $complaintPara =document.createElement('p');
+  var $complaintParaTwo =document.createElement('p');
+  var $wrapper =document.createElement('div');
+
+  $complaintNumber.textContent =event.Count;
+  $complaintPara.innerHTML="<span class='complained'>" + "Component: " + "<span>" + criteria.Component;
+  $complaintParaTwo.innerHTML="<span class='complained'>" + "Complaint: " + "<span>" + criteria.Summary;
+  $complaintParaTwo.setAttribute('class','border')
+
+  $wrapper.appendChild($complaintPara);
+  $wrapper.appendChild($complaintParaTwo);
+  $link.appendChild($wrapper);
+  $complaintListing.appendChild($link);
+
+  return $complaintListing;
 }
 
 
@@ -131,6 +156,10 @@ function recall(year, make, model) {
     } else {
       carInfo.complaints.push(xhrs.response);
     }
+    if(xhrs.status===200){
+      console.log(xhrs.status)
+      nhtsaResponse=xhrs.status;
+    }
   })
   xhrs.send();
 }
@@ -150,10 +179,13 @@ function serviceInterval(year, make, model, mileage) {
       carInfo.service.push(xhr.response);
     }
 
-    if (xhr.status ===200){
+    if (xhr.status === 200){
       getDataObject(carInfo);
       for (var i = 0; i < carInfo.serviceAppend.length; i++) {
         renderServiceElement(carInfo, carInfo.serviceAppend[i]);
+      }
+      for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
+        renderComplaintLogs(carInfo.complaints[0].Results[i],carInfo.complaints[0], carInfo.complaints[0].Results[i])
       }
       renderCostBreakElement(carInfo);
       $serviceContainer.appendChild(homeIconRender());
@@ -180,6 +212,12 @@ function swapView(e) {
     $serviceListPage.classList.add('hidden');
   }
 }
+
+document.addEventListener('click', function(e){
+  if (e.target.getAttribute('data-view') ==='searchCar'){
+    swapView('searchCar');
+  }
+})
 
 
 function getDataObject(event){
