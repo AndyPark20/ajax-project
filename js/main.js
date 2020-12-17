@@ -22,7 +22,8 @@ var $complaintNumber = document.querySelector('.comp');
 var $nonIntroPage = document.querySelector('.find-vehicle')
 var $eraseInput =document.querySelector('ol');
 var $costDelete = document.querySelector('.costBreakDown');
-var $homeButton =document.querySelector('.home-buttons')
+var $homeButton =document.querySelector('.home-buttons');
+var $title = document.querySelector('.header');
 var nhtsaResponse = 0;
 
 
@@ -76,6 +77,14 @@ function renderComplaintLogs(info, event, criteria) {
   return $complaintListing;
 }
 
+function renderTitleSearch(){
+  $userCarTitle.innerHTML ='<span="bigTitle">' + ' FIND MY VEHICLE' + '<span>';
+}
+
+function renderTitleComplaint(info){
+  $userCarTitle.textContent = info.year + ' ' + info.make + ' ' + info.model;
+  $userMileage.textContent = info.mileage;
+}
 
 function renderServiceElement(info, event) {
   var $createList = document.createElement('li');
@@ -175,6 +184,7 @@ document.addEventListener('click', function (e) {
     $eraseInput.textContent='';
     $costDelete.textContent='';
     getDataObject(carInfo);
+    renderTitleSearch();
     for (var i = 0; i < carInfo.serviceAppend.length; i++) {
       renderServiceElement(carInfo, carInfo.serviceAppend[i]);
     }
@@ -186,6 +196,7 @@ document.addEventListener('click', function (e) {
     for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
       renderComplaintLogs(carInfo.complaints[0].Results[i], carInfo.complaints[0], carInfo.complaints[0].Results[i])
     }
+    renderTitleComplaint(carInfo)
     swapView('complaintList')
   } else if (userDataView === 'dataLog') {
 
@@ -207,6 +218,8 @@ function getDataObject(event) {
 $getStartedBtn.addEventListener('click', function () {
   // if (carInfo.make ==='' && carInfo.year ===0 && carInfo.model==='' && carInfo.mileage ===0){
   $homeButton.classList.remove('hidden');
+  $title.classList.remove('hidden')
+  renderTitleSearch();
   swapView('searchCar')
   // }else {
   //   swapView('intro')
@@ -221,8 +234,8 @@ $carSearch.addEventListener('submit', function (e) {
   carInfo.mileage = $carSearch.elements.mileage.value;
   var parsedYear = parseInt($carSearch.elements.year.value);
   var parsedMileage = parseInt($carSearch.elements.mileage.value);
-  recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
-  serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
+  // recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
+  // serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   $carSearch.reset();
 
 })
