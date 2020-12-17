@@ -13,15 +13,48 @@ var $servicemile =document.querySelector('.mis')
 var $serviceContainer =document.querySelector('.serviceResult')
 var $userMileage = document.querySelector('.mi');
 var $nextMileage=document.querySelector('.mis');
-var $serviceList = document.querySelector('.servicePoint')
+var $serviceList = document.querySelector('.servicePoint');
+var $costBreak = document.querySelector('.costBreakDown');
+var $userCarTitle=document.querySelector('#carTitle');
+var repairTotalHours=0;
+var laborCost=0
+var totalPartCost=0;
+
+
+function renderCostBreakElement(event){
+
+  for(var i =0; i<event.serviceAppend.length;i++){
+    repairTotalHours+=event.serviceAppend[i].repair.repair_hours;
+    laborCost+=event.serviceAppend[i].repair.labor_cost;
+    totalPartCost+=event.serviceAppend[i].repair.part_cost;
+  }
+  var $costBreakStructure = document.createElement('li');
+  var $estLaborCost=document.createElement('li');
+  var $estPartCost=document.createElement('li');
+  var $estTotalCost =document.createElement('li')
+  var $estTotalCostNum =(Math.round(laborCost+totalPartCost))
+
+  $costBreakStructure.innerHTML = 'Estimated Total Repair Hours Needed: ' + '<span class="mis">' + repairTotalHours.toFixed(2) + ' Hrs.' +'<span>';
+  $estLaborCost.innerHTML ='Estimated Total Labor Cost: ' + '<span class="mis">' + '$' + (Math.round(laborCost)).toFixed(2) + ' USD.' + '<span>';
+  $estPartCost.innerHTML='Estimated Total Part Cost: ' + '<span class="mis">' + '$' + (Math.round(totalPartCost)).toFixed(2) + ' USD.' + '<span>';
+  $estTotalCost.innerHTML = "Estimated Total cost of Labor + Parts: " + '<span class="mis">' + '$' + $estTotalCostNum.toFixed(2)+ ' USD.' + '<span>';
+
+  $costBreak.appendChild($costBreakStructure)
+  $costBreak.appendChild($estLaborCost);
+  $costBreak.appendChild($estPartCost);
+  $costBreak.appendChild($estTotalCost);
+}
 
 
 function renderServiceElement(info, event) {
   var $createList = document.createElement('li');
+
+  $userCarTitle.textContent=info.year + ' ' + info.model + ' ' + info.make;
   $userMileage.textContent=info.mileage;
   $nextMileage.textContent=info.serviceAppend[0].due_mileage;
   $createList.textContent=event.desc;
   $serviceList.appendChild($createList);
+
 
   return $serviceContainer
 }
@@ -122,7 +155,8 @@ function serviceInterval(year, make, model, mileage) {
       for (var i = 0; i < carInfo.serviceAppend.length; i++) {
         renderServiceElement(carInfo, carInfo.serviceAppend[i]);
       }
-      $serviceContainer.appendChild(homeIconRender())
+      renderCostBreakElement(carInfo);
+      $serviceContainer.appendChild(homeIconRender());
       swapView('serviceList');
     }
   })
