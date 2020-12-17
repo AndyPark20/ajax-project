@@ -19,7 +19,13 @@ var $userCarTitle = document.querySelector('#carTitle');
 var $complaintPage = document.querySelector('.complaintResult');
 var $complaintListing = document.querySelector('.complaintListing');
 var $complaintNumber = document.querySelector('.comp');
-var $eraseInput =document.querySelectorAll('li')
+var $nonIntroPage = document.querySelector('.find-vehicle')
+var $eraseInput =document.querySelector('ol');
+var $costDelete = document.querySelector('.costBreakDown');
+// var $buttonDelete =document.querySelector('.row-navi');
+
+
+
 
 var repairTotalHours = 0;
 var laborCost = 0
@@ -75,7 +81,6 @@ function renderComplaintLogs(info, event, criteria) {
 
 
 function renderServiceElement(info, event) {
-
   var $createList = document.createElement('li');
 
   $userCarTitle.textContent = info.year + ' ' + info.make + ' ' + info.model;
@@ -89,72 +94,76 @@ function renderServiceElement(info, event) {
   return $serviceList;
 }
 
-function homeIconRender() {
-
-  var $mainDiv = document.createElement('div');
-  var $firstDiv = document.createElement('div');
-  var $homeImage = document.createElement('img')
-  var $homeParagraph = document.createElement('p');
-  var $secondDiv = document.createElement('div');
-  var $serviceImage = document.createElement('img')
-  var $serviceParagraph = document.createElement('p');
-  var $thirdDiv = document.createElement('div');
-  var $complaintImage = document.createElement('img');
-  var $complaintPara = document.createElement('p');
-  var $fourthDiv = document.createElement('div');
-  var $dataImage = document.createElement('img');
-  var $dataPara = document.createElement('p');
+// function homeIconRender() {
 
 
-  $mainDiv.setAttribute('class', 'row-navi')
-  $firstDiv.setAttribute('class', 'column-quarter');
-  $firstDiv.setAttribute('data-view', 'intro');
-  $homeImage.setAttribute('class', 'home-icon');
-  $homeImage.setAttribute('data-view', 'intro');
-  $homeImage.setAttribute('src', 'images/160-1605130_android-navigation-bar-icons-png-navigation-bar-home.png')
-  $homeImage.setAttribute('alt', 'home-icon');
-  $homeParagraph.setAttribute('data-view', 'intro');
-  $homeParagraph.textContent = "HOME";
-  $secondDiv.setAttribute('class', 'column-quarter');
-  $serviceImage.setAttribute('class', 'home-icon');
-  $serviceImage.setAttribute('src', 'images/images.png');
-  $serviceImage.setAttribute('data-view', 'serviceList');
-  $serviceImage.setAttribute('alt', 'service-icon');
-  $serviceParagraph.setAttribute('data-view', 'serviceList');
-  $serviceParagraph.textContent = "SERVICE";
-  $thirdDiv.setAttribute('class', 'column-quarter');
-  $complaintImage.setAttribute('class', 'home-icon');
-  $complaintImage.setAttribute('src', 'images/128606486-vector-hazard-warning-symbol-isolated-on-white-background-warning-icon-sign-of-problem-for-use-on-we.jpg')
-  $complaintImage.setAttribute('alt', 'warning-icon')
-  $complaintImage.setAttribute('data-view', 'complaintList');
-  $complaintPara.setAttribute('data-view', 'complaintList');
-  $complaintPara.textContent = "COMPLAINTS"
-  $fourthDiv.setAttribute('class', 'column-quarter');
-  $dataImage.setAttribute('class', 'home-icon');
-  $dataImage.setAttribute('src', 'images/data-log.png');
-  $dataImage.setAttribute('alt', 'warning-icon');
-  $dataImage.setAttribute('data-view', 'dataLog');
-  $dataImage.setAttribute('data-view', 'dataLog');
-  $dataPara.textContent = "DATA LOG";
+//   var $mainDiv = document.createElement('div');
+//   var $firstDiv = document.createElement('div');
+//   var $homeImage = document.createElement('img')
+//   var $homeParagraph = document.createElement('p');
+//   var $secondDiv = document.createElement('div');
+//   var $serviceImage = document.createElement('img')
+//   var $serviceParagraph = document.createElement('p');
+//   var $thirdDiv = document.createElement('div');
+//   var $complaintImage = document.createElement('img');
+//   var $complaintPara = document.createElement('p');
+//   var $fourthDiv = document.createElement('div');
+//   var $dataImage = document.createElement('img');
+//   var $dataPara = document.createElement('p');
+
+//   $mainDiv.textContent='';
+//   $mainDiv.setAttribute('class', 'row-navi')
+//   $firstDiv.setAttribute('class', 'column-quarter');
+//   $firstDiv.setAttribute('data-view', 'intro');
+//   $homeImage.setAttribute('class', 'home-icon');
+//   $homeImage.setAttribute('data-view', 'intro');
+//   $homeImage.setAttribute('src', 'images/160-1605130_android-navigation-bar-icons-png-navigation-bar-home.png')
+//   $homeImage.setAttribute('alt', 'home-icon');
+//   $homeParagraph.setAttribute('data-view', 'intro');
+//   $homeParagraph.textContent = "HOME";
+//   $secondDiv.setAttribute('class', 'column-quarter');
+//   $serviceImage.setAttribute('class', 'home-icon');
+//   $serviceImage.setAttribute('src', 'images/images.png');
+//   $serviceImage.setAttribute('data-view', 'serviceList');
+//   $serviceImage.setAttribute('alt', 'service-icon');
+//   $serviceParagraph.setAttribute('data-view', 'serviceList');
+//   $serviceParagraph.textContent = "SERVICE";
+//   $thirdDiv.setAttribute('class', 'column-quarter');
+//   $complaintImage.setAttribute('class', 'home-icon');
+//   $complaintImage.setAttribute('src', 'images/128606486-vector-hazard-warning-symbol-isolated-on-white-background-warning-icon-sign-of-problem-for-use-on-we.jpg')
+//   $complaintImage.setAttribute('alt', 'warning-icon')
+//   $complaintImage.setAttribute('data-view', 'complaintList');
+//   $complaintPara.setAttribute('data-view', 'complaintList');
+//   $complaintPara.textContent = "COMPLAINTS"
+//   $fourthDiv.setAttribute('class', 'column-quarter');
+//   $dataImage.setAttribute('class', 'home-icon');
+//   $dataImage.setAttribute('src', 'images/data-log.png');
+//   $dataImage.setAttribute('alt', 'warning-icon');
+//   $dataImage.setAttribute('data-view', 'dataLog');
+//   $dataImage.setAttribute('data-view', 'dataLog');
+//   $dataPara.textContent = "DATA LOG";
 
 
-  $serviceContainer.appendChild($mainDiv);
-  $mainDiv.appendChild($firstDiv);
-  $firstDiv.appendChild($homeImage);
-  $firstDiv.appendChild($homeParagraph);
-  $mainDiv.appendChild($secondDiv);
-  $secondDiv.appendChild($serviceImage);
-  $secondDiv.appendChild($serviceParagraph)
-  $mainDiv.appendChild($thirdDiv);
-  $thirdDiv.appendChild($complaintImage);
-  $thirdDiv.appendChild($complaintPara);
-  $mainDiv.appendChild($fourthDiv);
-  $fourthDiv.appendChild($dataImage);
-  $fourthDiv.appendChild($dataPara);
+//   $serviceContainer.appendChild($mainDiv);
+//   $mainDiv.appendChild($firstDiv);
+//   $firstDiv.appendChild($homeImage);
+//   $firstDiv.appendChild($homeParagraph);
+//   $mainDiv.appendChild($secondDiv);
+//   $secondDiv.appendChild($serviceImage);
+//   $secondDiv.appendChild($serviceParagraph)
+//   $mainDiv.appendChild($thirdDiv);
+//   $thirdDiv.appendChild($complaintImage);
+//   $thirdDiv.appendChild($complaintPara);
+//   $mainDiv.appendChild($fourthDiv);
+//   $fourthDiv.appendChild($dataImage);
+//   $fourthDiv.appendChild($dataPara);
 
 
-  return $mainDiv
-}
+//   return $mainDiv
+// }
+document.addEventListener('click', function(e){
+  console.log(e.target.getAttribute('data-view'))
+})
 
 function recall(year, make, model) {
   var xhrs = new XMLHttpRequest();
@@ -237,24 +246,26 @@ function swapView(e) {
 document.addEventListener('click', function (e) {
   var userDataView = e.target.getAttribute('data-view')
   if (userDataView === 'searchCar') {
-    $serviceContainer.appendChild(homeIconRender());
+    // $nonIntroPage.appendChild(homeIconRender());
     swapView('searchCar');
   } else if (userDataView === 'serviceList') {
+    $eraseInput.textContent='';
+    $costDelete.textContent='';
     getDataObject(carInfo);
     for (var i = 0; i < carInfo.serviceAppend.length; i++) {
       renderServiceElement(carInfo, carInfo.serviceAppend[i]);
     }
     renderCostBreakElement(carInfo);
-    $serviceContainer.appendChild(homeIconRender());
+    // $serviceContainer.appendChild(homeIconRender());
     swapView('serviceList')
   } else if (userDataView === 'complaintList') {
     for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
       renderComplaintLogs(carInfo.complaints[0].Results[i], carInfo.complaints[0], carInfo.complaints[0].Results[i])
     }
-    $complaintPage.appendChild(homeIconRender());
+    // $complaintPage.appendChild(homeIconRender());
     swapView('complaintList')
   } else if (userDataView === 'dataLog') {
-    $serviceContainer.appendChild(homeIconRender());
+    // $serviceContainer.appendChild(homeIconRender());
     swapView('dataLog');
   }
 })
@@ -274,6 +285,7 @@ function getDataObject(event) {
 
 $getStartedBtn.addEventListener('click', function () {
   // if (carInfo.make ==='' && carInfo.year ===0 && carInfo.model===''){
+  // $nonIntroPage.appendChild(homeIconRender());
   swapView('searchCar')
   // }
 })
