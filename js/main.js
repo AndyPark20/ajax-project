@@ -234,8 +234,8 @@ $carSearch.addEventListener('submit', function (e) {
   carInfo.mileage = $carSearch.elements.mileage.value;
   var parsedYear = parseInt($carSearch.elements.year.value);
   var parsedMileage = parseInt($carSearch.elements.mileage.value);
-  // recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
-  // serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
+  recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
+  serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   $carSearch.reset();
 
 })
