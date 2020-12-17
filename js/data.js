@@ -7,8 +7,14 @@ var carInfo ={
   dataView:'intro',
   complaints:[],
   service:[],
-  serviceAppend:[]
+  serviceAppend:[],
+  userDataLog:{
+    log:[]
+  }
 };
+
+
+
 
 var getParsed=localStorage.getItem('autoDetail')
 if (getParsed !==null){
@@ -16,7 +22,6 @@ if (getParsed !==null){
 }
 
 window.addEventListener('beforeunload', function(){
-
   var stringed= JSON.stringify(carInfo);
   localStorage.setItem('autoDetail', stringed);
 })

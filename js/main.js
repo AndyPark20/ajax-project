@@ -30,7 +30,9 @@ var $statsTest = document.querySelector('.statusBar');
 var $statsTire = document.querySelector('.statusBarTire');
 var $carOverStats = document.querySelector('.sizing');
 var $homePageService = document.querySelector('.homeServiceOverview')
-var $intervalFront = document.querySelector('.frontPage')
+var $intervalFront = document.querySelector('.frontPage');
+var $dataLog = document.querySelector('.data-log');
+var $dataLogSubmitBtn = document.querySelector('#data-log-submit')
 var nhtsaResponse = 0;
 
 
@@ -189,6 +191,7 @@ function swapView(e) {
     $serviceListPage.classList.add('hidden');
     $complaintPage.classList.add('hidden');
     $homePage.classList.add('hidden');
+    $dataLog.classList.add('hidden');
     carInfo.dataView = 'searchCar';
   } else if (e === 'serviceList') {
     $introPage.classList.add('hidden');
@@ -196,6 +199,7 @@ function swapView(e) {
     $serviceListPage.classList.remove('hidden');
     $complaintPage.classList.add('hidden');
     $homePage.classList.add('hidden');
+    $dataLog.classList.add('hidden');
     carInfo.dataView = 'serviceList';
   } else if (e === 'intro') {
     $introPage.classList.remove('hidden');
@@ -203,6 +207,7 @@ function swapView(e) {
     $serviceListPage.classList.add('hidden');
     $complaintPage.classList.add('hidden');
     $homePage.classList.add('hidden');
+    $dataLog.classList.add('hidden');
     carInfo.dataView = 'intro'
   } else if (e === 'complaintList') {
     $introPage.classList.add('hidden');
@@ -210,6 +215,7 @@ function swapView(e) {
     $serviceListPage.classList.add('hidden');
     $complaintPage.classList.remove('hidden');
     $homePage.classList.add('hidden');
+    $dataLog.classList.add('hidden');
     carInfo.dataView = 'complaintList'
   } else if (e ==='home'){
     $introPage.classList.add('hidden');
@@ -217,7 +223,24 @@ function swapView(e) {
     $serviceListPage.classList.add('hidden');
     $complaintPage.classList.add('hidden');
     $homePage.classList.remove('hidden');
+    $dataLog.classList.add('hidden');
     carInfo.dataView = 'home'
+  }else if(e==='dataView'){
+    $introPage.classList.add('hidden');
+    $vehicleFinder.classList.add('hidden');
+    $serviceListPage.classList.add('hidden');
+    $complaintPage.classList.add('hidden');
+    $homePage.classList.add('hidden');
+    $dataLog.classList.add('hidden');
+    carInfo.dataView = 'dataView'
+  }else if (e==='data-log'){
+    $introPage.classList.add('hidden');
+    $vehicleFinder.classList.add('hidden');
+    $serviceListPage.classList.add('hidden');
+    $complaintPage.classList.add('hidden');
+    $homePage.classList.add('hidden');
+    $dataLog.classList.remove('hidden');
+    carInfo.dataView = 'data-log'
   }
 }
 
@@ -284,7 +307,19 @@ $carSearch.addEventListener('submit', function (e) {
   recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
   serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   $carSearch.reset();
+})
 
+$dataLogSubmitBtn.addEventListener('submit', function(e){
+  e.preventDefault();
+  var desc = {
+    date: $dataLogSubmitBtn.elements.date.value,
+    mileage: $dataLogSubmitBtn.elements.mileage.value,
+    category:$dataLogSubmitBtn.elements.category.value,
+    description: $dataLogSubmitBtn.elements.comments.value
+  }
+
+  carInfo.userDataLog.log.push(desc);
+  $dataLogSubmitBtn.reset();
 })
 
 // document.addEventListener('click', function(e){

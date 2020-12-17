@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <header>
     <div class="container header hidden">
@@ -81,6 +82,7 @@
     </div>
   </section>
   <section>
+    <!--Service Reesult------------------------------>
     <div class="container-nonIntro serviceResult hidden" data-view="serviceList">
       <div class="userInputTitle">
         <div class="column-full service">
@@ -125,7 +127,8 @@
 
 
   <section>
-    <div class="container-nonIntro overView" data-view="home">
+    <!---------------------------------Home page------------------------------------>
+    <div class="container-nonIntro overView hidden" data-view="home">
       <div class="userInputTitle">
         <div class="column-full service">
           <img class="engine-oil" src="images/VTA_Oil-Light-Icon-2.png" alt="Engine Oil">
@@ -168,6 +171,51 @@
     </div>
   </section>
 
+  <section>
+    <!------------------------------------HTML section for DATA loggging----------->
+    <div class="container-nonIntro data-log" data-view="data-log">
+      <div class="row">
+        <div class="column-full">
+          <div class="data-log-title">
+            <img class="data-log-pencil" src="images/2_-_1_-_Pencil.jpg" alt="pencil">
+            <h3>LOG Service History:</h3>
+          </div>
+        </div>
+        <div class="column-full inputMargin">
+          <form id="data-log-submit">
+            <div class="inputSearch">
+              <label for="date">
+                <p>Date:</p>
+              </label>
+              <input id="date" type="date" class="userInputCar" name="date" required placeholder="">
+            </div>
+            <div class="inputSearch">
+              <label for="mileage">
+                <p>MILEAGE:</p>
+              </label>
+              <input id="mileage" type="text" class="userInputCar" name="mileage" required
+                placeholder="50000(No-Comma)">
+            </div>
+            <div class="inputSearch">
+              <label for="category">
+                <p>CATEGORY:</p>
+              </label>
+              <input id="category" type="text" class="userInputCar" name="category" required placeholder="Oil Service">
+            </div>
+            <div class="inputSearch">
+              <label for="comments">
+                <p>DESCRIPTION:</p>
+              </label>
+              <textarea id="comments" type="text" class="userFeedback" name="comments" rows="10" cols="60" required> Brief Comments Here</textarea>
+            </div>
+            <div class="searchBtn">
+              <button type="submit" class="carSubmitBtn">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container home-buttons hidden">
@@ -187,9 +235,9 @@
             alt="warning-icon">
           <p data-view="complaintList">COMPLAINTS</p>
         </div>
-        <div class="column-quarter" data-view="dataLog">
-          <img data-view="dataLog" class="home-icon" src="images/data-log.png" alt="warning-icon">
-          <p>DATA LOG</p>
+        <div class="column-quarter" data-view="dataView">
+          <img data-view="dataView" class="home-icon" src="images/data-log.png" alt="warning-icon" data-view="dataView">
+          <p data-view="dataView">DATA LOG</p>
         </div>
       </div>
     </div>
@@ -197,4 +245,5 @@
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
