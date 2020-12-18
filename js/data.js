@@ -23,11 +23,3 @@ window.addEventListener('beforeunload', function(){
   var stringed= JSON.stringify(carInfo);
   localStorage.setItem('autoDetail', stringed);
 })
-
-// window.addEventListener('load',function(){
-//   if(carInfo.year !== '' && carInfo.make !=='' && carInfo.mileage !=='' && carInfo.model !==''){
-//     carInfo.dataView = 'searchCar';
-//   }else{
-//     carInfo.dataView='intro';
-//   }
-// })

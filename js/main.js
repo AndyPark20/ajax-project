@@ -108,9 +108,6 @@ function carStatusProgress(info) {
        tireDate+= info.userDataLog.log[p].date;
     }
   }
-  console.log(oilDate);
-  console.log(pressureDate);
-  console.log(tireDate);
 
   var currentDate = new Date();
   var oilLatestDate = new Date(oilDate);
@@ -118,13 +115,10 @@ function carStatusProgress(info) {
   var oilDaysRemainResult =(60-(Math.floor(oilDaysRemain/(1000*60*60*24))));
   $oilRemaining.textContent=oilDaysRemainResult + ' Day(s) Remaining !'
 
-
   var pressureLatestDate = new Date(pressureDate);
   var pressureRemain = currentDate - pressureLatestDate;
   var pressureRemainResult = (60-(Math.floor(pressureRemain/(1000*60*60*24))));
   $tirePressureCheck.textContent = pressureRemainResult + ' Day(s) Remaining !'
-
-
 
   var tireLatestDate = new Date(tireDate);
   var tireRemain = currentDate - tireLatestDate;
@@ -136,13 +130,11 @@ function carStatusProgress(info) {
   } else if (oilDaysRemainResult > 15) {
     $oilStatusBar.style.background = 'green'
   }
-
   if (pressureRemainResult <= 15) {
     $pressureCheck.style.background = 'red';
   } else if (pressureRemainResult > 15) {
     $pressureCheck.style.background = 'green';
   }
-
   if (tireRemainResult <= 15) {
     $tireRotation.style.background = 'red';
   } else if (tireRemainResult > 15) {
@@ -163,8 +155,6 @@ function carStatusProgress(info) {
     $carOverStats.appendChild($imageWarning)
   }
 }
-
-
 
 function renderComplaintLogs(info, event, criteria) {
   var $link = document.createElement('li');
@@ -198,7 +188,6 @@ function renderCarStatus(info) {
   $carOverStats.textContent = '';
   $userCarTitle.textContent = info.year + ' ' + info.make + ' ' + info.model;
   $userMileage.textContent = info.mileage;
-
 }
 
 function renderTitleComplaint(info) {
@@ -224,7 +213,6 @@ function renderDataTable(info) {
     $tableRow.appendChild($tableDataDesc);
     $tBody.appendChild($tableRow)
   }
-
 }
 
 function renderServiceElement(info, event) {
@@ -264,6 +252,7 @@ function serviceInterval(year, make, model, mileage) {
   xhr.setRequestHeader("partner-token", "5228fbdcf1fa422392b0f7ff3226cfbb");
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
+    console.log(xhr.status);
     if (carInfo.service.length === 1) {
       carInfo.service.shift()
       carInfo.service.push(xhr.response);
@@ -421,7 +410,6 @@ $getStartedBtn.addEventListener('click', function () {
   $title.classList.remove('hidden')
   renderTitleSearch();
   swapView('searchCar')
-
 })
 
 $carSearch.addEventListener('submit', function (e) {
@@ -445,8 +433,8 @@ $dataLogSubmitBtn.addEventListener('submit', function (e) {
     category: $dataLogSubmitBtn.elements.category.value,
     description: $dataLogSubmitBtn.elements.comments.value
   };
-
   carInfo.userDataLog.log.push(desc);
+  renderDataTable(carInfo.userDataLog)
   swapView('dataView')
   $dataLogSubmitBtn.reset();
 })
