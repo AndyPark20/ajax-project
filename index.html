@@ -207,7 +207,7 @@
     <div class="container-nonIntro data-log hidden" data-view="data-log">
       <div class="row">
         <div class="column-full">
-          <div class="data-log-title">
+          <div class="data-log-title-input">
             <img class="data-log-pencil" src="images/2_-_1_-_Pencil.jpg" alt="pencil">
             <h3>LOG SERVICE HISTORY:</h3>
           </div>
@@ -231,7 +231,14 @@
               <label for="category">
                 <p>CATEGORY:</p>
               </label>
-              <input id="category" type="text" class="userInputCar" name="category" required placeholder="Oil Service">
+              <select id="category" name="category" class="userInputCar">
+                <option value="oil-service">Oil Service</option>
+                <option value="tire-rotation">Tire Rotation</option>
+                <option value ="check-pressure">Check Pressure</option>
+                <option value ="Suggestion">Suggestion from Mechanic</option>
+                <option value ="Big-Fix">Big Fix</option>
+              </select>
+
             </div>
             <div class="inputSearch">
               <label for="comments">

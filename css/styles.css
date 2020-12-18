@@ -1,10 +1,6 @@
 
-img.carHealthLogo {
+img.carHealthLogo, img.find-my-vehicle-picture {
   width: 50%;
-}
-
-img.find-my-vehicle-picture{
-  width:50%;
 }
 
 img.home-icon{
@@ -12,7 +8,7 @@ img.home-icon{
   height:45px;
 }
 
-img.service-icon{
+img.service-icon, img.pictureCheck, img.data-log-pencil{
   width:15%;
   height:15%;
 }
@@ -28,20 +24,11 @@ img.service-icon-Warning{
   height:11%;
 }
 
-img.pictureCheck{
-  width:15%;
-  height:15%;
-}
-
 img.engine-oil{
   width:8%;
   height:8%;
 }
 
-img.data-log-pencil{
-  width:15%;
-  height:15%;
-}
 
 img.data-log-notebook{
   width:10%;
@@ -76,8 +63,9 @@ h2{
 h3 {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  font-size:35
+  font-size:20px;
 }
+
 
 span {
   font-family: 'Roboto', sans-serif;
@@ -104,9 +92,10 @@ td {
   text-align: left;
 }
 
-/* tr:nth-child(even){
-  background-color:
-} */
+
+tbody tr:nth-child(odd){
+  background-color:#e8eae6;
+}
 
 span.logoCarText {
   font-size: 2rem;
@@ -129,7 +118,12 @@ button.getStarted {
   cursor:pointer;
 }
 
-span.mi, span.mis, span.scomp{
+option {
+  font-family: 'Roboto', sans-serif;
+  font-size:13px;
+}
+
+span.mi, span.mis, span.comp{
   font-weight:bold;
   color:red;
 }
@@ -218,11 +212,9 @@ span.mi, span.mis, span.scomp{
   cursor: pointer;
 }
 
-
 .userInputTitle{
   display:flex;
   flex-direction:column;
-
 }
 
 .service {
@@ -266,4 +258,11 @@ align-items:center;
 .data-log-title{
   display:flex;
   align-items: center;
+  justify-content: start;
+}
+
+.data-log-title-input{
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }

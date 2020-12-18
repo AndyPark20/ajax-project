@@ -20,9 +20,9 @@ var $complaintPage = document.querySelector('.complaintResult');
 var $complaintListing = document.querySelector('.complaintListing');
 var $complaintNumber = document.querySelector('.comp');
 var $nonIntroPage = document.querySelector('.find-vehicle')
-var $eraseInput =document.querySelector('ol');
+var $eraseInput = document.querySelector('ol');
 var $costDelete = document.querySelector('.costBreakDown');
-var $homeButton =document.querySelector('.home-buttons');
+var $homeButton = document.querySelector('.home-buttons');
 var $title = document.querySelector('.header');
 var $homePage = document.querySelector('.overView');
 var $carStatusSymbol = document.querySelector('.homeTitleStatus')
@@ -39,9 +39,9 @@ var nhtsaResponse = 0;
 
 
 function renderCostBreakElement(event) {
-  repairTotalHours=0;
-  laborCost=0;
-  totalPartCost=0
+  repairTotalHours = 0;
+  laborCost = 0;
+  totalPartCost = 0
   for (var i = 0; i < event.serviceAppend.length; i++) {
     repairTotalHours
     repairTotalHours += event.serviceAppend[i].repair.repair_hours;
@@ -63,6 +63,57 @@ function renderCostBreakElement(event) {
   $costBreak.appendChild($estTotalCost);
 }
 
+function carStatusProgress(info) {
+  var oilNum = 0;
+  var pressure = 0
+  var tire = 0
+
+  var oilDate='';
+  var pressureDate='';
+  var tireDate='';
+
+  for (var i = 0; i < info.userDataLog.log.length; i++) {
+    if (parseInt(info.userDataLog.log[i].mileage) > oilNum && info.userDataLog.log[i].category === 'oil-service') {
+      oilNum = parseInt(info.userDataLog.log[i].mileage);
+    }
+  }
+  for (var j = 0; j < info.userDataLog.log.length; j++) {
+    if (parseInt(info.userDataLog.log[j].mileage) > pressure && info.userDataLog.log[j].category === 'check-pressure') {
+      pressure = parseInt(info.userDataLog.log[j].mileage);
+    }
+  }
+  for (var z = 0; z < info.userDataLog.log.length; z++) {
+    if (parseInt(info.userDataLog.log[z].mileage) > tire && info.userDataLog.log[z].category === 'tire-rotation') {
+      tire = parseInt(info.userDataLog.log[z].mileage);
+    }
+  }
+  for (h = 0; h < info.userDataLog.log.length; h++) {
+    if (oilNum.toString() === info.userDataLog.log[h].mileage) {
+      oilDate+= info.userDataLog.log[h].date;
+    }
+  }
+  for (k = 0; k < info.userDataLog.log.length; k++) {
+    if (pressure.toString() === info.userDataLog.log[k].mileage) {
+      pressureDate += info.userDataLog.log[k].date;
+    }
+  }
+  for (p = 0; p < info.userDataLog.log.length; p++) {
+    if (tire.toString() === info.userDataLog.log[p].mileage) {
+       tireDate+= info.userDataLog.log[p].date;
+    }
+  }
+
+
+
+
+  console.log('oil',oilDate)
+  console.log('pressure', pressureDate);
+  console.log('tire',tireDate)
+
+
+
+}
+
 
 
 function renderComplaintLogs(info, event, criteria) {
@@ -81,41 +132,41 @@ function renderComplaintLogs(info, event, criteria) {
   return $complaintListing;
 }
 
-function renderHomePageService(info, event){
+function renderHomePageService(info, event) {
   var $createList = document.createElement('li');
-  $intervalFront .textContent = info.serviceAppend[0].due_mileage;
+  $intervalFront.textContent = info.serviceAppend[0].due_mileage;
   $createList.textContent = event.desc;
   $homePageService.appendChild($createList);
   return $homePageService;
 }
 
-function renderTitleSearch(){
-  $userCarTitle.innerHTML ='<span="bigTitle">' + ' FIND MY VEHICLE' + '<span>';
+function renderTitleSearch() {
+  $userCarTitle.innerHTML = '<span="bigTitle">' + ' FIND MY VEHICLE' + '<span>';
 }
 
 function renderCarStatus(info) {
   $carOverStats.textContent = '';
-  var $carStatusHeader =document.createElement('h3');
-  var $imageStatus=document.createElement('img');
+  var $carStatusHeader = document.createElement('h3');
+  var $imageStatus = document.createElement('img');
   $userCarTitle.textContent = info.year + ' ' + info.make + ' ' + info.model;
   $userMileage.textContent = info.mileage;
-  $carStatusHeader.textContent='CAR STATUS';
+  $carStatusHeader.textContent = 'CAR STATUS';
   $imageStatus.setAttribute('src', 'images/better check.jpg');
-  $imageStatus.setAttribute('class','pictureCheck')
-  $imageStatus.setAttribute('alt','checkOk');
-  $carOverStats .appendChild($imageStatus);
+  $imageStatus.setAttribute('class', 'pictureCheck')
+  $imageStatus.setAttribute('alt', 'checkOk');
+  $carOverStats.appendChild($imageStatus);
   $carOverStats.appendChild($carStatusHeader);
 }
 
-function renderTitleComplaint(info){
+function renderTitleComplaint(info) {
   $userCarTitle.textContent = info.year + ' ' + info.make + ' ' + info.model;
   $userMileage.textContent = info.mileage;
 }
 
-function renderDataTable(info){
-  $tBody.textContent=''
+function renderDataTable(info) {
+  $tBody.textContent = ''
   for (var i = 0; i < info.log.length; i++) {
-    $tableRow =document.createElement('tr')
+    $tableRow = document.createElement('tr')
     $tableDataDate = document.createElement('td');
     $tableDataMileage = document.createElement('td');
     $tableDataCat = document.createElement('td');
@@ -228,7 +279,7 @@ function swapView(e) {
     $dataLog.classList.add('hidden');
     $dataRecordPage.classList.add('hidden');
     carInfo.dataView = 'complaintList'
-  } else if (e ==='home'){
+  } else if (e === 'home') {
     $introPage.classList.add('hidden');
     $vehicleFinder.classList.add('hidden');
     $serviceListPage.classList.add('hidden');
@@ -237,7 +288,7 @@ function swapView(e) {
     $dataLog.classList.add('hidden');
     $dataRecordPage.classList.add('hidden');
     carInfo.dataView = 'home'
-  }else if(e==='dataView'){
+  } else if (e === 'dataView') {
     $introPage.classList.add('hidden');
     $vehicleFinder.classList.add('hidden');
     $serviceListPage.classList.add('hidden');
@@ -246,7 +297,7 @@ function swapView(e) {
     $dataLog.classList.add('hidden');
     $dataRecordPage.classList.remove('hidden');
     carInfo.dataView = 'dataView'
-  }else if (e==='data-log'){
+  } else if (e === 'data-log') {
     $introPage.classList.add('hidden');
     $vehicleFinder.classList.add('hidden');
     $serviceListPage.classList.add('hidden');
@@ -255,7 +306,7 @@ function swapView(e) {
     $dataLog.classList.remove('hidden');
     $dataRecordPage.classList.add('hidden');
     carInfo.dataView = 'data-log'
-  }else if (e=== 'dataView'){
+  } else if (e === 'dataView') {
     $introPage.classList.add('hidden');
     $vehicleFinder.classList.add('hidden');
     $serviceListPage.classList.add('hidden');
@@ -273,8 +324,8 @@ document.addEventListener('click', function (e) {
     swapView('searchCar');
   } else if (userDataView === 'serviceList') {
     $carOverStats.textContent = '';
-    $eraseInput.textContent='';
-    $costDelete.textContent='';
+    $eraseInput.textContent = '';
+    $costDelete.textContent = '';
     getDataObject(carInfo);
     renderTitleSearch();
     for (var i = 0; i < carInfo.serviceAppend.length; i++) {
@@ -284,7 +335,7 @@ document.addEventListener('click', function (e) {
     swapView('serviceList')
   } else if (userDataView === 'complaintList') {
     $carOverStats.textContent = '';
-    $complaintListing.textContent=''
+    $complaintListing.textContent = ''
     for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
       renderComplaintLogs(carInfo.complaints[0].Results[i], carInfo.complaints[0], carInfo.complaints[0].Results[i])
     }
@@ -297,16 +348,16 @@ document.addEventListener('click', function (e) {
       renderHomePageService(carInfo, carInfo.serviceAppend[i]);
     }
     swapView('home');
-  }else if (userDataView ==='data-log'){
+  } else if (userDataView === 'data-log') {
     renderTitleComplaint(carInfo)
     swapView('data-log')
 
-  }else if (userDataView ==='dataView'){
+  } else if (userDataView === 'dataView') {
     renderTitleComplaint(carInfo)
-      renderDataTable(carInfo.userDataLog);
+    renderDataTable(carInfo.userDataLog);
 
     swapView('dataView')
-}
+  }
 })
 
 function getDataObject(event) {
@@ -340,12 +391,12 @@ $carSearch.addEventListener('submit', function (e) {
   $carSearch.reset();
 })
 
-$dataLogSubmitBtn.addEventListener('submit', function(e){
+$dataLogSubmitBtn.addEventListener('submit', function (e) {
   e.preventDefault();
   var desc = {
     date: $dataLogSubmitBtn.elements.date.value,
     mileage: $dataLogSubmitBtn.elements.mileage.value,
-    category:$dataLogSubmitBtn.elements.category.value,
+    category: $dataLogSubmitBtn.elements.category.value,
     description: $dataLogSubmitBtn.elements.comments.value
   };
 
@@ -353,12 +404,3 @@ $dataLogSubmitBtn.addEventListener('submit', function(e){
   swapView('dataView')
   $dataLogSubmitBtn.reset();
 })
-
-// document.addEventListener('click', function(e){
-
-//   if(e.target.className ='column-full statusBarTire'){
-//     $statsTire.style.background ='black'
-//   }
-
-
-// })
