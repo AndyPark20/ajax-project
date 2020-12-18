@@ -86,13 +86,21 @@ span {
 
 table {
   font-family: 'Roboto', sans-serif;
-  font-weight: bold;
   border-collapse: collapse;
   width:100%;
 }
 
-td, th {
+th {
   border: 1px solid black;
+  font-weight:bold;
+  font-size:20px;
+  text-align: left;
+}
+
+td {
+  border:1px solid black;
+  font-weight:500;
+  font-size:15px;
   text-align: left;
 }
 

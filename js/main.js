@@ -34,7 +34,7 @@ var $intervalFront = document.querySelector('.frontPage');
 var $dataLog = document.querySelector('.data-log');
 var $dataLogSubmitBtn = document.querySelector('#data-log-submit');
 var $dataRecordPage = document.querySelector('.entryInput');
-var $tableRow = document.querySelector('.insert');
+var $tBody = document.querySelector('tbody');
 var nhtsaResponse = 0;
 
 
@@ -113,7 +113,7 @@ function renderTitleComplaint(info){
 }
 
 function renderDataTable(info){
-
+  $tBody.textContent=''
   for (var i = 0; i < info.log.length; i++) {
     $tableRow =document.createElement('tr')
     $tableDataDate = document.createElement('td');
@@ -128,6 +128,7 @@ function renderDataTable(info){
     $tableRow.appendChild($tableDataMileage);
     $tableRow.appendChild($tableDataCat);
     $tableRow.appendChild($tableDataDesc);
+    $tBody.appendChild($tableRow)
   }
 
 }
