@@ -4,8 +4,6 @@ var $introPage = document.querySelector('.introduction');
 var $vehicleFinder = document.querySelector('.find-vehicle');
 var $carSearch = document.querySelector('#car-search-input');
 var $serviceListPage = document.querySelector('.serviceResult');
-var serviceSoon = [];
-var mileage = [];
 var $pageTitle = document.querySelector('#carTitle');
 var $carMiles = document.querySelector('.mi');
 var $serviceList = document.querySelector('.servicePoint')
@@ -42,6 +40,8 @@ var $oilRemaining = document.querySelector('.oilRemainder');
 var $tireRotationRemaining = document.querySelector('.tireRemaining');
 var $tirePressureCheck =document.querySelector('.pressure')
 var nhtsaResponse = 0;
+var serviceSoon = [];
+var mileage = [];
 
 
 function renderCostBreakElement(event) {
