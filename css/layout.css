@@ -7,6 +7,11 @@
   flex-basis: 25%;
 }
 
+@media screen and (max-width:667px){
+  h3.modal{
+    font-size:1.5rem;
+  }
+}
 
 @media screen and (max-width: 375px) {
 .column-full {
@@ -43,10 +48,22 @@ width:20%;
 }
 img.service-icon{
   width:15%;
-  height:15%;
 }
 .serviceListings{
   width:100%;
+}
 
+img.service-icon-edit{
+  width:45%;
+}
+
+h3.modal {
+  font-size:0.8rem;
+}
+
+.modalBtn{
+  font-size:0.9rem;
+  width:40%;
+  height:2.0rem;
 }
 }

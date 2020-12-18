@@ -38,7 +38,13 @@ var $tireRotation = document.querySelector('.statusBarTire');
 var $pressureCheck = document.querySelector('.statusBarPressure');
 var $oilRemaining = document.querySelector('.oilRemainder');
 var $tireRotationRemaining = document.querySelector('.tireRemaining');
-var $tirePressureCheck =document.querySelector('.pressure')
+var $tirePressureCheck =document.querySelector('.pressure');
+var $userDataTable = document.querySelector('.dataTable');
+var $modalContainer = document.querySelector('.modal-data-container');
+var $modalText = document.querySelector('.modal');
+var $modalBtn = document.querySelector('.buttons-modal');
+var $deleteBtnModal = document.querySelector('.delete');
+var $editBtnModal =document.querySelector('.edit')
 var nhtsaResponse = 0;
 var serviceSoon = [];
 var mileage = [];
@@ -112,44 +118,49 @@ function carStatusProgress(info) {
   var currentDate = new Date();
   var oilLatestDate = new Date(oilDate);
   var oilDaysRemain = currentDate - oilLatestDate;
-  var oilDaysRemainResult =(60-(Math.floor(oilDaysRemain/(1000*60*60*24))));
-  $oilRemaining.textContent=oilDaysRemainResult + ' Day(s) Remaining !'
+  var oilDaysRemainResult =(180-(Math.floor(oilDaysRemain/(1000*60*60*24))));
+  var oilRelative = (5000-Math.abs((carInfo.mileage-oilNum)));
+  $oilRemaining.textContent=oilDaysRemainResult + ' Day(s)/ ' + oilRelative +' mi' + ' remaining!'
 
   var pressureLatestDate = new Date(pressureDate);
   var pressureRemain = currentDate - pressureLatestDate;
-  var pressureRemainResult = (60-(Math.floor(pressureRemain/(1000*60*60*24))));
-  $tirePressureCheck.textContent = pressureRemainResult + ' Day(s) Remaining !'
+  var pressureRemainResult = (30-(Math.floor(pressureRemain/(1000*60*60*24))));
+  $tirePressureCheck.textContent = pressureRemainResult + ' Day(s) remaining!'
 
   var tireLatestDate = new Date(tireDate);
   var tireRemain = currentDate - tireLatestDate;
-  var tireRemainResult = (60-(Math.floor(tireRemain/(1000*60*60*24))))
-  $tireRotationRemaining.textContent = tireRemainResult + ' Day(s) Remaining !';
+  var tireRemainResult = (180-(Math.floor(tireRemain/(1000*60*60*24))))
+  var tireRelative = (5000-Math.abs((carInfo.mileage)-tire));
+  $tireRotationRemaining.textContent = tireRemainResult + ' Day(s)/ '  +tireRelative + ' mi' + ' remaining!';
 
-  if (oilDaysRemainResult <= 15) {
+  if (oilDaysRemainResult <= 15 || oilRelative < 1000) {
     $oilStatusBar.style.background = 'red';
-  } else if (oilDaysRemainResult > 15) {
+  } else if (oilDaysRemainResult > 15 && oilRelative >=1000) {
     $oilStatusBar.style.background = 'green'
   }
+
+  if (tireRemainResult <= 15 || tireRelative <1000) {
+    $tireRotation.style.background = 'red';
+  } else if (tireRemainResult > 15 && tireRelative >=1000) {
+    $tireRotation.style.background = 'green';
+  }
+
   if (pressureRemainResult <= 15) {
     $pressureCheck.style.background = 'red';
   } else if (pressureRemainResult > 15) {
     $pressureCheck.style.background = 'green';
   }
-  if (tireRemainResult <= 15) {
-    $tireRotation.style.background = 'red';
-  } else if (tireRemainResult > 15) {
-    $tireRotation.style.background = 'green';
-  }
+
   var $carStatus = document.createElement('h3');
   var $imageWarning = document.createElement('img');
   $carStatus.textContent = ' CAR STATUS:'
   $imageWarning.setAttribute('class', 'pictureCheck');
   $imageWarning.setAttribute('alt', 'symbol status')
-  if (oilDaysRemainResult <= 15 || pressureRemainResult <= 15 || tireRemainResult <= 15) {
+  if (oilDaysRemainResult <= 15 || pressureRemainResult <= 15 || tireRemainResult <= 15 || tireRelative < 1000 || oilRelative < 1000) {
     $imageWarning.setAttribute('src', 'images/istockphoto-1047357876-170667a.jpg');
     $carOverStats.appendChild($carStatus);
     $carOverStats.appendChild($imageWarning)
-  } else if (oilDaysRemainResult > 15 && pressureRemainResult > 15 && tireRemainResult > 15) {
+  } else if (oilDaysRemainResult > 15 && pressureRemainResult > 15 && tireRemainResult > 15 && tireRelative >= 1000 && oilRelative >= 1000) {
     $imageWarning.setAttribute('src', 'images/better-check.jpg');
     $carOverStats.appendChild($carStatus);
     $carOverStats.appendChild($imageWarning)
@@ -199,14 +210,22 @@ function renderDataTable(info) {
   $tBody.textContent = ''
   for (var i = 0; i < info.log.length; i++) {
     $tableRow = document.createElement('tr')
+    $tableListNumber=document.createElement('td');
+    $tableListNumber.setAttribute('data-view',i+1);
     $tableDataDate = document.createElement('td');
+    $tableDataDate.setAttribute('data-view', i+1)
     $tableDataMileage = document.createElement('td');
+    $tableDataMileage.setAttribute('data-view', i+1);
     $tableDataCat = document.createElement('td');
+    $tableDataCat.setAttribute('data-view', i+1)
     $tableDataDesc = document.createElement('td');
+    $tableDataDesc.setAttribute('data-view', i+1)
     $tableDataDate.textContent = info.log[i].date;
     $tableDataMileage.textContent = info.log[i].mileage;
     $tableDataCat.textContent = info.log[i].category;
     $tableDataDesc.textContent = info.log[i].description;
+    $tableListNumber.textContent = i+1;
+    $tableRow.appendChild($tableListNumber);
     $tableRow.appendChild($tableDataDate);
     $tableRow.appendChild($tableDataMileage);
     $tableRow.appendChild($tableDataCat);
@@ -214,6 +233,8 @@ function renderDataTable(info) {
     $tBody.appendChild($tableRow)
   }
 }
+
+
 
 function renderServiceElement(info, event) {
   var $createList = document.createElement('li');
@@ -353,6 +374,10 @@ function swapView(e) {
 document.addEventListener('click', function (e) {
   var userDataView = e.target.getAttribute('data-view')
   if (userDataView === 'searchCar') {
+    $carSearch.elements.year.value = carInfo.year;
+    $carSearch.elements.make.value = carInfo.make;
+    $carSearch.elements.model.value = carInfo.model;
+    $carSearch.elements.mileage.value = parseInt(carInfo.mileage);
     swapView('searchCar');
   } else if (userDataView === 'serviceList') {
     $carOverStats.textContent = '';
@@ -406,10 +431,23 @@ function getDataObject(event) {
 }
 
 $getStartedBtn.addEventListener('click', function () {
-  $homeButton.classList.remove('hidden');
-  $title.classList.remove('hidden')
-  renderTitleSearch();
-  swapView('searchCar')
+  if(carInfo.model !=='' && carInfo.year !=='' && carInfo.make !==''){
+    $homePageService.textContent = '';
+    renderCarStatus(carInfo);
+    carStatusProgress(carInfo);
+    $title.classList.remove('hidden')
+    for (var i = 0; i < 5; i++) {
+      renderHomePageService(carInfo, carInfo.serviceAppend[i]);
+    }
+    $homeButton.classList.remove('hidden');
+    swapView('home');
+  }else{
+    $homeButton.classList.remove('hidden');
+    $title.classList.remove('hidden')
+    renderTitleSearch();
+    swapView('searchCar')
+  }
+
 })
 
 $carSearch.addEventListener('submit', function (e) {
@@ -437,4 +475,32 @@ $dataLogSubmitBtn.addEventListener('submit', function (e) {
   renderDataTable(carInfo.userDataLog)
   swapView('dataView')
   $dataLogSubmitBtn.reset();
+})
+
+$userDataTable.addEventListener('click', function(e){
+  var targetNumber =e.target.getAttribute('data-view');
+  if(targetNumber === targetNumber && targetNumber !==null){
+    $deleteBtnModal.setAttribute('data-view', targetNumber)
+    $editBtnModal.setAttribute('data-view', targetNumber)
+    $modalContainer.classList.remove('hidden');
+    $modalText.textContent ="What would you like to do for #"+targetNumber+'?'
+  }
+})
+
+$modalBtn.addEventListener('click', function(e){
+
+  if(e.target.className ==='modalBtn delete'){
+    var index =parseInt($deleteBtnModal.getAttribute('data-view'))
+    var deleteData =carInfo.userDataLog.log;
+    deleteData.splice(index-1,1);
+    $modalContainer.classList.add('hidden');
+    renderDataTable(carInfo.userDataLog);
+  }else if (e.target.className ==="modalBtn edit"){
+    $dataLogSubmitBtn.elements.date.value = carInfo.year;
+    $dataLogSubmitBtn.elements.make.value = carInfo.make;
+    $dataLogSubmitBtn.elements.model.value = carInfo.model;
+    $dataLogSubmitBtn.elements.mileage.value = parseInt(carInfo.mileage);
+    swapView('data-log')
+  }
+
 })
