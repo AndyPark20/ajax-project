@@ -44,8 +44,8 @@ img.data-log-pencil{
 }
 
 img.data-log-notebook{
-  width:15%;
-  height:15%;
+  width:10%;
+  height:10%;
   cursor: pointer;
 }
 
@@ -84,7 +84,21 @@ span {
   font-weight: 500;
 }
 
+table {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  border-collapse: collapse;
+  width:100%;
+}
 
+td, th {
+  border: 1px solid black;
+  text-align: left;
+}
+
+/* tr:nth-child(even){
+  background-color:
+} */
 
 span.logoCarText {
   font-size: 2rem;

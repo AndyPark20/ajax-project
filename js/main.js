@@ -33,16 +33,15 @@ var $homePageService = document.querySelector('.homeServiceOverview')
 var $intervalFront = document.querySelector('.frontPage');
 var $dataLog = document.querySelector('.data-log');
 var $dataLogSubmitBtn = document.querySelector('#data-log-submit');
-var $dataRecordPage = document.querySelector('.entryInput')
+var $dataRecordPage = document.querySelector('.entryInput');
+var $tableRow = document.querySelector('.insert');
 var nhtsaResponse = 0;
 
 
 function renderCostBreakElement(event) {
-
   repairTotalHours=0;
   laborCost=0;
   totalPartCost=0
-
   for (var i = 0; i < event.serviceAppend.length; i++) {
     repairTotalHours
     repairTotalHours += event.serviceAppend[i].repair.repair_hours;
@@ -54,46 +53,39 @@ function renderCostBreakElement(event) {
   var $estPartCost = document.createElement('li');
   var $estTotalCost = document.createElement('li')
   var $estTotalCostNum = (Math.round(laborCost + totalPartCost))
-
-
   $costBreakStructure.innerHTML = 'Estimated Total Repair Hours Needed: ' + '<span class="mis">' + repairTotalHours.toFixed(2) + ' Hrs.' + '<span>';
   $estLaborCost.innerHTML = 'Estimated Total Labor Cost: ' + '<span class="mis">' + '$' + (Math.round(laborCost)).toFixed(2) + ' USD.' + '<span>';
   $estPartCost.innerHTML = 'Estimated Total Part Cost: ' + '<span class="mis">' + '$' + (Math.round(totalPartCost)).toFixed(2) + ' USD.' + '<span>';
   $estTotalCost.innerHTML = "Estimated Total cost of Labor + Parts: " + '<span class="mis">' + '$' + $estTotalCostNum.toFixed(2) + ' USD.' + '<span>';
-
   $costBreak.appendChild($costBreakStructure)
   $costBreak.appendChild($estLaborCost);
   $costBreak.appendChild($estPartCost);
   $costBreak.appendChild($estTotalCost);
 }
 
-function renderComplaintLogs(info, event, criteria) {
 
+
+function renderComplaintLogs(info, event, criteria) {
   var $link = document.createElement('li');
   var $complaintPara = document.createElement('p');
   var $complaintParaTwo = document.createElement('p');
   var $wrapper = document.createElement('div');
-
   $complaintNumber.textContent = event.Count;
   $complaintPara.innerHTML = "<span class='complained'>" + "Component: " + "<span>" + criteria.Component;
   $complaintParaTwo.innerHTML = "<span class='complained'>" + "Complaint: " + "<span>" + criteria.Summary;
   $complaintParaTwo.setAttribute('class', 'border')
-
   $wrapper.appendChild($complaintPara);
   $wrapper.appendChild($complaintParaTwo);
   $link.appendChild($wrapper);
   $complaintListing.appendChild($link);
-
   return $complaintListing;
 }
 
 function renderHomePageService(info, event){
   var $createList = document.createElement('li');
-
   $intervalFront .textContent = info.serviceAppend[0].due_mileage;
   $createList.textContent = event.desc;
   $homePageService.appendChild($createList);
-
   return $homePageService;
 }
 
@@ -102,21 +94,17 @@ function renderTitleSearch(){
 }
 
 function renderCarStatus(info) {
-
   $carOverStats.textContent = '';
   var $carStatusHeader =document.createElement('h3');
   var $imageStatus=document.createElement('img');
-
   $userCarTitle.textContent = info.year + ' ' + info.make + ' ' + info.model;
   $userMileage.textContent = info.mileage;
-
   $carStatusHeader.textContent='CAR STATUS';
   $imageStatus.setAttribute('src', 'images/better check.jpg');
   $imageStatus.setAttribute('class','pictureCheck')
   $imageStatus.setAttribute('alt','checkOk');
   $carOverStats .appendChild($imageStatus);
   $carOverStats.appendChild($carStatusHeader);
-
 }
 
 function renderTitleComplaint(info){
@@ -124,15 +112,33 @@ function renderTitleComplaint(info){
   $userMileage.textContent = info.mileage;
 }
 
+function renderDataTable(info){
+
+  for (var i = 0; i < info.log.length; i++) {
+    $tableRow =document.createElement('tr')
+    $tableDataDate = document.createElement('td');
+    $tableDataMileage = document.createElement('td');
+    $tableDataCat = document.createElement('td');
+    $tableDataDesc = document.createElement('td');
+    $tableDataDate.textContent = info.log[i].date;
+    $tableDataMileage.textContent = info.log[i].mileage;
+    $tableDataCat.textContent = info.log[i].category;
+    $tableDataDesc.textContent = info.log[i].description;
+    $tableRow.appendChild($tableDataDate);
+    $tableRow.appendChild($tableDataMileage);
+    $tableRow.appendChild($tableDataCat);
+    $tableRow.appendChild($tableDataDesc);
+  }
+
+}
+
 function renderServiceElement(info, event) {
   var $createList = document.createElement('li');
-
   $userCarTitle.textContent = info.year + ' ' + info.make + ' ' + info.model;
   $userMileage.textContent = info.mileage;
   $nextMileage.textContent = info.serviceAppend[0].due_mileage;
   $createList.textContent = event.desc;
   $serviceList.appendChild($createList);
-
   return $serviceList;
 }
 
@@ -169,7 +175,6 @@ function serviceInterval(year, make, model, mileage) {
     } else {
       carInfo.service.push(xhr.response);
     }
-
     if (xhr.status === 200) {
       getDataObject(carInfo);
       for (var i = 0; i < carInfo.serviceAppend.length; i++) {
@@ -297,8 +302,10 @@ document.addEventListener('click', function (e) {
 
   }else if (userDataView ==='dataView'){
     renderTitleComplaint(carInfo)
+      renderDataTable(carInfo.userDataLog);
+
     swapView('dataView')
-  }
+}
 })
 
 function getDataObject(event) {
@@ -312,7 +319,6 @@ function getDataObject(event) {
 }
 
 $getStartedBtn.addEventListener('click', function () {
-
   $homeButton.classList.remove('hidden');
   $title.classList.remove('hidden')
   renderTitleSearch();
