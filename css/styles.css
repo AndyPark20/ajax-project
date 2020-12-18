@@ -38,6 +38,17 @@ img.engine-oil{
   height:8%;
 }
 
+img.data-log-pencil{
+  width:15%;
+  height:15%;
+}
+
+img.data-log-notebook{
+  width:10%;
+  height:10%;
+  cursor: pointer;
+}
+
 p.userMileage {
   font-family: 'Roboto', sans-serif;
   font-size:20px;
@@ -71,6 +82,31 @@ h3 {
 span {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
+}
+
+table {
+  font-family: 'Roboto', sans-serif;
+  border-collapse: collapse;
+  width:100%;
+}
+
+th {
+  border: 1px solid black;
+  font-weight:bold;
+  font-size:20px;
+  text-align: left;
+}
+
+td {
+  border:1px solid black;
+  font-weight:500;
+  font-size:15px;
+  text-align: left;
+}
+
+
+tbody tr:nth-child(odd){
+  background-color:#e8eae6;
 }
 
 span.logoCarText {
@@ -108,7 +144,11 @@ span.mi, span.mis, span.comp{
   border-bottom:1px solid black;
 }
 
+.logServiceStyle{
+ display:flex;
 
+
+}
 .complaintListing li {
   font-weight:400;
   line-height:1.5;
@@ -146,12 +186,15 @@ span.mi, span.mis, span.comp{
 
 .userInputCar{
   border:2px solid black;
-}
-
-.userInputCar {
   width:300px;
   height:50px;
 }
+
+.userFeedback {
+   border:2px solid black;
+    width:300px;
+}
+
 
 .inputSearch {
   display:flex;
@@ -176,6 +219,7 @@ span.mi, span.mis, span.comp{
   cursor: pointer;
 }
 
+
 .userInputTitle{
   display:flex;
   flex-direction:column;
@@ -191,7 +235,7 @@ span.mi, span.mis, span.comp{
  border:2px solid black;
  display:flex;
  flex-direction: column;
-align-items:center;
+/* align-items:center; */
 }
 
 .service-icon, .service-icon-Warning{
@@ -218,4 +262,15 @@ align-items:center;
 .checkStatusText{
    font-family: 'Roboto', sans-serif;
    font-size:20px;
+}
+
+.data-log-title{
+  display:flex;
+  align-items: center;
+}
+
+.data-log-title-input{
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
