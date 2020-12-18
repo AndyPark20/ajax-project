@@ -1,6 +1,10 @@
 
-img.carHealthLogo, img.find-my-vehicle-picture {
+img.carHealthLogo {
   width: 50%;
+}
+
+img.find-my-vehicle-picture{
+  width:50%;
 }
 
 img.home-icon{
@@ -8,7 +12,7 @@ img.home-icon{
   height:45px;
 }
 
-img.service-icon, img.pictureCheck, img.data-log-pencil{
+img.service-icon{
   width:15%;
   height:15%;
 }
@@ -24,11 +28,20 @@ img.service-icon-Warning{
   height:11%;
 }
 
+img.pictureCheck{
+  width:15%;
+  height:15%;
+}
+
 img.engine-oil{
   width:8%;
   height:8%;
 }
 
+img.data-log-pencil{
+  width:15%;
+  height:15%;
+}
 
 img.data-log-notebook{
   width:10%;
@@ -63,9 +76,8 @@ h2{
 h3 {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  font-size:20px;
+  font-size:35
 }
-
 
 span {
   font-family: 'Roboto', sans-serif;
@@ -116,11 +128,6 @@ button.getStarted {
   background-color: white;
   transition: all .5s ease-in-out;
   cursor:pointer;
-}
-
-option {
-  font-family: 'Roboto', sans-serif;
-  font-size:13px;
 }
 
 span.mi, span.mis, span.comp{
@@ -212,9 +219,11 @@ span.mi, span.mis, span.comp{
   cursor: pointer;
 }
 
+
 .userInputTitle{
   display:flex;
   flex-direction:column;
+
 }
 
 .service {
@@ -226,7 +235,7 @@ span.mi, span.mis, span.comp{
  border:2px solid black;
  display:flex;
  flex-direction: column;
-align-items:center;
+/* align-items:center; */
 }
 
 .service-icon, .service-icon-Warning{
@@ -258,7 +267,6 @@ align-items:center;
 .data-log-title{
   display:flex;
   align-items: center;
-  justify-content: start;
 }
 
 .data-log-title-input{

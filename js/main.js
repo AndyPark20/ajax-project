@@ -35,6 +35,12 @@ var $dataLog = document.querySelector('.data-log');
 var $dataLogSubmitBtn = document.querySelector('#data-log-submit');
 var $dataRecordPage = document.querySelector('.entryInput');
 var $tBody = document.querySelector('tbody');
+var $oilStatusBar =document.querySelector('.statusBarOil');
+var $tireRotation = document.querySelector('.statusBarTire');
+var $pressureCheck = document.querySelector('.statusBarPressure');
+var $oilRemaining = document.querySelector('.oilRemainder');
+var $tireRotationRemaining = document.querySelector('.tireRemaining');
+var $tirePressureCheck =document.querySelector('.pressure')
 var nhtsaResponse = 0;
 
 
@@ -67,7 +73,6 @@ function carStatusProgress(info) {
   var oilNum = 0;
   var pressure = 0
   var tire = 0
-
   var oilDate='';
   var pressureDate='';
   var tireDate='';
@@ -81,6 +86,7 @@ function carStatusProgress(info) {
     if (parseInt(info.userDataLog.log[j].mileage) > pressure && info.userDataLog.log[j].category === 'check-pressure') {
       pressure = parseInt(info.userDataLog.log[j].mileage);
     }
+
   }
   for (var z = 0; z < info.userDataLog.log.length; z++) {
     if (parseInt(info.userDataLog.log[z].mileage) > tire && info.userDataLog.log[z].category === 'tire-rotation') {
@@ -88,30 +94,74 @@ function carStatusProgress(info) {
     }
   }
   for (h = 0; h < info.userDataLog.log.length; h++) {
-    if (oilNum.toString() === info.userDataLog.log[h].mileage) {
+    if (oilNum.toString() === info.userDataLog.log[h].mileage && info.userDataLog.log[h].category ==='oil-service') {
       oilDate+= info.userDataLog.log[h].date;
     }
   }
   for (k = 0; k < info.userDataLog.log.length; k++) {
-    if (pressure.toString() === info.userDataLog.log[k].mileage) {
+    if (pressure.toString() === info.userDataLog.log[k].mileage && info.userDataLog.log[k].category === 'check-pressure') {
       pressureDate += info.userDataLog.log[k].date;
     }
   }
   for (p = 0; p < info.userDataLog.log.length; p++) {
-    if (tire.toString() === info.userDataLog.log[p].mileage) {
+    if (tire.toString() === info.userDataLog.log[p].mileage && info.userDataLog.log[p].category === 'tire-rotation') {
        tireDate+= info.userDataLog.log[p].date;
     }
   }
+  console.log(oilDate);
+  console.log(pressureDate);
+  console.log(tireDate);
+
+  var currentDate = new Date();
+  var oilLatestDate = new Date(oilDate);
+  var oilDaysRemain = currentDate - oilLatestDate;
+  var oilDaysRemainResult =(60-(Math.floor(oilDaysRemain/(1000*60*60*24))));
+  $oilRemaining.textContent=oilDaysRemainResult + ' Day(s) Remaining !'
+
+
+  var pressureLatestDate = new Date(pressureDate);
+  var pressureRemain = currentDate - pressureLatestDate;
+  var pressureRemainResult = (60-(Math.floor(pressureRemain/(1000*60*60*24))));
+  $tirePressureCheck.textContent = pressureRemainResult + ' Day(s) Remaining !'
 
 
 
+  var tireLatestDate = new Date(tireDate);
+  var tireRemain = currentDate - tireLatestDate;
+  var tireRemainResult = (60-(Math.floor(tireRemain/(1000*60*60*24))))
+  $tireRotationRemaining.textContent = tireRemainResult + ' Day(s) Remaining !';
 
-  console.log('oil',oilDate)
-  console.log('pressure', pressureDate);
-  console.log('tire',tireDate)
+  if (oilDaysRemainResult <= 15) {
+    $oilStatusBar.style.background = 'red';
+  } else if (oilDaysRemainResult > 15) {
+    $oilStatusBar.style.background = 'green'
+  }
 
+  if (pressureRemainResult <= 15) {
+    $pressureCheck.style.background = 'red';
+  } else if (pressureRemainResult > 15) {
+    $pressureCheck.style.background = 'green';
+  }
 
-
+  if (tireRemainResult <= 15) {
+    $tireRotation.style.background = 'red';
+  } else if (tireRemainResult > 15) {
+    $tireRotation.style.background = 'green';
+  }
+  var $carStatus = document.createElement('h3');
+  var $imageWarning = document.createElement('img');
+  $carStatus.textContent = ' CAR STATUS:'
+  $imageWarning.setAttribute('class', 'pictureCheck');
+  $imageWarning.setAttribute('alt', 'symbol status')
+  if (oilDaysRemainResult <= 15 || pressureRemainResult <= 15 || tireRemainResult <= 15) {
+    $imageWarning.setAttribute('src', 'images/istockphoto-1047357876-170667a.jpg');
+    $carOverStats.appendChild($carStatus);
+    $carOverStats.appendChild($imageWarning)
+  } else if (oilDaysRemainResult > 15 && pressureRemainResult > 15 && tireRemainResult > 15) {
+    $imageWarning.setAttribute('src', 'images/better-check.jpg');
+    $carOverStats.appendChild($carStatus);
+    $carOverStats.appendChild($imageWarning)
+  }
 }
 
 
@@ -146,16 +196,9 @@ function renderTitleSearch() {
 
 function renderCarStatus(info) {
   $carOverStats.textContent = '';
-  var $carStatusHeader = document.createElement('h3');
-  var $imageStatus = document.createElement('img');
   $userCarTitle.textContent = info.year + ' ' + info.make + ' ' + info.model;
   $userMileage.textContent = info.mileage;
-  $carStatusHeader.textContent = 'CAR STATUS';
-  $imageStatus.setAttribute('src', 'images/better check.jpg');
-  $imageStatus.setAttribute('class', 'pictureCheck')
-  $imageStatus.setAttribute('alt', 'checkOk');
-  $carOverStats.appendChild($imageStatus);
-  $carOverStats.appendChild($carStatusHeader);
+
 }
 
 function renderTitleComplaint(info) {
@@ -342,8 +385,10 @@ document.addEventListener('click', function (e) {
     renderTitleComplaint(carInfo)
     swapView('complaintList')
   } else if (userDataView === 'home') {
-    $title.classList.remove('hidden')
+    $homePageService.textContent = '';
     renderCarStatus(carInfo);
+    carStatusProgress(carInfo);
+    $title.classList.remove('hidden')
     for (var i = 0; i < 5; i++) {
       renderHomePageService(carInfo, carInfo.serviceAppend[i]);
     }
@@ -353,6 +398,7 @@ document.addEventListener('click', function (e) {
     swapView('data-log')
 
   } else if (userDataView === 'dataView') {
+    $carOverStats.textContent='';
     renderTitleComplaint(carInfo)
     renderDataTable(carInfo.userDataLog);
 
@@ -386,8 +432,8 @@ $carSearch.addEventListener('submit', function (e) {
   carInfo.mileage = $carSearch.elements.mileage.value;
   var parsedYear = parseInt($carSearch.elements.year.value);
   var parsedMileage = parseInt($carSearch.elements.mileage.value);
-  // recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
-  // serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
+  recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
+  serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   $carSearch.reset();
 })
 
