@@ -13,7 +13,6 @@ var carInfo ={
   }
 };
 
-
 var getParsed=localStorage.getItem('autoDetail')
 if (getParsed !==null){
   carInfo=JSON.parse(getParsed);

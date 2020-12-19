@@ -44,12 +44,14 @@ var $modalContainer = document.querySelector('.modal-data-container');
 var $modalText = document.querySelector('.modal');
 var $modalBtn = document.querySelector('.buttons-modal');
 var $deleteBtnModal = document.querySelector('.delete');
-var $editBtnModal = document.querySelector('.edit')
+var $editBtnModal = document.querySelector('.edit');
+var $okBtn = document.querySelector('.container-error-modal');
+var $complaintModal = document.querySelector('.complaintModal');
+var $complaintSuccess = document.querySelector('.complaintSucess');
 var nhtsaResponse = 0;
 var serviceSoon = [];
 var mileage = [];
-var index =null;
-
+var index = null;
 
 
 function renderCostBreakElement(event) {
@@ -210,11 +212,12 @@ function renderTitleComplaint(info) {
 
 function renderDataTable(info, indexing) {
   $tBody.textContent = ''
-  if(typeof indexing === 'number'){
+  if (typeof indexing === 'number') {
     var revised = info.log;
     console.log(indexing);
-    console.log(revised.splice(indexing - 1, 1, info.log[info.log.length-1]));
+    console.log(revised.splice(indexing - 1, 1, info.log[info.log.length - 1]));
     revised.pop();
+    index=null;
     for (var i = 0; i < revised.length; i++) {
       $tableRow = document.createElement('tr')
       $tableListNumber = document.createElement('td');
@@ -239,7 +242,7 @@ function renderDataTable(info, indexing) {
       $tableRow.appendChild($tableDataDesc);
       $tBody.appendChild($tableRow)
     }
-} else if (indexing === null) {
+  } else if (indexing === null) {
     for (var i = 0; i < info.log.length; i++) {
       $tableRow = document.createElement('tr')
       $tableListNumber = document.createElement('td');
@@ -282,21 +285,26 @@ function recall(year, make, model) {
   xhrs.open('GET', 'https://api.codetabs.com/v1/proxy?quest=https://webapi.nhtsa.gov/api/Complaints/vehicle/modelyear/' + year + '/make/' + make + '/model/' + model + '?format=json')
   xhrs.responseType = 'json';
   xhrs.addEventListener('load', function () {
+    console.log('nhtsa',xhrs.status)
+    console.log('nhtsa',xhrs.response)
     if (carInfo.complaints.length === 1) {
       carInfo.complaints.shift();
       carInfo.complaints.push(xhrs.response);
     } else {
       carInfo.complaints.push(xhrs.response);
     }
-    if (xhrs.status === 200) {
-      console.log(xhrs.status)
+    if (xhrs.status === 200 && carInfo.complaints[0].Message !=="No results found for this request") {
       nhtsaResponse = xhrs.status;
+      $complaintSuccess.classList.remove('hidden');
+    } else if (xhrs.status === 400 || (xhrs.status === 200 && carInfo.complaints[0].Message === "No results found for this request")){
+      $complaintModal.classList.remove('hidden');
     }
   })
   xhrs.send();
 }
 
 function serviceInterval(year, make, model, mileage) {
+
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://cors-anywhere.herokuapp.com/http://api.carmd.com/v3.0/maint?year=' + year + '&make=' + make + '&model=' + model + '&mileage=' + mileage);
   xhr.setRequestHeader("content-type", "application/json");
@@ -305,22 +313,25 @@ function serviceInterval(year, make, model, mileage) {
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     console.log(xhr.status);
+    recall(year, make, model);
     if (carInfo.service.length === 1) {
       carInfo.service.shift()
       carInfo.service.push(xhr.response);
     } else {
       carInfo.service.push(xhr.response);
     }
-    if (xhr.status === 200) {
+    if (xhr.status === 200 && carInfo.service[0].message.message !== "Data Invaild" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
       getDataObject(carInfo);
       for (var i = 0; i < carInfo.serviceAppend.length; i++) {
         renderServiceElement(carInfo, carInfo.serviceAppend[i]);
       }
-      for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
-        renderComplaintLogs(carInfo.complaints[0].Results[i], carInfo.complaints[0], carInfo.complaints[0].Results[i])
-      }
+      // for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
+      //   renderComplaintLogs(carInfo.complaints[0].Results[i], carInfo.complaints[0], carInfo.complaints[0].Results[i])
+      // }
       renderCostBreakElement(carInfo);
       swapView('serviceList');
+    } else if (xhr.status === 400 || carInfo.service[0].Message === "The request is invalid." || carInfo.service[0].message.message === "Data Invaild") {
+      $okBtn.classList.remove('hidden')
     }
   })
   xhr.send();
@@ -403,7 +414,8 @@ function swapView(e) {
 }
 
 document.addEventListener('click', function (e) {
-  var userDataView = e.target.getAttribute('data-view')
+  var userDataView = e.target.getAttribute('data-view');
+  var userTarget = e.target.className;
   if (userDataView === 'searchCar') {
     $carSearch.elements.year.value = carInfo.year;
     $carSearch.elements.make.value = carInfo.make;
@@ -411,17 +423,21 @@ document.addEventListener('click', function (e) {
     $carSearch.elements.mileage.value = parseInt(carInfo.mileage);
     swapView('searchCar');
   } else if (userDataView === 'serviceList') {
-    $carOverStats.textContent = '';
-    $eraseInput.textContent = '';
-    $costDelete.textContent = '';
-    getDataObject(carInfo);
-    renderTitleSearch();
-    for (var i = 0; i < carInfo.serviceAppend.length; i++) {
-      renderServiceElement(carInfo, carInfo.serviceAppend[i]);
+    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+      $carOverStats.textContent = '';
+      $eraseInput.textContent = '';
+      $costDelete.textContent = '';
+      getDataObject(carInfo);
+      renderTitleSearch();
+
+      for (var i = 0; i < carInfo.serviceAppend.length; i++) {
+        renderServiceElement(carInfo, carInfo.serviceAppend[i]);
+      }
+      renderCostBreakElement(carInfo);
+      swapView('serviceList')
     }
-    renderCostBreakElement(carInfo);
-    swapView('serviceList')
   } else if (userDataView === 'complaintList') {
+    if (carInfo.complaints[0].Message !== 'No results found for this request' && carInfo.model !=='' && carInfo.year !=='' && carInfo.make !=='') {
     $carOverStats.textContent = '';
     $complaintListing.textContent = ''
     for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
@@ -429,25 +445,38 @@ document.addEventListener('click', function (e) {
     }
     renderTitleComplaint(carInfo)
     swapView('complaintList')
-  } else if (userDataView === 'home') {
-    $homePageService.textContent = '';
-    renderCarStatus(carInfo);
-    carStatusProgress(carInfo);
-    $title.classList.remove('hidden')
-    for (var i = 0; i < 5; i++) {
-      renderHomePageService(carInfo, carInfo.serviceAppend[i]);
+    } else if (carInfo.complaints[0].Message ==='No results found for this request'){
+      $complaintModal.classList.remove('hidden');
+    } else if (carInfo.complaints[0].Message ==="Complaints: An error occured while processing this request. Pls verify the HTTP request syntax."){
+      $okBtn.classList.remove('hidden')
     }
-    swapView('home');
+  } else if (userDataView === 'home') {
+    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+      $homePageService.textContent = '';
+      renderCarStatus(carInfo);
+      carStatusProgress(carInfo);
+      $title.classList.remove('hidden')
+      for (var i = 0; i < 5; i++) {
+        renderHomePageService(carInfo, carInfo.serviceAppend[i]);
+      }
+      swapView('home');
+    }
   } else if (userDataView === 'data-log') {
+    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
     renderTitleComplaint(carInfo)
     swapView('data-log')
-
+    }
   } else if (userDataView === 'dataView') {
+    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
     $carOverStats.textContent = '';
     renderTitleComplaint(carInfo)
-    renderDataTable(carInfo.userDataLog,index);
+    renderDataTable(carInfo.userDataLog, index);
 
     swapView('dataView')
+    }
+  } else if (userTarget ==='modalBtn ok'){
+    $okBtn.classList.add('hidden');
+    $complaintModal.classList.add('hidden');
   }
 })
 
@@ -462,7 +491,7 @@ function getDataObject(event) {
 }
 
 $getStartedBtn.addEventListener('click', function () {
-  if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+  if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '' && carInfo.serviceAppend.length !== 0 && carInfo.mileage !== "") {
     $homePageService.textContent = '';
     renderCarStatus(carInfo);
     carStatusProgress(carInfo);
@@ -489,7 +518,7 @@ $carSearch.addEventListener('submit', function (e) {
   carInfo.mileage = $carSearch.elements.mileage.value;
   var parsedYear = parseInt($carSearch.elements.year.value);
   var parsedMileage = parseInt($carSearch.elements.mileage.value);
-  recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
+  // recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
   serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   $carSearch.reset();
 })
@@ -521,10 +550,10 @@ $userDataTable.addEventListener('click', function (e) {
 $modalBtn.addEventListener('click', function (e) {
 
   if (e.target.className === 'modalBtn delete') {
-   var indexes = parseInt($deleteBtnModal.getAttribute('data-view'));
-   console.log(indexes);
+    var indexes = parseInt($deleteBtnModal.getAttribute('data-view'));
+    console.log(indexes);
     var deleteData = carInfo.userDataLog.log;
-    deleteData.splice(indexes-1, 1);
+    deleteData.splice(indexes - 1, 1);
     $modalContainer.classList.add('hidden');
     renderDataTable(carInfo.userDataLog, null);
   } else if (e.target.className === "modalBtn edit") {
