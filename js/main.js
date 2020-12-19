@@ -33,21 +33,23 @@ var $dataLog = document.querySelector('.data-log');
 var $dataLogSubmitBtn = document.querySelector('#data-log-submit');
 var $dataRecordPage = document.querySelector('.entryInput');
 var $tBody = document.querySelector('tbody');
-var $oilStatusBar =document.querySelector('.statusBarOil');
+var $oilStatusBar = document.querySelector('.statusBarOil');
 var $tireRotation = document.querySelector('.statusBarTire');
 var $pressureCheck = document.querySelector('.statusBarPressure');
 var $oilRemaining = document.querySelector('.oilRemainder');
 var $tireRotationRemaining = document.querySelector('.tireRemaining');
-var $tirePressureCheck =document.querySelector('.pressure');
+var $tirePressureCheck = document.querySelector('.pressure');
 var $userDataTable = document.querySelector('.dataTable');
 var $modalContainer = document.querySelector('.modal-data-container');
 var $modalText = document.querySelector('.modal');
 var $modalBtn = document.querySelector('.buttons-modal');
 var $deleteBtnModal = document.querySelector('.delete');
-var $editBtnModal =document.querySelector('.edit')
+var $editBtnModal = document.querySelector('.edit')
 var nhtsaResponse = 0;
 var serviceSoon = [];
 var mileage = [];
+var index =null;
+
 
 
 function renderCostBreakElement(event) {
@@ -79,9 +81,9 @@ function carStatusProgress(info) {
   var oilNum = 0;
   var pressure = 0
   var tire = 0
-  var oilDate='';
-  var pressureDate='';
-  var tireDate='';
+  var oilDate = '';
+  var pressureDate = '';
+  var tireDate = '';
 
   for (var i = 0; i < info.userDataLog.log.length; i++) {
     if (parseInt(info.userDataLog.log[i].mileage) > oilNum && info.userDataLog.log[i].category === 'oil-service') {
@@ -100,8 +102,8 @@ function carStatusProgress(info) {
     }
   }
   for (h = 0; h < info.userDataLog.log.length; h++) {
-    if (oilNum.toString() === info.userDataLog.log[h].mileage && info.userDataLog.log[h].category ==='oil-service') {
-      oilDate+= info.userDataLog.log[h].date;
+    if (oilNum.toString() === info.userDataLog.log[h].mileage && info.userDataLog.log[h].category === 'oil-service') {
+      oilDate += info.userDataLog.log[h].date;
     }
   }
   for (k = 0; k < info.userDataLog.log.length; k++) {
@@ -111,37 +113,37 @@ function carStatusProgress(info) {
   }
   for (p = 0; p < info.userDataLog.log.length; p++) {
     if (tire.toString() === info.userDataLog.log[p].mileage && info.userDataLog.log[p].category === 'tire-rotation') {
-       tireDate+= info.userDataLog.log[p].date;
+      tireDate += info.userDataLog.log[p].date;
     }
   }
 
   var currentDate = new Date();
   var oilLatestDate = new Date(oilDate);
   var oilDaysRemain = currentDate - oilLatestDate;
-  var oilDaysRemainResult =(180-(Math.floor(oilDaysRemain/(1000*60*60*24))));
-  var oilRelative = (5000-Math.abs((carInfo.mileage-oilNum)));
-  $oilRemaining.textContent=oilDaysRemainResult + ' Day(s)/ ' + oilRelative +' mi' + ' remaining!'
+  var oilDaysRemainResult = (180 - (Math.floor(oilDaysRemain / (1000 * 60 * 60 * 24))));
+  var oilRelative = (5000 - Math.abs((carInfo.mileage - oilNum)));
+  $oilRemaining.textContent = oilDaysRemainResult + ' Day(s)/ ' + oilRelative + ' mi' + ' remaining!'
 
   var pressureLatestDate = new Date(pressureDate);
   var pressureRemain = currentDate - pressureLatestDate;
-  var pressureRemainResult = (30-(Math.floor(pressureRemain/(1000*60*60*24))));
+  var pressureRemainResult = (30 - (Math.floor(pressureRemain / (1000 * 60 * 60 * 24))));
   $tirePressureCheck.textContent = pressureRemainResult + ' Day(s) remaining!'
 
   var tireLatestDate = new Date(tireDate);
   var tireRemain = currentDate - tireLatestDate;
-  var tireRemainResult = (180-(Math.floor(tireRemain/(1000*60*60*24))))
-  var tireRelative = (5000-Math.abs((carInfo.mileage)-tire));
-  $tireRotationRemaining.textContent = tireRemainResult + ' Day(s)/ '  +tireRelative + ' mi' + ' remaining!';
+  var tireRemainResult = (180 - (Math.floor(tireRemain / (1000 * 60 * 60 * 24))))
+  var tireRelative = (5000 - Math.abs((carInfo.mileage) - tire));
+  $tireRotationRemaining.textContent = tireRemainResult + ' Day(s)/ ' + tireRelative + ' mi' + ' remaining!';
 
   if (oilDaysRemainResult <= 15 || oilRelative < 1000) {
     $oilStatusBar.style.background = 'red';
-  } else if (oilDaysRemainResult > 15 && oilRelative >=1000) {
+  } else if (oilDaysRemainResult > 15 && oilRelative >= 1000) {
     $oilStatusBar.style.background = 'green'
   }
 
-  if (tireRemainResult <= 15 || tireRelative <1000) {
+  if (tireRemainResult <= 15 || tireRelative < 1000) {
     $tireRotation.style.background = 'red';
-  } else if (tireRemainResult > 15 && tireRelative >=1000) {
+  } else if (tireRemainResult > 15 && tireRelative >= 1000) {
     $tireRotation.style.background = 'green';
   }
 
@@ -206,35 +208,64 @@ function renderTitleComplaint(info) {
   $userMileage.textContent = info.mileage;
 }
 
-function renderDataTable(info) {
+function renderDataTable(info, indexing) {
   $tBody.textContent = ''
-  for (var i = 0; i < info.log.length; i++) {
-    $tableRow = document.createElement('tr')
-    $tableListNumber=document.createElement('td');
-    $tableListNumber.setAttribute('data-view',i+1);
-    $tableDataDate = document.createElement('td');
-    $tableDataDate.setAttribute('data-view', i+1)
-    $tableDataMileage = document.createElement('td');
-    $tableDataMileage.setAttribute('data-view', i+1);
-    $tableDataCat = document.createElement('td');
-    $tableDataCat.setAttribute('data-view', i+1)
-    $tableDataDesc = document.createElement('td');
-    $tableDataDesc.setAttribute('data-view', i+1)
-    $tableDataDate.textContent = info.log[i].date;
-    $tableDataMileage.textContent = info.log[i].mileage;
-    $tableDataCat.textContent = info.log[i].category;
-    $tableDataDesc.textContent = info.log[i].description;
-    $tableListNumber.textContent = i+1;
-    $tableRow.appendChild($tableListNumber);
-    $tableRow.appendChild($tableDataDate);
-    $tableRow.appendChild($tableDataMileage);
-    $tableRow.appendChild($tableDataCat);
-    $tableRow.appendChild($tableDataDesc);
-    $tBody.appendChild($tableRow)
+  if(typeof indexing === 'number'){
+    var revised = info.log;
+    console.log(indexing);
+    console.log(revised.splice(indexing - 1, 1, info.log[info.log.length-1]));
+    revised.pop();
+    for (var i = 0; i < revised.length; i++) {
+      $tableRow = document.createElement('tr')
+      $tableListNumber = document.createElement('td');
+      $tableListNumber.setAttribute('data-view', i + 1);
+      $tableDataDate = document.createElement('td');
+      $tableDataDate.setAttribute('data-view', i + 1)
+      $tableDataMileage = document.createElement('td');
+      $tableDataMileage.setAttribute('data-view', i + 1);
+      $tableDataCat = document.createElement('td');
+      $tableDataCat.setAttribute('data-view', i + 1)
+      $tableDataDesc = document.createElement('td');
+      $tableDataDesc.setAttribute('data-view', i + 1)
+      $tableDataDate.textContent = info.log[i].date;
+      $tableDataMileage.textContent = info.log[i].mileage;
+      $tableDataCat.textContent = info.log[i].category;
+      $tableDataDesc.textContent = info.log[i].description;
+      $tableListNumber.textContent = i + 1;
+      $tableRow.appendChild($tableListNumber);
+      $tableRow.appendChild($tableDataDate);
+      $tableRow.appendChild($tableDataMileage);
+      $tableRow.appendChild($tableDataCat);
+      $tableRow.appendChild($tableDataDesc);
+      $tBody.appendChild($tableRow)
+    }
+} else if (indexing === null) {
+    for (var i = 0; i < info.log.length; i++) {
+      $tableRow = document.createElement('tr')
+      $tableListNumber = document.createElement('td');
+      $tableListNumber.setAttribute('data-view', i + 1);
+      $tableDataDate = document.createElement('td');
+      $tableDataDate.setAttribute('data-view', i + 1)
+      $tableDataMileage = document.createElement('td');
+      $tableDataMileage.setAttribute('data-view', i + 1);
+      $tableDataCat = document.createElement('td');
+      $tableDataCat.setAttribute('data-view', i + 1)
+      $tableDataDesc = document.createElement('td');
+      $tableDataDesc.setAttribute('data-view', i + 1)
+      $tableDataDate.textContent = info.log[i].date;
+      $tableDataMileage.textContent = info.log[i].mileage;
+      $tableDataCat.textContent = info.log[i].category;
+      $tableDataDesc.textContent = info.log[i].description;
+      $tableListNumber.textContent = i + 1;
+      $tableRow.appendChild($tableListNumber);
+      $tableRow.appendChild($tableDataDate);
+      $tableRow.appendChild($tableDataMileage);
+      $tableRow.appendChild($tableDataCat);
+      $tableRow.appendChild($tableDataDesc);
+      $tBody.appendChild($tableRow)
+    }
   }
 }
-
-
 
 function renderServiceElement(info, event) {
   var $createList = document.createElement('li');
@@ -412,9 +443,9 @@ document.addEventListener('click', function (e) {
     swapView('data-log')
 
   } else if (userDataView === 'dataView') {
-    $carOverStats.textContent='';
+    $carOverStats.textContent = '';
     renderTitleComplaint(carInfo)
-    renderDataTable(carInfo.userDataLog);
+    renderDataTable(carInfo.userDataLog,index);
 
     swapView('dataView')
   }
@@ -431,7 +462,7 @@ function getDataObject(event) {
 }
 
 $getStartedBtn.addEventListener('click', function () {
-  if(carInfo.model !=='' && carInfo.year !=='' && carInfo.make !==''){
+  if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
     $homePageService.textContent = '';
     renderCarStatus(carInfo);
     carStatusProgress(carInfo);
@@ -441,7 +472,7 @@ $getStartedBtn.addEventListener('click', function () {
     }
     $homeButton.classList.remove('hidden');
     swapView('home');
-  }else{
+  } else {
     $homeButton.classList.remove('hidden');
     $title.classList.remove('hidden')
     renderTitleSearch();
@@ -472,35 +503,39 @@ $dataLogSubmitBtn.addEventListener('submit', function (e) {
     description: $dataLogSubmitBtn.elements.comments.value
   };
   carInfo.userDataLog.log.push(desc);
-  renderDataTable(carInfo.userDataLog)
+  renderDataTable(carInfo.userDataLog, index)
   swapView('dataView')
   $dataLogSubmitBtn.reset();
 })
 
-$userDataTable.addEventListener('click', function(e){
-  var targetNumber =e.target.getAttribute('data-view');
-  if(targetNumber === targetNumber && targetNumber !==null){
+$userDataTable.addEventListener('click', function (e) {
+  var targetNumber = e.target.getAttribute('data-view');
+  if (targetNumber === targetNumber && targetNumber !== null) {
     $deleteBtnModal.setAttribute('data-view', targetNumber)
     $editBtnModal.setAttribute('data-view', targetNumber)
     $modalContainer.classList.remove('hidden');
-    $modalText.textContent ="What would you like to do for #"+targetNumber+'?'
+    $modalText.textContent = "What would you like to do for #" + targetNumber + '?'
   }
 })
 
-$modalBtn.addEventListener('click', function(e){
+$modalBtn.addEventListener('click', function (e) {
 
-  if(e.target.className ==='modalBtn delete'){
-    var index =parseInt($deleteBtnModal.getAttribute('data-view'))
-    var deleteData =carInfo.userDataLog.log;
-    deleteData.splice(index-1,1);
+  if (e.target.className === 'modalBtn delete') {
+   var indexes = parseInt($deleteBtnModal.getAttribute('data-view'));
+   console.log(indexes);
+    var deleteData = carInfo.userDataLog.log;
+    deleteData.splice(indexes-1, 1);
     $modalContainer.classList.add('hidden');
-    renderDataTable(carInfo.userDataLog);
-  }else if (e.target.className ==="modalBtn edit"){
-    $dataLogSubmitBtn.elements.date.value = carInfo.year;
-    $dataLogSubmitBtn.elements.make.value = carInfo.make;
-    $dataLogSubmitBtn.elements.model.value = carInfo.model;
-    $dataLogSubmitBtn.elements.mileage.value = parseInt(carInfo.mileage);
-    swapView('data-log')
+    renderDataTable(carInfo.userDataLog, null);
+  } else if (e.target.className === "modalBtn edit") {
+    index = parseInt($deleteBtnModal.getAttribute('data-view'))
+    $dataLogSubmitBtn.elements.date.value = carInfo.userDataLog.log[index - 1].date;
+    $dataLogSubmitBtn.elements.mileage.value = carInfo.userDataLog.log[index - 1].mileage;
+    $dataLogSubmitBtn.elements.category.value = carInfo.userDataLog.log[index - 1].category;
+    $dataLogSubmitBtn.elements.comments.value = carInfo.userDataLog.log[index - 1].description;
+    $modalContainer.classList.add('hidden');
+    swapView('data-log');
+
   }
 
 })
