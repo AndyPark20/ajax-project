@@ -45,13 +45,14 @@ var $modalText = document.querySelector('.modal');
 var $modalBtn = document.querySelector('.buttons-modal');
 var $deleteBtnModal = document.querySelector('.delete');
 var $editBtnModal = document.querySelector('.edit');
-var $okBtn = document.querySelector('.container-error-modal');
+var $okBtn = document.querySelector('.something-error');
 var $complaintModal = document.querySelector('.complaintModal');
 var $complaintSuccess = document.querySelector('.complaintSucess');
 var nhtsaResponse = 0;
 var serviceSoon = [];
 var mileage = [];
 var index = null;
+var CarMDStatus =0;
 
 
 function renderCostBreakElement(event) {
@@ -293,11 +294,11 @@ function recall(year, make, model) {
     } else {
       carInfo.complaints.push(xhrs.response);
     }
-    if (xhrs.status === 200 && carInfo.complaints[0].Message !=="No results found for this request") {
-      nhtsaResponse = xhrs.status;
+    if (xhrs.status === 200 && carInfo.complaints[0].Message ==="Results returned successfully") {
       $complaintSuccess.classList.remove('hidden');
     } else if (xhrs.status === 400 || (xhrs.status === 200 && carInfo.complaints[0].Message === "No results found for this request")){
       $complaintModal.classList.remove('hidden');
+
     }
   })
   xhrs.send();
@@ -325,9 +326,7 @@ function serviceInterval(year, make, model, mileage) {
       for (var i = 0; i < carInfo.serviceAppend.length; i++) {
         renderServiceElement(carInfo, carInfo.serviceAppend[i]);
       }
-      // for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
-      //   renderComplaintLogs(carInfo.complaints[0].Results[i], carInfo.complaints[0], carInfo.complaints[0].Results[i])
-      // }
+
       renderCostBreakElement(carInfo);
       swapView('serviceList');
     } else if (xhr.status === 400 || carInfo.service[0].Message === "The request is invalid." || carInfo.service[0].message.message === "Data Invaild") {
@@ -437,7 +436,9 @@ document.addEventListener('click', function (e) {
       swapView('serviceList')
     }
   } else if (userDataView === 'complaintList') {
-    if (carInfo.complaints[0].Message !== 'No results found for this request' && carInfo.model !=='' && carInfo.year !=='' && carInfo.make !=='') {
+    if (carInfo.model === '' && carInfo.year === 0 && carInfo.make === ''){
+      return;
+    }else if (carInfo.complaints[0].Message !== 'No results found for this request' && carInfo.model !=='' && carInfo.year !==0 && carInfo.make !=='') {
     $carOverStats.textContent = '';
     $complaintListing.textContent = ''
     for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
@@ -462,12 +463,12 @@ document.addEventListener('click', function (e) {
       swapView('home');
     }
   } else if (userDataView === 'data-log') {
-    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '') {
     renderTitleComplaint(carInfo)
     swapView('data-log')
     }
   } else if (userDataView === 'dataView') {
-    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '') {
     $carOverStats.textContent = '';
     renderTitleComplaint(carInfo)
     renderDataTable(carInfo.userDataLog, index);
@@ -477,6 +478,7 @@ document.addEventListener('click', function (e) {
   } else if (userTarget ==='modalBtn ok'){
     $okBtn.classList.add('hidden');
     $complaintModal.classList.add('hidden');
+    $complaintSuccess.classList.add('hidden');
   }
 })
 
@@ -487,6 +489,7 @@ function getDataObject(event) {
       carInfo.serviceAppend.push(event.service[0].data[i]);
     }
   }
+
   return carInfo;
 }
 
@@ -518,7 +521,7 @@ $carSearch.addEventListener('submit', function (e) {
   carInfo.mileage = $carSearch.elements.mileage.value;
   var parsedYear = parseInt($carSearch.elements.year.value);
   var parsedMileage = parseInt($carSearch.elements.mileage.value);
-  // recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
+  recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
   serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   $carSearch.reset();
 })
