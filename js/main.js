@@ -1,4 +1,3 @@
-
 var $getStartedBtn = document.querySelector('.getStarted');
 var $introPage = document.querySelector('.introduction');
 var $vehicleFinder = document.querySelector('.find-vehicle');
@@ -52,7 +51,6 @@ var nhtsaResponse = 0;
 var serviceSoon = [];
 var mileage = [];
 var index = null;
-var CarMDStatus =0;
 
 
 function renderCostBreakElement(event) {
@@ -218,7 +216,7 @@ function renderDataTable(info, indexing) {
     console.log(indexing);
     console.log(revised.splice(indexing - 1, 1, info.log[info.log.length - 1]));
     revised.pop();
-    index=null;
+    index = null;
     for (var i = 0; i < revised.length; i++) {
       $tableRow = document.createElement('tr')
       $tableListNumber = document.createElement('td');
@@ -286,19 +284,19 @@ function recall(year, make, model) {
   xhrs.open('GET', 'https://api.codetabs.com/v1/proxy?quest=https://webapi.nhtsa.gov/api/Complaints/vehicle/modelyear/' + year + '/make/' + make + '/model/' + model + '?format=json')
   xhrs.responseType = 'json';
   xhrs.addEventListener('load', function () {
-    console.log('nhtsa',xhrs.status)
-    console.log('nhtsa',xhrs.response)
+    console.log('nhtsa', xhrs.status)
+    console.log('nhtsa', xhrs.response)
     if (carInfo.complaints.length === 1) {
       carInfo.complaints.shift();
       carInfo.complaints.push(xhrs.response);
     } else {
       carInfo.complaints.push(xhrs.response);
     }
-    if (xhrs.status === 200 && carInfo.complaints[0].Message ==="Results returned successfully") {
+    if (xhrs.status === 200 && carInfo.complaints[0].Message !== "No results found for this request") {
+      nhtsaResponse = xhrs.status;
       $complaintSuccess.classList.remove('hidden');
-    } else if (xhrs.status === 400 || (xhrs.status === 200 && carInfo.complaints[0].Message === "No results found for this request")){
+    } else if (xhrs.status === 400 || (xhrs.status === 200 && carInfo.complaints[0].Message === "No results found for this request")) {
       $complaintModal.classList.remove('hidden');
-
     }
   })
   xhrs.send();
@@ -326,7 +324,9 @@ function serviceInterval(year, make, model, mileage) {
       for (var i = 0; i < carInfo.serviceAppend.length; i++) {
         renderServiceElement(carInfo, carInfo.serviceAppend[i]);
       }
-
+      // for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
+      //   renderComplaintLogs(carInfo.complaints[0].Results[i], carInfo.complaints[0], carInfo.complaints[0].Results[i])
+      // }
       renderCostBreakElement(carInfo);
       swapView('serviceList');
     } else if (xhr.status === 400 || carInfo.service[0].Message === "The request is invalid." || carInfo.service[0].message.message === "Data Invaild") {
@@ -422,7 +422,7 @@ document.addEventListener('click', function (e) {
     $carSearch.elements.mileage.value = parseInt(carInfo.mileage);
     swapView('searchCar');
   } else if (userDataView === 'serviceList') {
-    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '' && carInfo.service[0].message.message !== 'Data Invaild') {
       $carOverStats.textContent = '';
       $eraseInput.textContent = '';
       $costDelete.textContent = '';
@@ -438,21 +438,21 @@ document.addEventListener('click', function (e) {
   } else if (userDataView === 'complaintList') {
     if (carInfo.model === '' && carInfo.year === 0 && carInfo.make === ''){
       return;
-    }else if (carInfo.complaints[0].Message !== 'No results found for this request' && carInfo.model !=='' && carInfo.year !==0 && carInfo.make !=='') {
-    $carOverStats.textContent = '';
-    $complaintListing.textContent = ''
-    for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
-      renderComplaintLogs(carInfo.complaints[0].Results[i], carInfo.complaints[0], carInfo.complaints[0].Results[i])
-    }
-    renderTitleComplaint(carInfo)
-    swapView('complaintList')
-    } else if (carInfo.complaints[0].Message ==='No results found for this request'){
+    }else if (carInfo.complaints[0].Message !== 'No results found for this request' && carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+      $carOverStats.textContent = '';
+      $complaintListing.textContent = ''
+      for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
+        renderComplaintLogs(carInfo.complaints[0].Results[i], carInfo.complaints[0], carInfo.complaints[0].Results[i])
+      }
+      renderTitleComplaint(carInfo)
+      swapView('complaintList')
+    } else if (carInfo.complaints === 'No results found for this request') {
       $complaintModal.classList.remove('hidden');
-    } else if (carInfo.complaints[0].Message ==="Complaints: An error occured while processing this request. Pls verify the HTTP request syntax."){
+    } else if (carInfo.complaints[0].Message === "Complaints: An error occured while processing this request. Pls verify the HTTP request syntax.") {
       $okBtn.classList.remove('hidden')
     }
   } else if (userDataView === 'home') {
-    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '' && carInfo.serviceAppend.length !==0) {
       $homePageService.textContent = '';
       renderCarStatus(carInfo);
       carStatusProgress(carInfo);
@@ -463,19 +463,19 @@ document.addEventListener('click', function (e) {
       swapView('home');
     }
   } else if (userDataView === 'data-log') {
-    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '') {
-    renderTitleComplaint(carInfo)
-    swapView('data-log')
+    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+      renderTitleComplaint(carInfo)
+      swapView('data-log')
     }
   } else if (userDataView === 'dataView') {
-    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '') {
-    $carOverStats.textContent = '';
-    renderTitleComplaint(carInfo)
-    renderDataTable(carInfo.userDataLog, index);
+    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+      $carOverStats.textContent = '';
+      renderTitleComplaint(carInfo)
+      renderDataTable(carInfo.userDataLog, index);
 
-    swapView('dataView')
+      swapView('dataView')
     }
-  } else if (userTarget ==='modalBtn ok'){
+  } else if (userTarget === 'modalBtn ok') {
     $okBtn.classList.add('hidden');
     $complaintModal.classList.add('hidden');
     $complaintSuccess.classList.add('hidden');
@@ -489,7 +489,6 @@ function getDataObject(event) {
       carInfo.serviceAppend.push(event.service[0].data[i]);
     }
   }
-
   return carInfo;
 }
 
@@ -514,6 +513,8 @@ $getStartedBtn.addEventListener('click', function () {
 })
 
 $carSearch.addEventListener('submit', function (e) {
+  $eraseInput.textContent = '';
+  $costDelete.textContent = '';
   e.preventDefault();
   carInfo.year = $carSearch.elements.year.value;
   carInfo.make = $carSearch.elements.make.value;
