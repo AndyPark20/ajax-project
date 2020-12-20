@@ -47,7 +47,7 @@ var $editBtnModal = document.querySelector('.edit');
 var $okBtn = document.querySelector('.something-error');
 var $complaintModal = document.querySelector('.complaintModal');
 var $complaintSuccess = document.querySelector('.complaintSucess');
-var nhtsaResponse = 0;
+var $loading = document.querySelector('.loadingLoad');
 var serviceSoon = [];
 var mileage = [];
 var index = null;
@@ -117,6 +117,7 @@ function carStatusProgress(info) {
       tireDate += info.userDataLog.log[p].date;
     }
   }
+
 
   var currentDate = new Date();
   var oilLatestDate = new Date(oilDate);
@@ -279,6 +280,8 @@ function renderServiceElement(info, event) {
   return $serviceList;
 }
 
+
+
 function recall(year, make, model) {
   var xhrs = new XMLHttpRequest();
   xhrs.open('GET', 'https://api.codetabs.com/v1/proxy?quest=https://webapi.nhtsa.gov/api/Complaints/vehicle/modelyear/' + year + '/make/' + make + '/model/' + model + '?format=json')
@@ -292,10 +295,11 @@ function recall(year, make, model) {
     } else {
       carInfo.complaints.push(xhrs.response);
     }
-    if (xhrs.status === 200 && carInfo.complaints[0].Message !== "No results found for this request") {
-      nhtsaResponse = xhrs.status;
+    if ((xhrs.status === 200 && carInfo.complaints[0] !== null) && (xhrs.status === 200 && carInfo.complaints[0].Message !=='No results found for this request')){
+      $loading.classList.add('hidden');
       $complaintSuccess.classList.remove('hidden');
-    } else if (xhrs.status === 400 || (xhrs.status === 200 && carInfo.complaints[0].Message === "No results found for this request")) {
+    } else if (xhrs.status === 400 || (xhrs.status === 200 && carInfo.complaints[0]=== null) || xhrs.response === null || (xhrs.status === 200 && carInfo.complaints[0].Message === "No results found for this request")) {
+      $loading.classList.add('hidden');
       $complaintModal.classList.remove('hidden');
     }
   })
@@ -320,15 +324,13 @@ function serviceInterval(year, make, model, mileage) {
       carInfo.service.push(xhr.response);
     }
     if (xhr.status === 200 && carInfo.service[0].message.message !== "Data Invaild" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
+      $loading.classList.remove('hidden');
       getDataObject(carInfo);
       for (var i = 0; i < carInfo.serviceAppend.length; i++) {
         renderServiceElement(carInfo, carInfo.serviceAppend[i]);
       }
-      // for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
-      //   renderComplaintLogs(carInfo.complaints[0].Results[i], carInfo.complaints[0], carInfo.complaints[0].Results[i])
-      // }
       renderCostBreakElement(carInfo);
-      swapView('serviceList');
+      swapView('serviceList')
     } else if (xhr.status === 400 || carInfo.service[0].Message === "The request is invalid." || carInfo.service[0].message.message === "Data Invaild") {
       $okBtn.classList.remove('hidden')
     }
@@ -434,9 +436,16 @@ document.addEventListener('click', function (e) {
       }
       renderCostBreakElement(carInfo);
       swapView('serviceList')
+    } else if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '' && carInfo.service[0].message.message === 'Data Invaild'){
+      $carOverStats.textContent = '';
+      $carSearch.elements.year.value = carInfo.year;
+      $carSearch.elements.make.value = carInfo.make;
+      $carSearch.elements.model.value = carInfo.model;
+      $carSearch.elements.mileage.value =parseInt(carInfo.mileage);
+      swapView('searchCar')
     }
   } else if (userDataView === 'complaintList') {
-    if (carInfo.model === '' && carInfo.year === 0 && carInfo.make === ''){
+    if (carInfo.model === '' && carInfo.year === '' && carInfo.make === ''){
       return;
     }else if (carInfo.complaints[0].Message !== 'No results found for this request' && carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
       $carOverStats.textContent = '';
