@@ -324,7 +324,6 @@ function serviceInterval(year, make, model, mileage) {
       carInfo.service.push(xhr.response);
     }
     if (xhr.status === 200 && carInfo.service[0].message.message !== "Data Invaild" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
-      $loading.classList.remove('hidden');
       getDataObject(carInfo);
       for (var i = 0; i < carInfo.serviceAppend.length; i++) {
         renderServiceElement(carInfo, carInfo.serviceAppend[i]);
@@ -484,13 +483,14 @@ document.addEventListener('click', function (e) {
       $carOverStats.textContent = '';
       renderTitleComplaint(carInfo)
       renderDataTable(carInfo.userDataLog, index);
-
       swapView('dataView')
     }
   } else if (userTarget === 'modalBtn ok') {
-    $okBtn.classList.add('hidden');
-    $complaintModal.classList.add('hidden');
     $complaintSuccess.classList.add('hidden');
+  } else if (userTarget ==='modalBtn ok2'){
+    $okBtn.classList.add('hidden');
+  }else if (userTarget === 'modalBtn ok3'){
+    $complaintModal.classList.add('hidden');
   }
 })
 
@@ -536,6 +536,7 @@ $carSearch.addEventListener('submit', function (e) {
   var parsedMileage = parseInt($carSearch.elements.mileage.value);
   recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
   serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
+  $loading.classList.remove('hidden');
   $carSearch.reset();
 })
 
