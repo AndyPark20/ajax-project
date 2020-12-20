@@ -447,7 +447,10 @@ document.addEventListener('click', function (e) {
   } else if (userDataView === 'complaintList') {
     if (carInfo.model === '' && carInfo.year === '' && carInfo.make === ''){
       return;
-    }else if (carInfo.complaints[0].Message !== 'No results found for this request' && carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+    }else if (carInfo.complaints[0] ===null){
+      return;
+    }
+    else if (carInfo.complaints[0].Message !== 'No results found for this request' && carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
       $carOverStats.textContent = '';
       $complaintListing.textContent = ''
       for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
