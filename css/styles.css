@@ -130,7 +130,7 @@ button.getStarted {
   cursor:pointer;
 }
 
-span.mi, span.mis, span.comp{
+span.mi, span.mis, span.comp, span.interval{
   font-weight:bold;
   color:red;
 }
@@ -235,7 +235,7 @@ span.mi, span.mis, span.comp{
  border:2px solid black;
  display:flex;
  flex-direction: column;
-/* align-items:center; */
+align-items:center;
 }
 
 .service-icon, .service-icon-Warning{
