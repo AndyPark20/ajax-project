@@ -151,7 +151,7 @@ h3.modal {
   font-family: 'Roboto', sans-serif;
 }
 
-span.mi, span.mis, span.comp{
+span.mi, span.mis, span.comp, span.interval{
   font-weight:bold;
   color:red;
 }
