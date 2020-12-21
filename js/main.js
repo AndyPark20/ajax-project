@@ -423,7 +423,7 @@ document.addEventListener('click', function (e) {
     $carSearch.elements.mileage.value = parseInt(carInfo.mileage);
     swapView('searchCar');
   } else if (userDataView === 'serviceList') {
-    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '' && carInfo.service[0].message.message !== 'Data Invaild') {
+    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '' && carInfo.service[0].message.message !== 'Data Invaild') {
       $carOverStats.textContent = '';
       $eraseInput.textContent = '';
       $costDelete.textContent = '';
@@ -435,7 +435,7 @@ document.addEventListener('click', function (e) {
       }
       renderCostBreakElement(carInfo);
       swapView('serviceList')
-    } else if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '' && carInfo.service[0].message.message === 'Data Invaild'){
+    } else if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '' && carInfo.service[0].message.message === 'Data Invaild'){
       $carOverStats.textContent = '';
       $carSearch.elements.year.value = carInfo.year;
       $carSearch.elements.make.value = carInfo.make;
@@ -444,12 +444,12 @@ document.addEventListener('click', function (e) {
       swapView('searchCar')
     }
   } else if (userDataView === 'complaintList') {
-    if (carInfo.model === '' && carInfo.year === '' && carInfo.make === ''){
+    if (carInfo.model === '' && carInfo.year === 0 && carInfo.make === '' && carInfo.complaints.length ===0){
       return;
     }else if (carInfo.complaints[0] ===null){
       return;
     }
-    else if (carInfo.complaints[0].Message !== 'No results found for this request' && carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+    else if (carInfo.complaints[0].Message !== 'No results found for this request' && carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '') {
       $carOverStats.textContent = '';
       $complaintListing.textContent = ''
       for (var i = 0; i < carInfo.complaints[0].Results.length; i++) {
@@ -463,7 +463,7 @@ document.addEventListener('click', function (e) {
       $okBtn.classList.remove('hidden')
     }
   } else if (userDataView === 'home') {
-    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '' && carInfo.serviceAppend.length !==0) {
+    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '' && carInfo.serviceAppend.length !==0) {
       $homePageService.textContent = '';
       renderCarStatus(carInfo);
       carStatusProgress(carInfo);
@@ -474,12 +474,12 @@ document.addEventListener('click', function (e) {
       swapView('home');
     }
   } else if (userDataView === 'data-log') {
-    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '') {
       renderTitleComplaint(carInfo)
       swapView('data-log')
     }
   } else if (userDataView === 'dataView') {
-    if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '') {
+    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '') {
       $carOverStats.textContent = '';
       renderTitleComplaint(carInfo)
       renderDataTable(carInfo.userDataLog, index);
@@ -505,7 +505,7 @@ function getDataObject(event) {
 }
 
 $getStartedBtn.addEventListener('click', function () {
-  if (carInfo.model !== '' && carInfo.year !== '' && carInfo.make !== '' && carInfo.serviceAppend.length !== 0 && carInfo.mileage !== "") {
+  if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '' && carInfo.serviceAppend.length !== 0 && carInfo.mileage !== "") {
     $homePageService.textContent = '';
     renderCarStatus(carInfo);
     carStatusProgress(carInfo);
