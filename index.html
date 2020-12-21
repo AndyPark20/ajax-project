@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX Project</title>
+  <title>🚙CarHealth+</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -36,6 +36,58 @@
         </div>
         <div class="column-full get-started-button">
           <button class="getStarted" type="submit">Check Status</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container-error-modal complaintSucess hidden">
+      <div class="error-modal-row">
+        <div class="error-modal-column">
+          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
+          <h1>🏁COMPLAINT LIST DOWNLOAD COMPLETED!🏁</h1>
+          <h2 class="error">Please click complaints to view </h2>
+          <button type="button" class="modalBtn ok">OK</button>
+          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container-error-modal something-error hidden">
+      <div class="error-modal-row">
+        <div class="error-modal-column">
+          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
+          <h1>SOMETHING WENT WRONG!</h1>
+          <h2 class="error">Please try again</h2>
+          <button type="button" class="modalBtn ok2">OK</button>
+          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container-error-modal loadingLoad hidden">
+      <div class="error-modal-row">
+        <div class="error-modal-column">
+          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
+          <h1>LOADING!!!</h1>
+          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container-error-modal complaintModal hidden">
+      <div class="error-modal-row">
+        <div class="error-modal-column">
+          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
+          <h1>NO RESULTS FOUND FOR NHTSA!</h1>
+          <h2 class="error">Please try again</h2>
+          <button type="button" class="modalBtn ok3">OK</button>
+          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
         </div>
       </div>
     </div>
@@ -82,13 +134,18 @@
     </div>
   </section>
   <section>
-    <!--Service Reesult------------------------------>
+    <!--Service Result------------------------------>
     <div class="container-nonIntro serviceResult hidden" data-view="serviceList">
       <div class="userInputTitle">
-        <div class="column-full service">
-          <img class="service-icon" src="images/0b09f808f6d5439e1f39c76615c49480x.png" alt="checkEngine"
-            data-view="searchCar">
-          <p class="serviceText">SERVICE REQUIRED WITHIN THE NEXT <span class="interval">10000</span> MILES:</p>
+        <div class="modify-row">
+          <div class="column-half service">
+            <img class="service-icon" src="images/0b09f808f6d5439e1f39c76615c49480x.png" alt="checkEngine">
+            <p class="serviceText">SERVICE REQUIRED WITHIN THE NEXT <span class="interval">10000</span> MILES:</p>
+          </div>
+          <div class="column-half editBtn">
+            <img class="service-icon-edit" src="images/ce22327fa176a92798cdbd1589391cc2.jpg" alt="edit"
+              data-view="searchCar">
+          </div>
         </div>
         <div class="column-full serviceListings">
           <p>NEXT SERVICE INTERVAL: <span class="mis"></span> mi</p>
@@ -112,9 +169,15 @@
   </section>
   <section>
     <div class="container-nonIntro complaintResult hidden" data-view="complaintList">
-      <div class="column-full service">
-        <img class="service-icon-Warning" src="images/istockphoto-1047357876-170667a.jpg" alt="warningLight"data-view="searchCar">
-        <p class="serviceText">NHTSA Complaint Log:</p>
+      <div class="modify-row">
+        <div class="column-half service">
+          <img class="service-icon-Warning" src="images/istockphoto-1047357876-170667a.jpg" alt="warningLight">
+          <p class="serviceText">NHTSA Complaint Log:</p>
+        </div>
+        <div class="column-half editBtn">
+          <img class="service-icon-edit" src="images/ce22327fa176a92798cdbd1589391cc2.jpg" alt="edit"
+            data-view="searchCar">
+        </div>
       </div>
       <div class="column-full serviceListings">
         <p>NUMBER OF RECORDS FOUND:<span class="comp"></span> complaints</p>
@@ -123,7 +186,6 @@
       </div>
     </div>
   </section>
-
 
   <section>
     <!---------------------------------Home page------------------------------------>
@@ -157,8 +219,7 @@
       </div>
       <div class="userInputTitle">
         <div class="column-full service">
-          <img class="service-icon-home" src="images/0b09f808f6d5439e1f39c76615c49480x.png" alt="checkEngine"
-            data-view="searchCar">
+          <img class="service-icon-home" src="images/0b09f808f6d5439e1f39c76615c49480x.png" alt="checkEngine">
           <p class="serviceText">NEXT SERVICE REQUIRED(quick overview):</p>
         </div>
         <div class="column-full serviceListings">
@@ -170,36 +231,35 @@
     </div>
   </section>
 
-    <!------------------------------------HTML section for DATA View----------->
-    <section>
-      <div class="container-nonIntro entryInput hidden" data-view="dataView">
-        <div class="row-data">
-          <div class="column-full">
-            <div class="data-log-title">
-              <img class="data-log-notebook"
-                src="images/download.png"
-                alt="notebook" data-view="data-log">
-              <h3>SERVICE HISTORY:</h3>
-            </div>
+  <!------------------------------------HTML section for DATA View----------->
+  <section>
+    <div class="container-nonIntro entryInput hidden" data-view="dataView">
+      <div class="row-data">
+        <div class="column-full">
+          <div class="data-log-title">
+            <img class="data-log-notebook" src="images/download.png" alt="notebook" data-view="data-log">
+            <h3>SERVICE HISTORY:</h3>
           </div>
-          <div class="column-full">
-            <table>
-              <thead>
+        </div>
+        <div class="column-full">
+          <table class="dataTable">
+            <thead>
               <tr>
+                <th>#</th>
                 <th>Date</th>
                 <th>Mileage</th>
                 <th>Category</th>
                 <th>Description</th>
               </tr>
-              </thead>
-              <tbody>
+            </thead>
+            <tbody>
 
-              </tbody>
-            </table>
-          </div>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
   <section>
     <!------------------------------------HTML section for DATA loggging----------->
@@ -233,11 +293,10 @@
               <select id="category" name="category" class="userInputCar">
                 <option value="oil-service">Oil Service</option>
                 <option value="tire-rotation">Tire Rotation</option>
-                <option value ="check-pressure">Check Pressure</option>
-                <option value ="Suggestion">Suggestion from Mechanic</option>
-                <option value ="Big-Fix">Big Fix</option>
+                <option value="check-pressure">Check Pressure</option>
+                <option value="Suggestion">Suggestion from Mechanic</option>
+                <option value="Big-Fix">Big Fix</option>
               </select>
-
             </div>
             <div class="inputSearch">
               <label for="comments">
@@ -250,6 +309,20 @@
               <button type="submit" class="carSubmitBtn">SUBMIT</button>
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="modal-data-container hidden">
+      <div class="row-modal-data">
+        <div class="column-modal-data">
+          <h3 class="modal">What would you like to do?</h3>
+          <div class="column-buttons buttons-modal">
+            <button type="button" class="modalBtn edit">EDIT</button>
+            <button type="button" class="modalBtn delete">DELETE</button>
+          </div>
         </div>
       </div>
     </div>

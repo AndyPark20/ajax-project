@@ -1,4 +1,5 @@
 
+
 img.carHealthLogo {
   width: 50%;
 }
@@ -14,7 +15,11 @@ img.home-icon{
 
 img.service-icon{
   width:15%;
-  height:15%;
+}
+
+img.service-icon-edit{
+  cursor: pointer;
+  width:8rem;
 }
 
 img.service-icon-home{
@@ -66,11 +71,20 @@ li {
    text-align: start;
 }
 
+h1{
+   font-family: 'Roboto', sans-serif;
+}
+
+
 
 h2{
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size:35px;
+}
+
+h2.error{
+  font-size:1.5rem;
 }
 
 h3 {
@@ -94,16 +108,16 @@ th {
   border: 1px solid black;
   font-weight:bold;
   font-size:20px;
-  text-align: left;
+  text-align: center;
 }
 
 td {
   border:1px solid black;
   font-weight:500;
   font-size:15px;
-  text-align: left;
+  text-align: center;
+  cursor: pointer;
 }
-
 
 tbody tr:nth-child(odd){
   background-color:#e8eae6;
@@ -130,6 +144,11 @@ button.getStarted {
   cursor:pointer;
 }
 
+h3.modal {
+  font-size: 2.5rem;
+  font-family: 'Roboto', sans-serif;
+}
+
 span.mi, span.mis, span.comp, span.interval{
   font-weight:bold;
   color:red;
@@ -146,7 +165,6 @@ span.mi, span.mis, span.comp, span.interval{
 
 .logServiceStyle{
  display:flex;
-
 
 }
 .complaintListing li {
@@ -195,7 +213,6 @@ span.mi, span.mis, span.comp, span.interval{
     width:300px;
 }
 
-
 .inputSearch {
   display:flex;
   flex-direction: column;
@@ -206,7 +223,7 @@ span.mi, span.mis, span.comp, span.interval{
   text-align:end;
 }
 
-.carSubmitBtn{
+.carSubmitBtn, .modalBtn{
   margin-top:10%;
   width:30%;
   height:2.5rem;
@@ -219,16 +236,33 @@ span.mi, span.mis, span.comp, span.interval{
   cursor: pointer;
 }
 
+.modalBtn{
+  margin-bottom: 5%;
+}
+
+.edit {
+  color: blue;
+}
+.delete{
+  color:red;
+}
 
 .userInputTitle{
   display:flex;
   flex-direction:column;
 
 }
+.modify-row {
+  display:flex;
+  align-items:center;
+}
 
 .service {
-  display:flex;
+   display:flex;
   align-items: center;
+}
+.editBtn{
+  text-align: end;
 }
 
 .serviceListings {
@@ -236,10 +270,6 @@ span.mi, span.mis, span.comp, span.interval{
  display:flex;
  flex-direction: column;
 align-items:center;
-}
-
-.service-icon, .service-icon-Warning{
-  cursor: pointer;
 }
 
 .statusBarOil, .statusBarTire, .statusBarPressure{
@@ -273,4 +303,39 @@ align-items:center;
   display:flex;
   align-items: center;
   justify-content: center;
+}
+
+.column-half {
+  width:100%;
+}
+
+
+.row-modal-data, .error-modal-row{
+  height:100%;
+  width:100%;
+  background:rgba(0,0,0,0.5);
+  position:fixed;
+   top:0
+
+}
+
+.column-modal-data, .error-modal-column{
+  text-align:center;
+  border:4px solid black;
+  position: fixed;
+  top:50%;
+  left:50%;
+ transform: translate(-50%, -50%);
+ background-color:white;
+}
+
+.column-buttons {
+  display:flex;
+  justify-content: space-around;
+
+}
+
+.ok {
+  width:10rem;
+  font-size:1.5rem;
 }
