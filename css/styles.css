@@ -120,6 +120,7 @@ td {
   cursor: pointer;
 }
 
+
 tbody tr:nth-child(odd){
   background-color:#e8eae6;
 }
@@ -167,6 +168,7 @@ span.mi, span.mis, span.comp, span.interval{
 .logServiceStyle{
  display:flex;
 
+
 }
 .complaintListing li {
   font-weight:400;
@@ -176,6 +178,7 @@ span.mi, span.mis, span.comp, span.interval{
 .complaintListing{
   line-height:1.2;
 }
+
 
 .container, .container-nonIntro {
   max-width: 950px;
@@ -213,6 +216,7 @@ span.mi, span.mis, span.comp, span.interval{
    border:2px solid black;
     width:300px;
 }
+
 
 .inputSearch {
   display:flex;
@@ -306,13 +310,10 @@ align-items:center;
   justify-content: center;
 }
 
-
-
-
-
 .column-half {
   width:100%;
 }
+
 
 
 .row-modal-data, .error-modal-row{
