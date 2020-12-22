@@ -11,9 +11,9 @@
  
  ## Application Features:
  
- - User can see an overview of their car Health Status in the Home page along with brieft list of service required for the next interval.
+ - User can see an overview of their car health status in the home page along with brief list of service required for the next interval.
  - User can search their vehicle service list by entering, year, model, make, and mileage. (service list will including up to +10,000miles from the inputted mileage number).
- - User can see when their next service interval mileage will be. 
+ - User can see when their next service interval mileage will be. (will also show the next service mileage interval)
  - User can also see National Highway Traffic Safety Administration (NHTSA) complaint listings logged by other drivers.
  - User can see an estimated cost (broken down by part cost, labor hours needed, labor cost, and total cost) of the service that is needed (up to +10000 miles combined).
  - User can enter their service record for oil, check pressure, tire rotation, mechanic recommendation, and Big fix description. 
