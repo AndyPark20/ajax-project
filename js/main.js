@@ -189,10 +189,15 @@ function renderComplaintLogs(info, event, criteria) {
 
 function renderHomePageService(info, event) {
   var $createList = document.createElement('li');
+  if(carInfo.serviceAppend.length !==0 ){
+
   $intervalFront.textContent = info.serviceAppend[0].due_mileage;
   $createList.textContent = event.desc;
   $homePageService.appendChild($createList);
   return $homePageService;
+  }else if (carInfo.serviceAppend.length ===0){
+    return;
+  }
 }
 
 function renderTitleSearch() {
@@ -459,7 +464,7 @@ document.addEventListener('click', function (e) {
       $okBtn.classList.remove('hidden')
     }
   } else if (userDataView === 'home') {
-    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '' && carInfo.serviceAppend.length !==0) {
+    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '') {
       $homePageService.textContent = '';
       renderCarStatus(carInfo);
       carStatusProgress(carInfo);
