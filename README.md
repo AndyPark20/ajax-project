@@ -1,9 +1,9 @@
 # CarHealth+
  
  CarHealth + is a simple web application that allows users to see what services are needed for their vehicle and see NHTSA's complaints about the vehicle logged by other drivers.
- Live Link: TBD
+ Live Link: https://andypark20.github.io/ajax-project/
  
- ## Programming Technologies Implemented for this Application:
+ ## Programming technologies implemented for this Application:
  
  - JavaScript
  - CSS
