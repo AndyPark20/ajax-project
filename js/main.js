@@ -48,6 +48,7 @@ var $okBtn = document.querySelector('.something-error');
 var $complaintModal = document.querySelector('.complaintModal');
 var $complaintSuccess = document.querySelector('.complaintSucess');
 var $loading = document.querySelector('.loadingLoad');
+var $serviceSucess = document.querySelector('.serviceSuccess')
 var serviceSoon = [];
 var mileage = [];
 var index = null;
@@ -118,24 +119,43 @@ function carStatusProgress(info) {
     }
   }
 
-
   var currentDate = new Date();
   var oilLatestDate = new Date(oilDate);
   var oilDaysRemain = currentDate - oilLatestDate;
   var oilDaysRemainResult = (180 - (Math.floor(oilDaysRemain / (1000 * 60 * 60 * 24))));
+  var oilTypeNumber = typeof oilDaysRemainResult
   var oilRelative = (5000 - Math.abs((carInfo.mileage - oilNum)));
-  $oilRemaining.textContent = oilDaysRemainResult + ' Day(s)/ ' + oilRelative + ' mi' + ' remaining!'
 
   var pressureLatestDate = new Date(pressureDate);
   var pressureRemain = currentDate - pressureLatestDate;
   var pressureRemainResult = (30 - (Math.floor(pressureRemain / (1000 * 60 * 60 * 24))));
-  $tirePressureCheck.textContent = pressureRemainResult + ' Day(s) remaining!'
+  var pressureNumber =typeof pressureRemainResult;
+  // $tirePressureCheck.textContent = pressureRemainResult + ' Day(s) remaining!'
 
   var tireLatestDate = new Date(tireDate);
   var tireRemain = currentDate - tireLatestDate;
   var tireRemainResult = (180 - (Math.floor(tireRemain / (1000 * 60 * 60 * 24))))
   var tireRelative = (5000 - Math.abs((carInfo.mileage) - tire));
-  $tireRotationRemaining.textContent = tireRemainResult + ' Day(s)/ ' + tireRelative + ' mi' + ' remaining!';
+  var tireNumber =typeof tireRemainResult;
+
+  if(oilDaysRemainResult.toString() ==='NaN'){
+    $oilRemaining.textContent = "Please Log the most recent service history";
+  } else if (oilTypeNumber.toString() === 'number'){
+    $oilRemaining.textContent = oilDaysRemainResult + ' Day(s)/ ' + oilRelative + ' mi' + ' remaining!'
+  }
+
+  if(tireRemainResult.toString()==='NaN'){
+    $tireRotationRemaining.textContent = "Please Log the most recent service history";
+  }else if(tireNumber.toString()==='number'){
+    $tireRotationRemaining.textContent = tireRemainResult + ' Day(s)/ ' + tireRelative + ' mi' + ' remaining!';
+  }
+
+  if(pressureRemainResult.toString()==='NaN'){
+    $tirePressureCheck.textContent = "Please Log the most recent service history";
+  }else if (pressureNumber.toString()=='number'){
+    $tirePressureCheck.textContent = pressureRemainResult + ' Day(s) remaining!'
+  }
+
 
   if (oilDaysRemainResult <= 15 || oilRelative < 1000) {
     $oilStatusBar.style.background = 'red';
@@ -149,11 +169,12 @@ function carStatusProgress(info) {
     $tireRotation.style.background = 'green';
   }
 
-  if (pressureRemainResult <= 15) {
+  if (pressureRemainResult <= 15 || pressureRemainResult.toString()==='NaN') {
     $pressureCheck.style.background = 'red';
   } else if (pressureRemainResult > 15) {
     $pressureCheck.style.background = 'green';
   }
+
 
   var $carStatus = document.createElement('h3');
   var $imageWarning = document.createElement('img');
@@ -329,7 +350,8 @@ function serviceInterval(year, make, model, mileage) {
         renderServiceElement(carInfo, carInfo.serviceAppend[i]);
       }
       renderCostBreakElement(carInfo);
-      swapView('serviceList')
+      swapView('serviceList');
+      $serviceSucess.classList.remove('hidden')
     } else if ((xhr.status === 400 && carInfo.complaints[0].Count === 0) || carInfo.service[0].message.message === "Invalid request data" || xhr.status ===404 || carInfo.service[0].Message === "The request is invalid." || carInfo.service[0].message.message === "Data Invaild") {
       $loading.classList.add('hidden');
       $okBtn.classList.remove('hidden')
@@ -472,6 +494,11 @@ document.addEventListener('click', function (e) {
       for (var i = 0; i < 5; i++) {
         renderHomePageService(carInfo, carInfo.serviceAppend[i]);
       }
+      if (carInfo.userDataLog.log.length === 0) {
+        $oilRemaining.textContent = "Please Log the most recent service history";
+        $tirePressureCheck.textContent = "Please Log the most recent service history";
+        $tireRotationRemaining.textContent = "Please Log the most recent service history";
+      }
       swapView('home');
     }
   } else if (userDataView === 'data-log') {
@@ -492,6 +519,8 @@ document.addEventListener('click', function (e) {
     $okBtn.classList.add('hidden');
   }else if (userTarget === 'modalBtn ok3'){
     $complaintModal.classList.add('hidden');
+  }else if (userTarget ==='modalBtn ok4'){
+    $serviceSucess.classList.add('hidden');
   }
 })
 
@@ -513,6 +542,11 @@ $getStartedBtn.addEventListener('click', function () {
     $title.classList.remove('hidden')
     for (var i = 0; i < 5; i++) {
       renderHomePageService(carInfo, carInfo.serviceAppend[i]);
+    }
+    if (carInfo.userDataLog.log.length === 0) {
+      $oilRemaining.textContent = "Please Log the most recent service history";
+      $tirePressureCheck.textContent = "Please Log the most recent service history";
+      $tireRotationRemaining.textContent = "Please Log the most recent service history";
     }
     $homeButton.classList.remove('hidden');
     swapView('home');
