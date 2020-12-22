@@ -214,8 +214,7 @@ function renderDataTable(info, indexing) {
   $tBody.textContent = ''
   if (typeof indexing === 'number') {
     var revised = info.log;
-    console.log(indexing);
-    console.log(revised.splice(indexing - 1, 1, info.log[info.log.length - 1]));
+    revised.splice(indexing - 1, 1, info.log[info.log.length - 1]);
     revised.pop();
     index = null;
     for (var i = 0; i < revised.length; i++) {
@@ -287,8 +286,6 @@ function recall(year, make, model) {
   xhrs.open('GET', 'https://api.codetabs.com/v1/proxy?quest=https://webapi.nhtsa.gov/api/Complaints/vehicle/modelyear/' + year + '/make/' + make + '/model/' + model + '?format=json')
   xhrs.responseType = 'json';
   xhrs.addEventListener('load', function () {
-    console.log('nhtsa', xhrs.status)
-    console.log('nhtsa', xhrs.response)
     if (carInfo.complaints.length === 1) {
       carInfo.complaints.shift();
       carInfo.complaints.push(xhrs.response);
@@ -296,10 +293,8 @@ function recall(year, make, model) {
       carInfo.complaints.push(xhrs.response);
     }
     if ((xhrs.status === 200 && carInfo.complaints[0] !== null) && (xhrs.status === 200 && carInfo.complaints[0].Message !=='No results found for this request')){
-      $loading.classList.add('hidden');
       $complaintSuccess.classList.remove('hidden');
     } else if (xhrs.status === 400 || (xhrs.status === 200 && carInfo.complaints[0]=== null) || xhrs.response === null || (xhrs.status === 200 && carInfo.complaints[0].Message === "No results found for this request")) {
-      $loading.classList.add('hidden');
       $complaintModal.classList.remove('hidden');
     }
   })
@@ -315,7 +310,6 @@ function serviceInterval(year, make, model, mileage) {
   xhr.setRequestHeader("partner-token", "5228fbdcf1fa422392b0f7ff3226cfbb");
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    console.log(xhr.status);
     recall(year, make, model);
     if (carInfo.service.length === 1) {
       carInfo.service.shift()
@@ -324,6 +318,7 @@ function serviceInterval(year, make, model, mileage) {
       carInfo.service.push(xhr.response);
     }
     if (xhr.status === 200 && carInfo.service[0].message.message !== "Data Invaild" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
+      $loading.classList.add('hidden');
       getDataObject(carInfo);
       for (var i = 0; i < carInfo.serviceAppend.length; i++) {
         renderServiceElement(carInfo, carInfo.serviceAppend[i]);
@@ -331,6 +326,7 @@ function serviceInterval(year, make, model, mileage) {
       renderCostBreakElement(carInfo);
       swapView('serviceList')
     } else if (xhr.status === 400 || carInfo.service[0].Message === "The request is invalid." || carInfo.service[0].message.message === "Data Invaild") {
+      $loading.classList.add('hidden');
       $okBtn.classList.remove('hidden')
     }
   })
@@ -568,7 +564,6 @@ $modalBtn.addEventListener('click', function (e) {
 
   if (e.target.className === 'modalBtn delete') {
     var indexes = parseInt($deleteBtnModal.getAttribute('data-view'));
-    console.log(indexes);
     var deleteData = carInfo.userDataLog.log;
     deleteData.splice(indexes - 1, 1);
     $modalContainer.classList.add('hidden');
