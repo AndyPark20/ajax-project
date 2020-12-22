@@ -310,7 +310,6 @@ function serviceInterval(year, make, model, mileage) {
   xhr.setRequestHeader("partner-token", "5228fbdcf1fa422392b0f7ff3226cfbb");
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    console.log(xhr.status)
     recall(year, make, model);
     if (carInfo.service.length === 1) {
       carInfo.service.shift()
