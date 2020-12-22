@@ -317,7 +317,7 @@ function serviceInterval(year, make, model, mileage) {
     } else {
       carInfo.service.push(xhr.response);
     }
-    if (xhr.status === 200 && carInfo.service[0].message.message !== "Data Invaild" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
+    if (xhr.status === 200 && carInfo.service[0].message.message !== "Data Invaild" && carInfo.service[0].message.message !== "Invalid request data" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
       $loading.classList.add('hidden');
       getDataObject(carInfo);
       for (var i = 0; i < carInfo.serviceAppend.length; i++) {
@@ -325,7 +325,7 @@ function serviceInterval(year, make, model, mileage) {
       }
       renderCostBreakElement(carInfo);
       swapView('serviceList')
-    } else if ((xhr.status === 400 && carInfo.complaints[0].Count ===0) || carInfo.service[0].Message === "The request is invalid." || carInfo.service[0].message.message === "Data Invaild") {
+    } else if ((xhr.status === 400 && carInfo.complaints[0].Count === 0) || carInfo.service[0].message.message === "Invalid request data" || xhr.status ===404 || carInfo.service[0].Message === "The request is invalid." || carInfo.service[0].message.message === "Data Invaild") {
       $loading.classList.add('hidden');
       $okBtn.classList.remove('hidden')
     }
