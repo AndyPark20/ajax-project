@@ -10,7 +10,6 @@ img.find-my-vehicle-picture{
 
 img.home-icon{
   width:45px;
-  height:45px;
 }
 
 img.service-icon{
@@ -25,32 +24,27 @@ img.service-icon-edit{
 img.service-icon-home{
   padding-right:2%;
   width:13%;
-  height:13%;
 }
 
 img.service-icon-Warning{
   width:11%;
-  height:11%;
 }
 
 img.pictureCheck{
   width:15%;
-  height:15%;
 }
 
 img.engine-oil{
   width:8%;
-  height:8%;
 }
 
 img.data-log-pencil{
   width:15%;
-  height:15%;
+
 }
 
 img.data-log-notebook{
   width:10%;
-  height:10%;
   cursor: pointer;
 }
 
@@ -74,8 +68,6 @@ li {
 h1{
    font-family: 'Roboto', sans-serif;
 }
-
-
 
 
 h2{
