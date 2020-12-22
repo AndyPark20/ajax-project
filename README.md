@@ -22,8 +22,18 @@
  - User can see how many days has passed since their tire pressure check starting from 30 days. 
  - If 1 out of 3 services are past due, it will throw a warning logo of the status of their car, if everything is green it will throw Check/OK symbol. 
  
+ ## WARNING!
+ 
+ - This Application is solely for demonstration purposes on utilizing API within a website. 
+ - For longevity and reliability of your car, ALWAYS refer back to the manufacture's owners manual for precise details on service intervals. 
+ 
+ ## NOTE:
+ 
+ - Pleasee note that model year of 2020 is not available yet. 
  
  ## Application Preview:
  ![Figma Project-Final](https://user-images.githubusercontent.com/69870979/102838453-10809000-43b3-11eb-8a7f-bb340e1bd2af.gif)
+ 
+ 
  
 
