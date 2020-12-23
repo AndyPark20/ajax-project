@@ -208,6 +208,9 @@ p.instructions{
   height:30px;
   width:65px;
 }
+.note{
+  font-size:12px;
+}
 }
 
 @media screen and (max-width:320px){
@@ -221,5 +224,8 @@ p.instructions{
   .edit, .delete {
   height:30px;
   width:65px;
+}
+.note{
+  font-size:10px;
 }
 }
