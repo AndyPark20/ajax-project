@@ -319,6 +319,7 @@ function recall(year, make, model) {
       carInfo.complaints.push(xhrs.response);
     }
     if ((xhrs.status === 200 && carInfo.complaints[0] !== null) && (xhrs.status === 200 && carInfo.complaints[0].Message !=='No results found for this request')){
+      $complaintModal.classList.add('hidden');
       $complaintSuccess.classList.remove('hidden');
     } else if (xhrs.status === 400 || (xhrs.status === 200 && carInfo.complaints[0]=== null) || xhrs.response === null || (xhrs.status === 200 && carInfo.complaints[0].Message === "No results found for this request")) {
       $complaintModal.classList.remove('hidden');
