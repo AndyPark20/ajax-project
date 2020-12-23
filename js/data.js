@@ -13,12 +13,12 @@ var carInfo ={
   }
 };
 
-var getParsed=localStorage.getItem('autoDetail')
-if (getParsed !==null){
-  carInfo=JSON.parse(getParsed);
-}
+// var getParsed=localStorage.getItem('autoDetail')
+// if (getParsed !==null){
+//   carInfo=JSON.parse(getParsed);
+// }
 
-window.addEventListener('beforeunload', function(){
-  var stringed= JSON.stringify(carInfo);
-  localStorage.setItem('autoDetail', stringed);
-})
+// window.addEventListener('beforeunload', function(){
+//   var stringed= JSON.stringify(carInfo);
+//   localStorage.setItem('autoDetail', stringed);
+// })
