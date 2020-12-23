@@ -48,7 +48,8 @@ var $okBtn = document.querySelector('.something-error');
 var $complaintModal = document.querySelector('.complaintModal');
 var $complaintSuccess = document.querySelector('.complaintSucess');
 var $loading = document.querySelector('.loadingLoad');
-var $serviceSucess = document.querySelector('.serviceSuccess')
+var $serviceSucess = document.querySelector('.serviceSuccess');
+var $introModal = document.querySelector('.instruction-master')
 var serviceSoon = [];
 var mileage = [];
 var index = null;
@@ -485,7 +486,6 @@ document.addEventListener('click', function (e) {
       $okBtn.classList.remove('hidden')
     }
   } else if (userDataView === 'home') {
-    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '') {
       $homePageService.textContent = '';
       renderCarStatus(carInfo);
       carStatusProgress(carInfo);
@@ -499,19 +499,16 @@ document.addEventListener('click', function (e) {
         $tireRotationRemaining.textContent = "Please Log the most recent service history";
       }
       swapView('home');
-    }
   } else if (userDataView === 'data-log') {
-    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '') {
       renderTitleComplaint(carInfo)
       swapView('data-log')
-    }
+
   } else if (userDataView === 'dataView') {
-    if (carInfo.model !== '' && carInfo.year !== 0 && carInfo.make !== '') {
       $carOverStats.textContent = '';
       renderTitleComplaint(carInfo)
       renderDataTable(carInfo.userDataLog, index);
       swapView('dataView')
-    }
+
   } else if (userTarget === 'modalBtn ok') {
     $complaintSuccess.classList.add('hidden');
   } else if (userTarget ==='modalBtn ok2'){
@@ -520,7 +517,10 @@ document.addEventListener('click', function (e) {
     $complaintModal.classList.add('hidden');
   }else if (userTarget ==='modalBtn ok4'){
     $serviceSucess.classList.add('hidden');
+  }else if (userTarget ==='modalBtn edit btn-instructions'){
+    $introModal.classList.add('hidden');
   }
+
 })
 
 function getDataObject(event) {

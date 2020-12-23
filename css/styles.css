@@ -45,7 +45,7 @@ img.data-log-pencil{
 
 img.data-log-notebook{
   width:10%;
-  cursor: pointer;
+
 }
 
 p.userMileage {
@@ -57,6 +57,8 @@ P {
  font-family: 'Roboto', sans-serif;
  font-weight:700;
 }
+
+
 
 li {
    font-family: 'Roboto', sans-serif;
@@ -78,6 +80,10 @@ h2{
 
 h2.error{
   font-size:1.5rem;
+}
+
+h2.modal-instruction{
+  font-size:25px;
 }
 
 h3 {
@@ -143,7 +149,7 @@ button.getStarted {
 }
 
 h3.modal {
-  font-size: 2.5rem;
+  font-size: 2.0rem;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -311,7 +317,6 @@ align-items:center;
 }
 
 
-
 .row-modal-data, .error-modal-row{
   height:100%;
   width:100%;
@@ -345,4 +350,26 @@ align-items:center;
 .loadingLoad {
   position:fixed;
   z-index:10;
+}
+
+.direction {
+  display:flex;
+  flex-direction:column;
+  align-content: center;
+  width:100%;
+  height:80vh;
+}
+
+.modal-button-instruct{
+  text-align:center;
+}
+
+h1.modal-instruction{
+  font-size: 35px;
+}
+
+.btn-instructions{
+  margin-top:5%;
+  height:75px;
+  width:150px;
 }
