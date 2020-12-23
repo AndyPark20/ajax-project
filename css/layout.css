@@ -7,21 +7,146 @@
   flex-basis: 25%;
 }
 
+@media screen and (max-width:1024px){
 
-
-@media screen and (max-width:667px){
   h3.modal{
     font-size:1.5rem;
   }
+.modal-instruction {
+ font-size:14px;
+ font-weight:bold;
 }
 
+h2.modal-instruction{
+  font-size:20px;
+}
+
+h1.modal-instruction{
+  font-size:30px;
+}
+p.instructions{
+  font-size: 16px;
+}
+.direction{
+
+  line-height:0.0;
+}
+.btn-instructions{
+  height:30px;
+  width:110px;
+}
+}
+
+@media screen and (min-width: 769px) and (max-width:900px){
+  h3.modal{
+    font-size:1.5rem;
+  }
+
+.modal-instruction {
+ font-size:14px;
+ font-weight:bold;
+}
+
+h2.modal-instruction{
+  font-size:13px;
+}
+
+h1.modal-instruction{
+  font-size:16px;
+}
+p.instructions{
+  font-size: 12px;
+}
+.direction{
+
+  line-height:0.0;
+}
+.btn-instructions{
+  height:30px;
+  width:110px;
+}
+.edit, .delete {
+  height:40px;
+  width:110px;
+}
+}
+
+
+@media screen and (min-width:668px) and (max-width:767px){
+h3.modal{
+    font-size:1.5rem;
+  }
+
+.modal-instruction {
+ font-size:12px;
+ font-weight:bold;
+}
+h1.modal-instruction{
+  font-size:16px;
+}
+
+h2.modal-instruction{
+  font-size:13px;
+}
+
+p.instructions{
+  font-size: 11px;
+}
+.direction{
+  line-height:0.0;
+}
+.btn-instructions{
+  height:40px;
+  width:110px;
+}
+}
+
+@media screen and (max-width:667px){
+  h3.modal{
+    font-size:1.1rem;
+  }
+
+  h2.modal-instruction{
+  font-size:14px;
+}
+
+.modal-instruction {
+  font-size:13px;
+  font-weight:bold;
+}
+h1.modal-instruction{
+  font-size:16px;
+}
+p.instructions{
+  font-size: 9px;
+}
+.direction{
+  line-height:0.0;
+}
+.btn-instructions{
+  height:30px;
+  width:110px;
+}
+.edit, .delete {
+  height:30px;
+  width:95px;
+}
+
+}
+
+
 @media screen and (max-width: 375px) {
+
 .column-full {
     width: 100%;
 }
 h2{
   font-size:30px;
  }
+
+ h2.modal-instruction{
+  font-size:15px;
+}
 
 p{
   font-size:12px;
@@ -67,5 +192,34 @@ h3.modal {
   font-size:0.9rem;
   width:40%;
   height:2.0rem;
+}
+
+.modal-instruction {
+  font-size:13px;
+  font-weight:bold;
+}
+h1.modal-instruction{
+  font-size:14px;
+}
+p.instructions{
+  font-size: 9px;
+}
+.edit, .delete {
+  height:30px;
+  width:65px;
+}
+}
+
+@media screen and (max-width:320px){
+  p.instructions{
+    font-size:8px;
+  }
+    h3.modal{
+    font-size: 0.7rem;
+  }
+
+  .edit, .delete {
+  height:30px;
+  width:65px;
 }
 }
