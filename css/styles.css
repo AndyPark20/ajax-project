@@ -369,7 +369,12 @@ h1.modal-instruction{
 }
 
 .btn-instructions{
-  margin-top:5%;
+  margin-top:1%;
   height:75px;
   width:150px;
+}
+
+.note{
+  color:red;
+  font-size: 22px;
 }
