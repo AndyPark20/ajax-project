@@ -130,7 +130,6 @@ function carStatusProgress(info) {
   var pressureRemain = currentDate - pressureLatestDate;
   var pressureRemainResult = (30 - (Math.floor(pressureRemain / (1000 * 60 * 60 * 24))));
   var pressureNumber =typeof pressureRemainResult;
-  // $tirePressureCheck.textContent = pressureRemainResult + ' Day(s) remaining!'
 
   var tireLatestDate = new Date(tireDate);
   var tireRemain = currentDate - tireLatestDate;
@@ -343,7 +342,7 @@ function serviceInterval(year, make, model, mileage) {
     } else {
       carInfo.service.push(xhr.response);
     }
-    if (xhr.status === 200 && carInfo.service[0].message.message !== "Data Invaild" && carInfo.service[0].message.message !== "Invalid request data" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
+    if (xhr.status === 200 && carInfo.serviceAppend.length !==0 && carInfo.service[0].message.message !== "Data Invaild" && carInfo.service[0].message.message !== "Invalid request data" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
       $loading.classList.add('hidden');
       getDataObject(carInfo);
       for (var i = 0; i < carInfo.serviceAppend.length; i++) {

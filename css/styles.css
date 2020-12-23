@@ -127,6 +127,10 @@ span.logoHealthText,
   color: #f00;
 }
 
+span.advisable{
+  font-size:14px;
+}
+
 button.getStarted {
   border: 4px solid black;
   height: 60px;
