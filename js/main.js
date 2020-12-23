@@ -465,6 +465,9 @@ document.addEventListener('click', function (e) {
       $carSearch.elements.model.value = carInfo.model;
       $carSearch.elements.mileage.value =parseInt(carInfo.mileage);
       swapView('searchCar')
+    }else if (carInfo.model ==='' && carInfo.year ===0 && carInfo.make ===''){
+      renderTitleSearch();
+      swapView('searchCar');
     }
   } else if (userDataView === 'complaintList') {
     if (carInfo.model === '' && carInfo.year === 0 && carInfo.make === '' && carInfo.complaints.length ===0){
