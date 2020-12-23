@@ -342,7 +342,7 @@ function serviceInterval(year, make, model, mileage) {
     } else {
       carInfo.service.push(xhr.response);
     }
-    if (xhr.status === 200 && carInfo.serviceAppend.length !==0 && carInfo.service[0].message.message !== "Data Invaild" && carInfo.service[0].message.message !== "Invalid request data" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
+    if (xhr.status === 200 && carInfo.service[0].data !==null && carInfo.service[0].message.message !== "Data Invaild" && carInfo.service[0].message.message !== "Invalid request data" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
       $loading.classList.add('hidden');
       getDataObject(carInfo);
       for (var i = 0; i < carInfo.serviceAppend.length; i++) {
