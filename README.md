@@ -29,7 +29,7 @@
  
  ## NOTE:
  
- - Pleasee note that model year of 2020 is not available yet. 
+ - Please note that model year of 2020 is not available yet. 
  
  ## Application Preview:
  ![Figma Project-Final](https://user-images.githubusercontent.com/69870979/102838453-10809000-43b3-11eb-8a7f-bb340e1bd2af.gif)
