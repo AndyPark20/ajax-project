@@ -1,5 +1,5 @@
 /* exported data */
-var carInfo ={
+const carInfo ={
   year:0,
   make:'',
   model:'',
