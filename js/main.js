@@ -53,7 +53,6 @@ const serviceSoon = [];
 const mileage = [];
 let index = null;
 
-
 function renderCostBreakElement(event) {
   repairTotalHours = 0;
   laborCost = 0;
@@ -302,7 +301,6 @@ const renderServiceElement=(info, event) =>{
   $serviceList.appendChild($createList);
   return $serviceList;
 }
-
 
 
 const recall=(year, make, model) =>{
@@ -570,8 +568,8 @@ $carSearch.addEventListener('submit', (e)=> {
   const parsedYear = parseInt($carSearch.elements.year.value);
   const parsedMileage = parseInt($carSearch.elements.mileage.value);
   recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
-  serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
-  $loading.classList.remove('hidden');
+  // serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
+  // $loading.classList.remove('hidden');
   $carSearch.reset();
 })
 
