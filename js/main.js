@@ -305,7 +305,7 @@ const renderServiceElement=(info, event) =>{
 
 const recall=(year, make, model) =>{
   const xhrs = new XMLHttpRequest();
-  xhrs.open('GET', `https://api.codetabs.com/v1/proxy?quest=https://webapi.nhtsa.gov/api/Complaints/vehicle/modelyear/${year}/make/${make}/model/${model}?format=json`)
+  xhrs.open('GET', `https://webapi.nhtsa.gov/api/Complaints/vehicle/modelyear/${year}/make/${make}/model/${model}?format=json`)
   xhrs.responseType = 'json';
   xhrs.addEventListener('load', ()=>{
     if (carInfo.complaints.length === 1) {
@@ -326,7 +326,7 @@ const recall=(year, make, model) =>{
 
 const serviceInterval=(year, make, model, mileage)=>{
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', `https://cors-anywhere.herokuapp.com/http://api.carmd.com/v3.0/maint?year=${year}&make=${make}&model=${model}&mileage=${mileage}`);
+  xhr.open('GET', `http://api.carmd.com/v3.0/maint?year=${year}&make=${make}&model=${model}&mileage=${mileage}`);
   xhr.setRequestHeader("content-type", "application/json");
   xhr.setRequestHeader("authorization", "Basic NDU4MmQ1YTQtNzI5Mi00ZThjLWExZjQtYjU4MmNmNzc3YjFh");
   xhr.setRequestHeader("partner-token", "5228fbdcf1fa422392b0f7ff3226cfbb");
@@ -568,7 +568,7 @@ $carSearch.addEventListener('submit', (e)=> {
   const parsedYear = parseInt($carSearch.elements.year.value);
   const parsedMileage = parseInt($carSearch.elements.mileage.value);
   recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
-  // serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
+  serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   // $loading.classList.remove('hidden');
   $carSearch.reset();
 })
