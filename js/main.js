@@ -53,6 +53,7 @@ const serviceSoon = [];
 const mileage = [];
 let index = null;
 
+
 function renderCostBreakElement(event) {
   repairTotalHours = 0;
   laborCost = 0;
@@ -302,53 +303,71 @@ const renderServiceElement=(info, event) =>{
   return $serviceList;
 }
 
-const wipeData =()=>{
-  const xhrs = new XMLHttpRequest();
-  xhrs.open('POST', `http://localhost:3000/nhtsa`)
-  xhrs.setRequestHeader('Content-type', 'application/json');
-  xhrs.responseType = 'json';
-  xhrs.addEventListener('load', () => {
-  })
-  xhrs.send(JSON.stringify({ year: `${0}`, make: `${0}`, model: `${0}` }));
-}
 
 const renderApi = () => {
   const xhrz = new XMLHttpRequest();
   xhrz.open('GET', 'http://localhost:3000/nhtsa');
   xhrz.responseType = 'json';
   xhrz.addEventListener('load', () => {
+    console.log('renderAPI',xhrz.response)
+    console.log('renderAPI message', xhrz.response.Message)
     carInfo.complaints.push(xhrz.response);
-    if (carInfo.complaints.length === 1) {
-      carInfo.complaints.shift();
-      carInfo.complaints.push(xhrz.response);
-    } else {
-      carInfo.complaints.push(xhrz.response);
-    }
-    if ((carInfo.complaints[0].Message === 'Results returned successfully')) {
-      $complaintModal.classList.add('hidden');
-      $complaintSuccess.classList.remove('hidden');
-      // carInfo.complaints[0].Message='';
-    } else if (carInfo.complaints[0].Message === "No results found for this request") {
-      $complaintModal.classList.remove('hidden');
-      // carInfo.complaints[0].Message = '';
-    }
+    // if (carInfo.complaints.length === 1) {
+    //   carInfo.complaints.shift();
+    //   carInfo.complaints.push(xhrz.response);
+    // } else {
+    //   carInfo.complaints.push(xhrz.response);
+    // }
+    // if ((carInfo.complaints[0].Message === 'Results returned successfully')) {
+    //   $complaintModal.classList.add('hidden');
+    //   $complaintSuccess.classList.remove('hidden');
+    //   // carInfo.complaints[0].Message='';
+    // } else if (carInfo.complaints[0].Message === "No results found for this request") {
+    //   $complaintModal.classList.remove('hidden');
+    //   // carInfo.complaints[0].Message = '';
+    // }
   })
   xhrz.send();
 }
 
 
 const recall=(year, make, model) =>{
-  const xhrs = new XMLHttpRequest();
-  xhrs.open('POST', `http://localhost:3000/nhtsa`)
-  xhrs.setRequestHeader('Content-type', 'application/json');
-  xhrs.responseType = 'json';
-  xhrs.addEventListener('load', ()=>{
-    console.log(xhrs.response.Message)
-    if (xhrs.response.Message ==='Results returned successfully'){
-      renderApi();
-    }
-  })
-  xhrs.send(JSON.stringify({ year: `${year}`, make: `${make}`, model: `${model}` }));
+  fetch("/nhtsa",{
+    method:'GET',
+    headers:{
+      "Content-type": "application/json",
+      "Accept": "application/json"
+    },
+    body:JSON.stringify({
+      "make": make,
+      "year": year,
+      "mode": model
+    })
+
+  // })
+  //    fetch(`/api/favorites/1/`, {
+  //      method: 'POST',
+  //      headers: {
+  //        "Content-Type": "application/json",
+  //        "Accept": "application/json"
+  //      },
+  //      body: JSON.stringify({
+  //        "hotelName": this.state.hotelData.propertyDescription.name,
+  //        "hotelId": this.props.hotelId
+  //      })
+  //    })
+  // const xhrs = new XMLHttpRequest();
+  // xhrs.open('POST', `http://localhost:3000/nhtsa`)
+  // xhrs.setRequestHeader('Content-type', 'application/json');
+  // xhrs.responseType = 'json';
+  // xhrs.addEventListener('load', ()=>{
+  //   // console.log(xhrs.response.Message)
+  //   // if (xhrs.response.Message ==='Results returned successfully'){
+  //     // renderApi();
+  //   // }
+  // })
+  // xhrs.send(JSON.stringify({ year: `${year}`, make: `${make}`, model: `${model}` }));
+}
 }
 
 
@@ -599,6 +618,7 @@ $carSearch.addEventListener('submit', (e)=> {
   // serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   // $loading.classList.remove('hidden');
   $carSearch.reset();
+
 })
 
 $dataLogSubmitBtn.addEventListener('submit', (e)=>{
