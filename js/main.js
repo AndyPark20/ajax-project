@@ -302,27 +302,55 @@ const renderServiceElement=(info, event) =>{
   return $serviceList;
 }
 
+const wipeData =()=>{
+  const xhrs = new XMLHttpRequest();
+  xhrs.open('POST', `http://localhost:3000/nhtsa`)
+  xhrs.setRequestHeader('Content-type', 'application/json');
+  xhrs.responseType = 'json';
+  xhrs.addEventListener('load', () => {
+  })
+  xhrs.send(JSON.stringify({ year: `${0}`, make: `${0}`, model: `${0}` }));
+}
+
+const renderApi = () => {
+  const xhrz = new XMLHttpRequest();
+  xhrz.open('GET', 'http://localhost:3000/nhtsa');
+  xhrz.responseType = 'json';
+  xhrz.addEventListener('load', () => {
+    carInfo.complaints.push(xhrz.response);
+    if (carInfo.complaints.length === 1) {
+      carInfo.complaints.shift();
+      carInfo.complaints.push(xhrz.response);
+    } else {
+      carInfo.complaints.push(xhrz.response);
+    }
+    if ((carInfo.complaints[0].Message === 'Results returned successfully')) {
+      $complaintModal.classList.add('hidden');
+      $complaintSuccess.classList.remove('hidden');
+      // carInfo.complaints[0].Message='';
+    } else if (carInfo.complaints[0].Message === "No results found for this request") {
+      $complaintModal.classList.remove('hidden');
+      // carInfo.complaints[0].Message = '';
+    }
+  })
+  xhrz.send();
+}
+
 
 const recall=(year, make, model) =>{
   const xhrs = new XMLHttpRequest();
-  xhrs.open('GET', `https://webapi.nhtsa.gov/api/Complaints/vehicle/modelyear/${year}/make/${make}/model/${model}?format=json`)
+  xhrs.open('POST', `http://localhost:3000/nhtsa`)
+  xhrs.setRequestHeader('Content-type', 'application/json');
   xhrs.responseType = 'json';
   xhrs.addEventListener('load', ()=>{
-    if (carInfo.complaints.length === 1) {
-      carInfo.complaints.shift();
-      carInfo.complaints.push(xhrs.response);
-    } else {
-      carInfo.complaints.push(xhrs.response);
-    }
-    if ((xhrs.status === 200 && carInfo.complaints[0] !== null) && (xhrs.status === 200 && carInfo.complaints[0].Message !=='No results found for this request')){
-      $complaintModal.classList.add('hidden');
-      $complaintSuccess.classList.remove('hidden');
-    } else if (xhrs.status === 400 || (xhrs.status === 200 && carInfo.complaints[0]=== null) || xhrs.response === null || (xhrs.status === 200 && carInfo.complaints[0].Message === "No results found for this request")) {
-      $complaintModal.classList.remove('hidden');
+    console.log(xhrs.response.Message)
+    if (xhrs.response.Message ==='Results returned successfully'){
+      renderApi();
     }
   })
-  xhrs.send();
+  xhrs.send(JSON.stringify({ year: `${year}`, make: `${make}`, model: `${model}` }));
 }
+
 
 const serviceInterval=(year, make, model, mileage)=>{
   const xhr = new XMLHttpRequest();
@@ -568,7 +596,7 @@ $carSearch.addEventListener('submit', (e)=> {
   const parsedYear = parseInt($carSearch.elements.year.value);
   const parsedMileage = parseInt($carSearch.elements.mileage.value);
   recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
-  serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
+  // serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   // $loading.classList.remove('hidden');
   $carSearch.reset();
 })
