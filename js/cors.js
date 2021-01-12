@@ -18,11 +18,10 @@ app.get("/nhtsa/:year/:make/:model",async (req,res,next)=>{
     const json = await fetch_response.json();
     fs.writeFile('data.json',JSON.stringify(json,null,2),(err)=>{
       if(err){
-        return(res.status(500).json('Error: something went wrong!'));
-      }else{
-        return(res.status(201).json(json));
+        res.status(500).json('Error: something went wrong!');
       }
     })
+  return(res.json(json));
 })
 
 

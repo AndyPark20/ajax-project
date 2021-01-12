@@ -332,18 +332,18 @@ const renderApi = () => {
 }
 
 
-const recall = (year, make, model) => {
-  fetch(`http://localhost:3000/nhtsa/${year}/${make}/${model}`, {
+const recall = async (year, make, model) => {
+  await fetch(`http://localhost:3000/nhtsa/${year}/${make}/${model}`, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
       "Accept": "application/json"
     }
   })
-    .then(res => {
+     .then(res => {
       return res.json()
     })
-    .then(data =>{
+     .then(data =>{
       if (carInfo.complaints.length === 1) {
         carInfo.complaints.shift();
         carInfo.complaints.push(data);
@@ -359,7 +359,9 @@ const recall = (year, make, model) => {
         // carInfo.complaints[0].Message = '';
       }
     })
-    .catch(error => console.log('error'))
+    .catch(error => {
+      return 'error';
+    })
 }
 
   // fetch(`http://localhost:3000/nhtsa`)
