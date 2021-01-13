@@ -12,6 +12,7 @@ let data = require('./data.json');
 app.use(jsonMiddleWare);
 app.use(cors());
 
+//NHTSA fetching api from server side
 app.get("/nhtsa/:year/:make/:model",async (req,res,next)=>{
     const nhtsa = `https://webapi.nhtsa.gov/api/Complaints/vehicle/modelyear/${req.params.year}/make/${req.params.make}/model/${req.params.model}?format=json`
     const fetch_response = await fetch(nhtsa);
@@ -25,15 +26,12 @@ app.get("/nhtsa/:year/:make/:model",async (req,res,next)=>{
 })
 
 
-// app.get('/nhtsa',(req,res)=>{
-//    res.status(201).json(data);
-// })
+// carMD fetching api from server side
+app.get("/carMD/:year/:make/:model/:mileage", async (req,res,next)=>{
+  console.log(req.params.year)
+  console.log(req.params.mileage)
 
-
-// app.get("http://api.carmd.com/v3.0/maint?year=year&make=make&model=model", (req, res) => {
-//   res.status(200).json('Working');
-// })
-
+})
 
 app.listen(3000, () => {
   console.log('Listening on Port 3000')

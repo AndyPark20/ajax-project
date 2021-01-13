@@ -331,9 +331,9 @@ const renderApi = () => {
   xhrz.send();
 }
 
-
-const recall = async (year, make, model) => {
-  await fetch(`http://localhost:3000/nhtsa/${year}/${make}/${model}`, {
+//calling to get data object from NHTSA by the server side
+const recall =(year, make, model) => {
+  fetch(`http://localhost:3000/nhtsa/${year}/${make}/${model}`, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
@@ -353,10 +353,11 @@ const recall = async (year, make, model) => {
       if ((carInfo.complaints[0].Message === 'Results returned successfully')) {
         $complaintModal.classList.add('hidden');
         $complaintSuccess.classList.remove('hidden');
-        // carInfo.complaints[0].Message='';
+        $loading.classList.add('hidden');
+
       } else if (carInfo.complaints[0].Message === "No results found for this request") {
         $complaintModal.classList.remove('hidden');
-        // carInfo.complaints[0].Message = '';
+        $loading.classList.add('hidden');
       }
     })
     .catch(error => {
@@ -364,60 +365,45 @@ const recall = async (year, make, model) => {
     })
 }
 
-  // fetch(`http://localhost:3000/nhtsa`)
-  // .then(res=>{
-  //   if (res.ok){
-  //     console.log('ok')
-  //   }else{
-  //     console.log('no')
-  //   }
-  // })
-
-// const xhrs = new XMLHttpRequest();
-// xhrs.open('POST', `http://localhost:3000/nhtsa`)
-// xhrs.setRequestHeader('Content-type', 'application/json');
-// xhrs.responseType = 'json';
-// xhrs.addEventListener('load', ()=>{
-//   // console.log(xhrs.response.Message)
-//   // if (xhrs.response.Message ==='Results returned successfully'){
-//     // renderApi();
-//   // }
-// })
-// xhrs.send(JSON.stringify({ year: `${year}`, make: `${make}`, model: `${model}` }));
-
-
-
-
+//calling to get carMD api data object retrieved by server side
 const serviceInterval = (year, make, model, mileage) => {
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', `http://api.carmd.com/v3.0/maint?year=${year}&make=${make}&model=${model}&mileage=${mileage}`);
-  xhr.setRequestHeader("content-type", "application/json");
-  xhr.setRequestHeader("authorization", "Basic NDU4MmQ1YTQtNzI5Mi00ZThjLWExZjQtYjU4MmNmNzc3YjFh");
-  xhr.setRequestHeader("partner-token", "5228fbdcf1fa422392b0f7ff3226cfbb");
-  xhr.responseType = 'json';
-  xhr.addEventListener('load', () => {
-    recall(year, make, model);
-    if (carInfo.service.length === 1) {
-      carInfo.service.shift()
-      carInfo.service.push(xhr.response);
-    } else {
-      carInfo.service.push(xhr.response);
-    }
-    if (xhr.status === 200 && carInfo.service[0].data !== null && carInfo.service[0].message.message !== "Data Invaild" && carInfo.service[0].message.message !== "Invalid request data" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
-      $loading.classList.add('hidden');
-      getDataObject(carInfo);
-      for (let i = 0; i < carInfo.serviceAppend.length; i++) {
-        renderServiceElement(carInfo, carInfo.serviceAppend[i]);
-      }
-      renderCostBreakElement(carInfo);
-      swapView('serviceList');
-      $serviceSucess.classList.remove('hidden')
-    } else if ((xhr.status === 400 && carInfo.complaints[0].Count === 0) || carInfo.service[0].message.message === "Invalid request data" || xhr.status === 404 || carInfo.service[0].Message === "The request is invalid." || carInfo.service[0].message.message === "Data Invaild") {
-      $loading.classList.add('hidden');
-      $okBtn.classList.remove('hidden')
+  fetch(`http://localhost:3000/carMD/${year}/${make}/${model}/${mileage}`,{
+    method:'GET',
+    headers:{
+      'Content-type':'application/json',
+      'Accept' : 'application/json'
     }
   })
-  xhr.send();
+
+  // const xhr = new XMLHttpRequest();
+  // xhr.open('GET', `http://api.carmd.com/v3.0/maint?year=${year}&make=${make}&model=${model}&mileage=${mileage}`);
+  // xhr.setRequestHeader("content-type", "application/json");
+  // xhr.setRequestHeader("authorization", "Basic NDU4MmQ1YTQtNzI5Mi00ZThjLWExZjQtYjU4MmNmNzc3YjFh");
+  // xhr.setRequestHeader("partner-token", "5228fbdcf1fa422392b0f7ff3226cfbb");
+  // xhr.responseType = 'json';
+  // xhr.addEventListener('load', () => {
+  //   recall(year, make, model);
+  //   if (carInfo.service.length === 1) {
+  //     carInfo.service.shift()
+  //     carInfo.service.push(xhr.response);
+  //   } else {
+  //     carInfo.service.push(xhr.response);
+  //   }
+  //   if (xhr.status === 200 && carInfo.service[0].data !== null && carInfo.service[0].message.message !== "Data Invaild" && carInfo.service[0].message.message !== "Invalid request data" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
+  //     $loading.classList.add('hidden');
+  //     getDataObject(carInfo);
+  //     for (let i = 0; i < carInfo.serviceAppend.length; i++) {
+  //       renderServiceElement(carInfo, carInfo.serviceAppend[i]);
+  //     }
+  //     renderCostBreakElement(carInfo);
+  //     swapView('serviceList');
+  //     $serviceSucess.classList.remove('hidden')
+  //   } else if ((xhr.status === 400 && carInfo.complaints[0].Count === 0) || carInfo.service[0].message.message === "Invalid request data" || xhr.status === 404 || carInfo.service[0].Message === "The request is invalid." || carInfo.service[0].message.message === "Data Invaild") {
+  //     $loading.classList.add('hidden');
+  //     $okBtn.classList.remove('hidden')
+  //   }
+  // })
+  // xhr.send();
 }
 
 const swapView = (e) => {
@@ -632,7 +618,8 @@ $carSearch.addEventListener('submit', (e) => {
   const parsedYear = parseInt($carSearch.elements.year.value);
   const parsedMileage = parseInt($carSearch.elements.mileage.value);
   recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
-  // serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
+  $loading.classList.remove('hidden');
+  serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
   // $loading.classList.remove('hidden');
   $carSearch.reset();
 
