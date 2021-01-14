@@ -333,6 +333,7 @@ const renderApi = () => {
 
 //calling to get data object from NHTSA by the server side
 const recall =(year, make, model) => {
+  $loading.classList.remove('hidden');
   fetch(`http://localhost:3000/nhtsa/${year}/${make}/${model}`, {
     method: 'GET',
     headers: {
@@ -382,17 +383,19 @@ const serviceInterval = (year,make,model,mileage) =>{
     } else {
       carInfo.service.push(data);
     }
-    if(carInfo.service[0].data.length !==0){
+
+    if(carInfo.service[0].data !== null){
       $serviceSucess.classList.remove('hidden');
-    }else{
-      $complaintModal.classList.remove('hidden');
+      $loading.classList.add('hidden');
+    }else if(carInfo.service[0].data ===null){
+      $okBtn.classList.remove('hidden');
+      $loading.classList.add('hidden');
     }
   })
   .catch(err =>{
     return 'error'
   })
 }
-
 
 //   const xhr = new XMLHttpRequest();
 //   xhr.open('GET', `http://api.carmd.com/v3.0/maint?year=${year}&make=${make}&model=${model}&mileage=${mileage}`);
@@ -638,11 +641,12 @@ $carSearch.addEventListener('submit', (e) => {
   const parsedMileage = parseInt($carSearch.elements.mileage.value);
   recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
   serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
-  $loading.classList.remove('hidden');
+  // $loading.classList.remove('hidden');
   // $loading.classList.remove('hidden');
   $carSearch.reset();
-
 })
+
+
 
 $dataLogSubmitBtn.addEventListener('submit', (e) => {
   e.preventDefault();

@@ -41,9 +41,10 @@ app.get("/carMD/:year/:make/:model/:mileage", async (req, res, next) => {
   fs.writeFile('carMD.json', JSON.stringify(json, null, 2), (err) => {
     if (err) {
       res.status(500).json('Error:something went wrong!');
+    }else{
+      return (res.status(200).json(json));
     }
   })
-  return (res.status(200).json(json));
 })
 
 
