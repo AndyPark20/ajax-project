@@ -344,6 +344,8 @@ const recall =(year, make, model) => {
       return res.json()
     })
      .then(data =>{
+       const information =data.body
+       console.log(information)
       if (carInfo.complaints.length === 1) {
         carInfo.complaints.shift();
         carInfo.complaints.push(data);
@@ -366,45 +368,62 @@ const recall =(year, make, model) => {
 }
 
 //calling to get carMD api data object retrieved by server side
-const serviceInterval = (year, make, model, mileage) => {
-  fetch(`http://localhost:3000/carMD/${year}/${make}/${model}/${mileage}`,{
-    method:'GET',
-    headers:{
-      'Content-type':'application/json',
-      'Accept' : 'application/json'
+const serviceInterval = (year,make,model,mileage) =>{
+  fetch(`http://localhost:3000/carMD/${year}/${make}/${model}/${mileage}`)
+
+  .then(res =>{
+    return res.json()
+  })
+  .then(data=>{
+    const info =data.body
+    if (carInfo.service.length === 1) {
+      carInfo.service.shift()
+      carInfo.service.push(data);
+    } else {
+      carInfo.service.push(data);
+    }
+    if(carInfo.service[0].data.length !==0){
+      $serviceSucess.classList.remove('hidden');
+    }else{
+      $complaintModal.classList.remove('hidden');
     }
   })
-
-  // const xhr = new XMLHttpRequest();
-  // xhr.open('GET', `http://api.carmd.com/v3.0/maint?year=${year}&make=${make}&model=${model}&mileage=${mileage}`);
-  // xhr.setRequestHeader("content-type", "application/json");
-  // xhr.setRequestHeader("authorization", "Basic NDU4MmQ1YTQtNzI5Mi00ZThjLWExZjQtYjU4MmNmNzc3YjFh");
-  // xhr.setRequestHeader("partner-token", "5228fbdcf1fa422392b0f7ff3226cfbb");
-  // xhr.responseType = 'json';
-  // xhr.addEventListener('load', () => {
-  //   recall(year, make, model);
-  //   if (carInfo.service.length === 1) {
-  //     carInfo.service.shift()
-  //     carInfo.service.push(xhr.response);
-  //   } else {
-  //     carInfo.service.push(xhr.response);
-  //   }
-  //   if (xhr.status === 200 && carInfo.service[0].data !== null && carInfo.service[0].message.message !== "Data Invaild" && carInfo.service[0].message.message !== "Invalid request data" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
-  //     $loading.classList.add('hidden');
-  //     getDataObject(carInfo);
-  //     for (let i = 0; i < carInfo.serviceAppend.length; i++) {
-  //       renderServiceElement(carInfo, carInfo.serviceAppend[i]);
-  //     }
-  //     renderCostBreakElement(carInfo);
-  //     swapView('serviceList');
-  //     $serviceSucess.classList.remove('hidden')
-  //   } else if ((xhr.status === 400 && carInfo.complaints[0].Count === 0) || carInfo.service[0].message.message === "Invalid request data" || xhr.status === 404 || carInfo.service[0].Message === "The request is invalid." || carInfo.service[0].message.message === "Data Invaild") {
-  //     $loading.classList.add('hidden');
-  //     $okBtn.classList.remove('hidden')
-  //   }
-  // })
-  // xhr.send();
+  .catch(err =>{
+    return 'error'
+  })
 }
+
+
+//   const xhr = new XMLHttpRequest();
+//   xhr.open('GET', `http://api.carmd.com/v3.0/maint?year=${year}&make=${make}&model=${model}&mileage=${mileage}`);
+//   xhr.setRequestHeader("content-type", "application/json");
+//   xhr.setRequestHeader("authorization", "Basic NDU4MmQ1YTQtNzI5Mi00ZThjLWExZjQtYjU4MmNmNzc3YjFh");
+//   xhr.setRequestHeader("partner-token", "5228fbdcf1fa422392b0f7ff3226cfbb");
+//   xhr.responseType = 'json';
+//   xhr.addEventListener('load', () => {
+//     recall(year, make, model);
+//     if (carInfo.service.length === 1) {
+//       carInfo.service.shift()
+//       carInfo.service.push(xhr.response);
+//     } else {
+//       carInfo.service.push(xhr.response);
+//     }
+//     if (xhr.status === 200 && carInfo.service[0].data !== null && carInfo.service[0].message.message !== "Data Invaild" && carInfo.service[0].message.message !== "Invalid request data" && xhr.status !== 400 && carInfo.service[0].Message !== "The request is invalid.") {
+//       $loading.classList.add('hidden');
+//       getDataObject(carInfo);
+//       for (let i = 0; i < carInfo.serviceAppend.length; i++) {
+//         renderServiceElement(carInfo, carInfo.serviceAppend[i]);
+//       }
+//       renderCostBreakElement(carInfo);
+//       swapView('serviceList');
+//       $serviceSucess.classList.remove('hidden')
+//     } else if ((xhr.status === 400 && carInfo.complaints[0].Count === 0) || carInfo.service[0].message.message === "Invalid request data" || xhr.status === 404 || carInfo.service[0].Message === "The request is invalid." || carInfo.service[0].message.message === "Data Invaild") {
+//       $loading.classList.add('hidden');
+//       $okBtn.classList.remove('hidden')
+//     }
+//   })
+//   xhr.send();
+// }
 
 const swapView = (e) => {
   if (e === 'searchCar') {
@@ -618,8 +637,8 @@ $carSearch.addEventListener('submit', (e) => {
   const parsedYear = parseInt($carSearch.elements.year.value);
   const parsedMileage = parseInt($carSearch.elements.mileage.value);
   recall(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value);
-  $loading.classList.remove('hidden');
   serviceInterval(parsedYear, $carSearch.elements.make.value, $carSearch.elements.model.value, parsedMileage);
+  $loading.classList.remove('hidden');
   // $loading.classList.remove('hidden');
   $carSearch.reset();
 
