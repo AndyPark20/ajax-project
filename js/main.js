@@ -222,6 +222,7 @@ const renderHomePageService=(info, event)=> {
 
 const renderTitleSearch=()=> $userCarTitle.innerHTML = `<span="bigTitle"> FIND MY VEHICLE <span>`;
 
+
 const renderCarStatus=(info)=>{
   $carOverStats.textContent = '';
   $userCarTitle.textContent = `${info.year} ${info.make} ${info.model}`;
