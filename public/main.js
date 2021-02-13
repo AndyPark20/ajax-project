@@ -334,7 +334,7 @@ const renderApi = () => {
 //calling to get data object from NHTSA by the server side
 const recall =(year, make, model) => {
   $loading.classList.remove('hidden');
-  fetch(`http://localhost:3000/nhtsa/${year}/${make}/${model}`, {
+  fetch(`/nhtsa/${year}/${make}/${model}`, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
@@ -370,7 +370,7 @@ const recall =(year, make, model) => {
 
 //calling to get carMD api data object retrieved by server side
 const serviceInterval = (year,make,model,mileage) =>{
-  fetch(`http://localhost:3000/carMD/${year}/${make}/${model}/${mileage}`)
+  fetch(`/carMD/${year}/${make}/${model}/${mileage}`)
 
   .then(res =>{
     return res.json()
