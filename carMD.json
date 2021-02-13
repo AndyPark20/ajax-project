@@ -5,922 +5,12 @@
     "credentials": "valid",
     "version": "v3.0.0",
     "endpoint": "maint",
-    "counter": 365
+    "counter": 361
   },
   "data": [
     {
-      "desc": "Inspect CV Joints and Boots.",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Exhaust System",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Undercarriage For Leaks, Damage, and Corrosion",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Drive/Accessory Belt(s) and Tension.",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Rotate Tires, Inspect Tire Wear, and Adjust Tire Pressure.",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 2,
-        "repair_hours": 0.4,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 40.57,
-        "misc_cost": 25,
-        "total_cost": 65.57
-      },
-      "parts": null
-    },
-    {
-      "desc": "Lube Lock Cylinders, Latches, Hinges & Pivots",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0.2,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 5.16,
-        "labor_cost": 20.28,
-        "misc_cost": 25,
-        "total_cost": 50.44
-      },
-      "parts": [
-        {
-          "desc": "Dry Film Lubricant",
-          "manufacturer": "",
-          "price": 5.16,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect Warning System Operation",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect All Fluids and Correct Level",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 2,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 9.9,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 9.9
-      },
-      "parts": [
-        {
-          "desc": "Windshield / Headlight Washer Fluid",
-          "manufacturer": "",
-          "price": 9.9,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect Battery Condition & Charge",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Seat Belts & Related Components",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Wiper & Washer System",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 9.9,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 9.9
-      },
-      "parts": [
-        {
-          "desc": "Windshield / Headlight Washer Fluid",
-          "manufacturer": "",
-          "price": 9.9,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect Interior/Exterior Lights & Electrical Components",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect / Road Test Vehicle",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Radiator and Condenser",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Body & Paint for Damages/Corrosion",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Accelerator Pedal Position Assembly",
-      "due_mileage": 78000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect CV Joints and Boots.",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Exhaust System",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Undercarriage For Leaks, Damage, and Corrosion",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Drive/Accessory Belt(s) and Tension.",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Rotate Tires, Inspect Tire Wear, and Adjust Tire Pressure.",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 2,
-        "repair_hours": 0.4,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 40.57,
-        "misc_cost": 25,
-        "total_cost": 65.57
-      },
-      "parts": null
-    },
-    {
-      "desc": "Lube Lock Cylinders, Latches, Hinges & Pivots",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0.2,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 5.16,
-        "labor_cost": 20.28,
-        "misc_cost": 25,
-        "total_cost": 50.44
-      },
-      "parts": [
-        {
-          "desc": "Dry Film Lubricant",
-          "manufacturer": "",
-          "price": 5.16,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect Warning System Operation",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect All Fluids and Correct Level",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 2,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 9.9,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 9.9
-      },
-      "parts": [
-        {
-          "desc": "Windshield / Headlight Washer Fluid",
-          "manufacturer": "",
-          "price": 9.9,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect Battery Condition & Charge",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Seat Belts & Related Components",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Wiper & Washer System",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 9.9,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 9.9
-      },
-      "parts": [
-        {
-          "desc": "Windshield / Headlight Washer Fluid",
-          "manufacturer": "",
-          "price": 9.9,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect Interior/Exterior Lights & Electrical Components",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect / Road Test Vehicle",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Radiator and Condenser",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Body & Paint for Damages/Corrosion",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Accelerator Pedal Position Assembly",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Parking Brake Operation & Tension",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Brake System, Friction Material and Hydraulic System.",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Replace Cabin Air Filter",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Measure Brake Linings, Rotor Thickness and Runout",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 2,
-        "repair_hours": 0.3,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 30.43,
-        "misc_cost": 25,
-        "total_cost": 55.43
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Steering & Suspension Components",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Clutch Hydraulic System",
-      "due_mileage": 84000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 13,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 13
-      },
-      "parts": [
-        {
-          "desc": "Brake Fluid",
-          "manufacturer": "",
-          "price": 13,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect CV Joints and Boots.",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Exhaust System",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Undercarriage For Leaks, Damage, and Corrosion",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Drive/Accessory Belt(s) and Tension.",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Rotate Tires, Inspect Tire Wear, and Adjust Tire Pressure.",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 2,
-        "repair_hours": 0.4,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 40.57,
-        "misc_cost": 25,
-        "total_cost": 65.57
-      },
-      "parts": null
-    },
-    {
-      "desc": "Lube Lock Cylinders, Latches, Hinges & Pivots",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0.2,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 5.16,
-        "labor_cost": 20.28,
-        "misc_cost": 25,
-        "total_cost": 50.44
-      },
-      "parts": [
-        {
-          "desc": "Dry Film Lubricant",
-          "manufacturer": "",
-          "price": 5.16,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect Warning System Operation",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect All Fluids and Correct Level",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 2,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 9.9,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 9.9
-      },
-      "parts": [
-        {
-          "desc": "Windshield / Headlight Washer Fluid",
-          "manufacturer": "",
-          "price": 9.9,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect Battery Condition & Charge",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Seat Belts & Related Components",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Wiper & Washer System",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 9.9,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 9.9
-      },
-      "parts": [
-        {
-          "desc": "Windshield / Headlight Washer Fluid",
-          "manufacturer": "",
-          "price": 9.9,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect Interior/Exterior Lights & Electrical Components",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect / Road Test Vehicle",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Radiator and Condenser",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Body & Paint for Damages/Corrosion",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Accelerator Pedal Position Assembly",
-      "due_mileage": 90000,
+      "desc": "Replace Spark Plugs",
+      "due_mileage": 37000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -935,7 +25,7 @@
     },
     {
       "desc": "Replace Engine Air Filter",
-      "due_mileage": 90000,
+      "due_mileage": 45000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -949,33 +39,11 @@
       "parts": null
     },
     {
-      "desc": "Inspect Cooling System, Hoses & Clamps",
-      "due_mileage": 90000,
+      "desc": "Inspect / Road Test Vehicle",
+      "due_mileage": 45000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 22.27,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 22.27
-      },
-      "parts": [
-        {
-          "desc": "Engine Coolant / Antifreeze",
-          "manufacturer": "",
-          "price": 22.27,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect Fuel System",
-      "due_mileage": 90000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 2,
         "repair_hours": 0,
         "labor_rate_per_hour": 101.44,
         "part_cost": 0,
@@ -984,6 +52,140 @@
         "total_cost": 0
       },
       "parts": null
+    },
+    {
+      "desc": "Inspect On-Board Diagnostic Memory",
+      "due_mileage": 45000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 3,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Measure Brake Linings, Rotor Thickness and Runout",
+      "due_mileage": 45000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 2,
+        "repair_hours": 0.3,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 0,
+        "labor_cost": 30.43,
+        "misc_cost": 25,
+        "total_cost": 55.43
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Tire Sealant Expiration Date",
+      "due_mileage": 45000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 1,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 45.1,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 45.1
+      },
+      "parts": [
+        {
+          "desc": "Tire Sealant",
+          "manufacturer": "",
+          "price": 45.1,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "desc": "Inspect Tire Wear and Adjust Tire Pressure",
+      "due_mileage": 45000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 1,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Replace Cabin Air Filter",
+      "due_mileage": 45000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Warning System Operation",
+      "due_mileage": 45000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 1,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Change Engine Oil and Filter",
+      "due_mileage": 45000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Parking Brake Operation & Tension",
+      "due_mileage": 45000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 1,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 86.8,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 86.8
+      },
+      "parts": [
+        {
+          "desc": "Parking Brake Shoe",
+          "manufacturer": "",
+          "price": 86.8,
+          "qty": 1
+        }
+      ]
     }
   ]
 }
