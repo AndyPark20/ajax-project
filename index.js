@@ -6,8 +6,6 @@ const app = express();
 const cors = require('cors');
 const jsonMiddleWare = express.json();
 const fetch = require('node-fetch');
-let data = require('./data.json');
-// const staticMiddleware = require('./static-middleware');
 const port =3000;
 
 app.use(cors());
