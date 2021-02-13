@@ -7,7 +7,7 @@ const cors = require('cors');
 const jsonMiddleWare = express.json();
 const fetch = require('node-fetch');
 let data = require('./data.json');
-
+const port =3000;
 
 app.use(jsonMiddleWare);
 app.use(cors());
@@ -49,6 +49,4 @@ app.get("/carMD/:year/:make/:model/:mileage", async (req, res, next) => {
 
 
 //listening on port 3000
-app.listen(3000, () => {
-  console.log('Listening on Port 3000')
-})
+app.listen(process.env.PORT || port, ()=> console.log(`Example app listening at http:localhost:${port}`));
