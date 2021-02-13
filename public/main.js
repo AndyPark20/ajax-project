@@ -310,8 +310,8 @@ const renderApi = () => {
   xhrz.open('GET', 'http://localhost:3000/nhtsa');
   xhrz.responseType = 'json';
   xhrz.addEventListener('load', () => {
-    console.log('renderAPI', xhrz.response)
-    console.log('renderAPI message', xhrz.response.Message)
+    // console.log('renderAPI', xhrz.response)
+    // console.log('renderAPI message', xhrz.response.Message)
     carInfo.complaints.push(xhrz.response);
     if (carInfo.complaints.length === 1) {
       carInfo.complaints.shift();
@@ -322,10 +322,8 @@ const renderApi = () => {
     if ((carInfo.complaints[0].Message === 'Results returned successfully')) {
       $complaintModal.classList.add('hidden');
       $complaintSuccess.classList.remove('hidden');
-      // carInfo.complaints[0].Message='';
     } else if (carInfo.complaints[0].Message === "No results found for this request") {
       $complaintModal.classList.remove('hidden');
-      // carInfo.complaints[0].Message = '';
     }
   })
   xhrz.send();
@@ -346,7 +344,7 @@ const recall =(year, make, model) => {
     })
      .then(data =>{
        const information =data.body
-       console.log(information)
+      //  console.log(information)
       if (carInfo.complaints.length === 1) {
         carInfo.complaints.shift();
         carInfo.complaints.push(data);
