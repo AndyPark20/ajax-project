@@ -310,8 +310,6 @@ const renderApi = () => {
   xhrz.open('GET', 'http://localhost:3000/nhtsa');
   xhrz.responseType = 'json';
   xhrz.addEventListener('load', () => {
-    // console.log('renderAPI', xhrz.response)
-    // console.log('renderAPI message', xhrz.response.Message)
     carInfo.complaints.push(xhrz.response);
     if (carInfo.complaints.length === 1) {
       carInfo.complaints.shift();
@@ -344,7 +342,6 @@ const recall =(year, make, model) => {
     })
      .then(data =>{
        const information =data.body
-      //  console.log(information)
       if (carInfo.complaints.length === 1) {
         carInfo.complaints.shift();
         carInfo.complaints.push(data);
