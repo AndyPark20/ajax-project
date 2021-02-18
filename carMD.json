@@ -5,27 +5,12 @@
     "credentials": "valid",
     "version": "v3.0.0",
     "endpoint": "maint",
-    "counter": 379
+    "counter": 380
   },
   "data": [
     {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 36000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
       "desc": "Change Engine Oil and Filter",
-      "due_mileage": 36000,
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -39,487 +24,23 @@
       "parts": null
     },
     {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 36000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Replace Spark Plugs",
-      "due_mileage": 37000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 37200,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 37200,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 37200,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 38400,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 38400,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 38400,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 39600,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 39600,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 39600,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 40800,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 40800,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 40800,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 42000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 42000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 42000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 43200,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 43200,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 43200,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 44400,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 44400,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 44400,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Clean Vehicle Undercarriage",
-      "due_mileage": 45000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0.2,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 20.28,
-        "misc_cost": 25,
-        "total_cost": 45.28
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect / Road Test Vehicle",
-      "due_mileage": 45000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect On-Board Diagnostic Memory",
-      "due_mileage": 45000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 3,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Parking Brake Operation & Tension",
-      "due_mileage": 45000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 86.8,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 86.8
-      },
-      "parts": [
-        {
-          "desc": "Parking Brake Shoe",
-          "manufacturer": "",
-          "price": 86.8,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect Tire Sealant Expiration Date",
-      "due_mileage": 45000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 45.1,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 45.1
-      },
-      "parts": [
-        {
-          "desc": "Tire Sealant",
-          "manufacturer": "",
-          "price": 45.1,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "desc": "Inspect Tire Wear and Adjust Tire Pressure",
-      "due_mileage": 45000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Inspect Warning System Operation",
-      "due_mileage": 45000,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 1,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 101.44,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Measure Brake Linings, Rotor Thickness and Runout",
-      "due_mileage": 45000,
+      "desc": "Rotate Tires, Inspect Tire Wear, & Adjust Tire Pressure",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 2,
-        "repair_hours": 0.3,
+        "repair_hours": 0.4,
         "labor_rate_per_hour": 101.44,
         "part_cost": 0,
-        "labor_cost": 30.43,
+        "labor_cost": 40.57,
         "misc_cost": 25,
-        "total_cost": 55.43
+        "total_cost": 65.57
       },
       "parts": null
     },
     {
-      "desc": "Replace Cabin Air Filter",
-      "due_mileage": 45000,
+      "desc": "Inspect Brake System, Friction Material & Hydraulic System",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -533,8 +54,23 @@
       "parts": null
     },
     {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 45600,
+      "desc": "Inspect Brake Hoses & Lines",
+      "due_mileage": 90000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 2,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Ball Joints",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -548,8 +84,8 @@
       "parts": null
     },
     {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 45600,
+      "desc": "Inspect Exhaust System",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -563,8 +99,8 @@
       "parts": null
     },
     {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 45600,
+      "desc": "Inspect Steering Gearbox Assembly and Linkage",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -578,8 +114,30 @@
       "parts": null
     },
     {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 46800,
+      "desc": "Inspect Engine and Inverter Fluid Levels and Condition",
+      "due_mileage": 90000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 1,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 26.02,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 26.02
+      },
+      "parts": [
+        {
+          "desc": "Engine Coolant / Antifreeze",
+          "manufacturer": "",
+          "price": 26.02,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "desc": "Inspect Radiator and Condenser",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -593,8 +151,8 @@
       "parts": null
     },
     {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 46800,
+      "desc": "Inspect Tie-Rod Ends, Steering Gear & Boots",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -608,8 +166,8 @@
       "parts": null
     },
     {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 46800,
+      "desc": "Inspect Driveshaft & Related Components",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -623,8 +181,8 @@
       "parts": null
     },
     {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 48000,
+      "desc": "Inspect Fuel System",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -638,8 +196,8 @@
       "parts": null
     },
     {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 48000,
+      "desc": "Replace A/C Filter",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -653,8 +211,8 @@
       "parts": null
     },
     {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 48000,
+      "desc": "Replace Engine Air Filter",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -668,98 +226,30 @@
       "parts": null
     },
     {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 49200,
+      "desc": "Inspect Automatic Transmission Fluid Level & Condition",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
-        "repair_difficulty": 0,
+        "repair_difficulty": 2,
         "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 11,
         "labor_cost": 0,
         "misc_cost": 0,
-        "total_cost": 0
+        "total_cost": 11
       },
-      "parts": null
+      "parts": [
+        {
+          "desc": "Auto Trans Fluid",
+          "manufacturer": "",
+          "price": 11,
+          "qty": 1
+        }
+      ]
     },
     {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 49200,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 49200,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 50400,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 50400,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 50400,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 51600,
+      "desc": "Inspect Fuel Cap Gasket",
+      "due_mileage": 90000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -774,7 +264,7 @@
     },
     {
       "desc": "Change Engine Oil and Filter",
-      "due_mileage": 51600,
+      "due_mileage": 95000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -788,68 +278,23 @@
       "parts": null
     },
     {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 51600,
+      "desc": "Rotate Tires, Inspect Tire Wear, & Adjust Tire Pressure",
+      "due_mileage": 95000,
       "is_oem": true,
       "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
+        "repair_difficulty": 2,
+        "repair_hours": 0.4,
+        "labor_rate_per_hour": 101.44,
         "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
+        "labor_cost": 40.57,
+        "misc_cost": 25,
+        "total_cost": 65.57
       },
       "parts": null
     },
     {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 52800,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Engine Oil and Filter",
-      "due_mileage": 52800,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 52800,
-      "is_oem": true,
-      "repair": {
-        "repair_difficulty": 0,
-        "repair_hours": 0,
-        "labor_rate_per_hour": 0,
-        "part_cost": 0,
-        "labor_cost": 0,
-        "misc_cost": 0,
-        "total_cost": 0
-      },
-      "parts": null
-    },
-    {
-      "desc": "Change Differential Fluid",
-      "due_mileage": 54000,
+      "desc": "Inspect Brake System, Friction Material & Hydraulic System",
+      "due_mileage": 95000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -864,7 +309,7 @@
     },
     {
       "desc": "Change Engine Oil and Filter",
-      "due_mileage": 54000,
+      "due_mileage": 100000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
@@ -878,8 +323,255 @@
       "parts": null
     },
     {
-      "desc": "Change Manual Transmission Fluid",
-      "due_mileage": 54000,
+      "desc": "Rotate Tires, Inspect Tire Wear, & Adjust Tire Pressure",
+      "due_mileage": 100000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 2,
+        "repair_hours": 0.4,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 0,
+        "labor_cost": 40.57,
+        "misc_cost": 25,
+        "total_cost": 65.57
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Brake System, Friction Material & Hydraulic System",
+      "due_mileage": 100000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Change Engine Coolant and Motor Electronics Coolant",
+      "due_mileage": 100000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Change Engine Oil and Filter",
+      "due_mileage": 105000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Rotate Tires, Inspect Tire Wear, & Adjust Tire Pressure",
+      "due_mileage": 105000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 2,
+        "repair_hours": 0.4,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 0,
+        "labor_cost": 40.57,
+        "misc_cost": 25,
+        "total_cost": 65.57
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Brake System, Friction Material & Hydraulic System",
+      "due_mileage": 105000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Brake Hoses & Lines",
+      "due_mileage": 105000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 2,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Ball Joints",
+      "due_mileage": 105000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Exhaust System",
+      "due_mileage": 105000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Steering Gearbox Assembly and Linkage",
+      "due_mileage": 105000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Engine and Inverter Fluid Levels and Condition",
+      "due_mileage": 105000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 1,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 26.02,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 26.02
+      },
+      "parts": [
+        {
+          "desc": "Engine Coolant / Antifreeze",
+          "manufacturer": "",
+          "price": 26.02,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "desc": "Inspect Radiator and Condenser",
+      "due_mileage": 105000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Tie-Rod Ends, Steering Gear & Boots",
+      "due_mileage": 105000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Driveshaft & Related Components",
+      "due_mileage": 105000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Change Engine Oil and Filter",
+      "due_mileage": 110000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 0,
+        "repair_hours": 0,
+        "labor_rate_per_hour": 0,
+        "part_cost": 0,
+        "labor_cost": 0,
+        "misc_cost": 0,
+        "total_cost": 0
+      },
+      "parts": null
+    },
+    {
+      "desc": "Rotate Tires, Inspect Tire Wear, & Adjust Tire Pressure",
+      "due_mileage": 110000,
+      "is_oem": true,
+      "repair": {
+        "repair_difficulty": 2,
+        "repair_hours": 0.4,
+        "labor_rate_per_hour": 101.44,
+        "part_cost": 0,
+        "labor_cost": 40.57,
+        "misc_cost": 25,
+        "total_cost": 65.57
+      },
+      "parts": null
+    },
+    {
+      "desc": "Inspect Brake System, Friction Material & Hydraulic System",
+      "due_mileage": 110000,
       "is_oem": true,
       "repair": {
         "repair_difficulty": 0,
