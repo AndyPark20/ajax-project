@@ -93,6 +93,7 @@ h3 {
   font-size:35
 }
 
+
 span {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
@@ -275,7 +276,8 @@ span.mi, span.mis, span.comp, span.interval{
 
 .serviceListings {
  border:2px solid black;
- display:flex;
+ /* display:flex; */
+ overflow:hidden;
  flex-direction: column;
 align-items:center;
 }
@@ -378,4 +380,21 @@ h1.modal-instruction{
 .note{
   color:red;
   font-size: 22px;
+}
+
+#highlight{
+  color:red;
+  font-size:1.0rem;
+  font-weight:bold;
+}
+
+.home-buttons-top{
+  border:none;
+}
+
+.directionEmpty{
+  display:flex;
+  flex-direction:column;
+  align-content:center;
+  width:100%;
 }

@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="CarHealth+"/>
-  <meta name="image" property="og:image" content="https://user-images.githubusercontent.com/69870979/103033800-34a9b180-4518-11eb-91b1-2fdcf514748d.png"/>
-  <meta name="author" content="Author"/>
-  <meta property="og:description" content="CarHealth + is a web application that uses JavaScript, CSS, and HTML that allow users to see what services are needed for their vehicle and see NHTSA's complaints logged by other drivers."/>
-  <meta property="og:url" content="https://andypark20.github.io/ajax-project/"/>
+  <meta property="og:title" content="CarHealth+" />
+  <meta name="image" property="og:image"
+    content="https://user-images.githubusercontent.com/69870979/103033800-34a9b180-4518-11eb-91b1-2fdcf514748d.png" />
+  <meta name="author" content="Author" />
+  <meta property="og:description"
+    content="CarHealth + is a web application that uses JavaScript, CSS, and HTML that allow users to see what services are needed for their vehicle and see NHTSA's complaints logged by other drivers." />
+  <meta property="og:url" content="https://andypark20.github.io/ajax-project/" />
   <title>🚙CarHealth+</title>
   <link rel="stylesheet" href="./reset.css">
   <link rel="stylesheet" href="./styles.css">
@@ -28,28 +30,45 @@
         <div class="sizing"></div>
       </div>
     </div>
-  </header>
-    <section>
-      <div class="instruction-data-container instruction-master">
-        <div class="row-modal-data">
-          <div class="column-modal-data direction">
-            <h1 class="modal-instruction">Instructions:</h1>
-            <p class="modal-instruction note">Please be advised that some Data Loads will take longer than usual!</p>
-            <h2 class="modal-instruction">1. Service Log & Complaint List:</h2>
-            <p class="instructions">a).Enter the year, model, make and the mileage of the car you wish to search.</p>
-            <p class="instructions">b).Once service list has been found, it will direct you to the service log page.</p>
-            <p class="instructions">c).If complaint list is found, you can also view NHTSA complaint log.</p>
-            <h2 class="modal-instruction">2. Data service Log:</h2>
-            <p class="instructions">d).You can log service history of the car by clicking "edit" button in data log page.</p>
-            <p class="instructions">e).Once you log data and milege, you can see days and mile remaining in the home page.</p>
-            <p class="instructions">f).You edit and delete log entries by clicking on the row you want to modify.</p>
-            <div class="modal-button-instruct">
-              <button type="button" class="modalBtn edit btn-instructions">Got it!</button>
-            </div>
+ </header>
+  <section>
+    <div class="instruction-data-container instruction-master">
+      <div class="row-modal-data">
+        <div class="column-modal-data direction">
+          <h1 class="modal-instruction">Instructions:</h1>
+          <p class="modal-instruction note">Please be advised that some data loads will take longer than usual!</p>
+          <h2 class="modal-instruction">1. Service Log &amp;Complaint List:</h2>
+          <p class="instructions">a).Enter the year, model, make and the mileage of the car you wish to search.</p>
+          <p class="instructions">b).Once service list has been found, click on the service Icon.</p>
+          <p class="instructions">c).If complaint list is found, you can also view NHTSA complaint log.</p>
+          <h2 class="modal-instruction">2. Data service Log:</h2>
+          <p class="instructions">d).You can log service history of the car by clicking "edit" button in data log page.
+          </p>
+          <p class="instructions">e).Once you log data and milege, you can see days and mile remaining in the home page.
+          </p>
+          <p class="instructions">f).You edit and delete log entries by clicking on the row you want to modify.</p>
+          <div class="modal-button-instruct">
+            <button type="button" class="modalBtn edit btn-instructions">Got it!</button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+  <!----------------------------------------If DATA LOG is EMPTY will run this fall back message-------------------------------->
+  <section>
+    <div class="instruction-empty hidden">
+      <div class="row-modal-data">
+        <div class="column-modal-data directionEmpty">
+          <h1 class="modal-instruction">Data log is empty!</h1>
+          <p class="modal-instruction note">Please enter service data for your vehicle.</p>
+          <div class="modal-button-instruct">
+            <button type="button" class="modalBtn edit btn-instructions empty">Got it!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="container introduction" data-view="intro">
       <div class="row">
@@ -71,78 +90,39 @@
     <div class="container-error-modal something-error hidden">
       <div class="error-modal-row">
         <div class="error-modal-column">
-          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
+          <p>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</p>
           <h1>No SERVICE DATA FOUND!!</h1>
           <h2 class="error">Please try another vehicle</h2>
           <h2 class="error">Or try again</h2>
           <button type="button" class="modalBtn ok2">OK</button>
-          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
+          <p>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</p>
         </div>
       </div>
     </div>
   </section>
 
     <section>
-      <div class="container-error-modal loadingLoad hidden">
+      <div class="container-error-modal something-error no-connection hidden">
         <div class="error-modal-row">
           <div class="error-modal-column">
-            <P>🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁</P>
-            <h1>LOADING SERVICE RECORD</h1>
-            <h1>PLEASE WAIT!!</h1>
-            <P>🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁</P>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container-error-modal complaintModal hidden">
-        <div class="error-modal-row">
-          <div class="error-modal-column">
-            <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
-            <h1>NO RESULTS FOUND FOR NHTSA!</h1>
+            <p>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</p>
+            <h1>Connection-Interrupted!</h1>
             <h2 class="error">Please try again</h2>
-            <button type="button" class="modalBtn ok3">OK</button>
-            <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
+            <button type="button" class="modalBtn fail">OK</button>
+            <p>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</p>
           </div>
         </div>
       </div>
     </section>
-
-    <section>
-      <div class="container-error-modal serviceSuccess hidden">
-        <div class="error-modal-row">
-          <div class="error-modal-column">
-            <P>✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅</P>
-            <h1>SERVICE LIST RESULT FOUND!</h1>
-            <button type="button" class="modalBtn ok4">OK</button>
-            <P>✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅</P>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  <section>
-    <div class="container-error-modal complaintSucess hidden ">
-      <div class="error-modal-row">
-        <div class="error-modal-column">
-          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
-          <h1 class="success">COMPLAINT LIST COMPLETED!</h1>
-          <h2 class="error">Please click complaints to view </h2>
-          <button type="button" class="modalBtn ok">OK</button>
-          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section>
     <div class="container-error-modal loadingLoad hidden">
       <div class="error-modal-row">
         <div class="error-modal-column">
-          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
-          <h1>LOADING!!!</h1>
-          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
+          <p>🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁</p>
+          <h1>LOADING SERVICE RECORD</h1>
+          <h1>PLEASE WAIT!!</h1>
+          <p>🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁</p>
         </div>
       </div>
     </div>
@@ -152,15 +132,69 @@
     <div class="container-error-modal complaintModal hidden">
       <div class="error-modal-row">
         <div class="error-modal-column">
-          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
-          <h1>NO RESULTS FROM NHTSA!</h1>
+          <p>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</p>
+          <h1>NO RESULTS FOUND FOR NHTSA!</h1>
           <h2 class="error">Please try again</h2>
           <button type="button" class="modalBtn ok3">OK</button>
-          <P>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</P>
+          <p>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</p>
         </div>
       </div>
     </div>
   </section>
+
+  <section>
+    <div class="container-error-modal serviceSuccess hidden">
+      <div class="error-modal-row">
+        <div class="error-modal-column">
+          <p>✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅</p>
+          <h1>SERVICE LIST RESULT FOUND!</h1>
+          <button type="button" class="modalBtn ok4">OK</button>
+          <p>✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container-error-modal complaintSucess hidden ">
+      <div class="error-modal-row">
+        <div class="error-modal-column">
+          <p>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</p>
+          <h1 class="success">COMPLAINT LIST COMPLETED!</h1>
+          <h2 class="error">Please click <span id="highlight">complaints</span> to view </h2>
+          <button type="button" class="modalBtn ok">OK</button>
+          <p>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container-error-modal loadingLoad hidden">
+      <div class="error-modal-row">
+        <div class="error-modal-column">
+          <p>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</p>
+          <h1>LOADING!!!</h1>
+          <p>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container-error-modal complaintModal hidden">
+      <div class="error-modal-row">
+        <div class="error-modal-column">
+          <p>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</p>
+          <h1>NO RESULTS FROM NHTSA!</h1>
+          <h2 class="error">Please try again</h2>
+          <button type="button" class="modalBtn ok3">OK</button>
+          <p>✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️✖️</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="container-nonIntro find-vehicle hidden" data-view="searchCar">
       <div class="row">
@@ -188,10 +222,10 @@
               <input id="model" type="text" class="userInputCar" name="model" required placeholder="M3">
             </div>
             <div class="inputSearch">
-              <label for="mileage">
+              <label for="mileageInitial">
                 <p>MILEAGE:</p>
               </label>
-              <input id="mileage" type="text" class="userInputCar" name="mileage" required
+              <input id="mileageInitial" type="text" class="userInputCar" name="mileage" required
                 placeholder="50000(No-Comma)">
             </div>
             <div class="searchBtn">
@@ -202,6 +236,7 @@
       </div>
     </div>
   </section>
+
   <section>
     <!--Service Result------------------------------>
     <div class="container-nonIntro serviceResult hidden" data-view="serviceList">
@@ -247,6 +282,29 @@
           <img class="service-icon-edit" src="images/ce22327fa176a92798cdbd1589391cc2.jpg" alt="edit"
             data-view="searchCar">
         </div>
+      </div>
+      <div class="column-full container home-buttons-top hidden">
+          <div class="row-navi">
+            <div class="column-quarter" data-view="home">
+              <img class="home-icon" data-view="home"
+                src="images/160-1605130_android-navigation-bar-icons-png-navigation-bar-home.png" alt="home-icon">
+              <p data-view="home">HOME</p>
+            </div>
+            <div class="column-quarter" data-view="serviceList">
+              <img class="home-icon" data-view="serviceList" src="images/images.png" alt="service-icon">
+              <p data-view="serviceList">SERVICE</p>
+            </div>
+            <div class="column-quarter" data-view="complaintList">
+              <img class="home-icon" data-view="complaintList"
+                src="images/128606486-vector-hazard-warning-symbol-isolated-on-white-background-warning-icon-sign-of-problem-for-use-on-we.jpg"
+                alt="warning-icon">
+              <p data-view="complaintList">COMPLAINTS</p>
+            </div>
+            <div class="column-quarter" data-view="dataView">
+              <img data-view="dataView" class="home-icon" src="images/data-log.png" alt="warning-icon">
+              <p data-view="dataView">DATA LOG</p>
+            </div>
+          </div>
       </div>
       <div class="column-full serviceListings">
         <p>NUMBER OF RECORDS FOUND:<span class="comp"></span> complaints</p>
@@ -309,7 +367,8 @@
             <img class="data-log-notebook" src="images/download.png" alt="notebook">
             <h3>SERVICE HISTORY:</h3>
             <div class="column-half editBtn">
-              <img class="service-icon-edit" src="images/ce22327fa176a92798cdbd1589391cc2.jpg" alt="edit" data-view="data-log">
+              <img class="service-icon-edit" src="images/ce22327fa176a92798cdbd1589391cc2.jpg" alt="edit"
+                data-view="data-log">
             </div>
           </div>
         </div>

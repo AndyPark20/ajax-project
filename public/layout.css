@@ -137,9 +137,6 @@ p.instructions{
 
 @media screen and (max-width: 375px) {
 
-.column-full {
-    width: 100%;
-}
 h2{
   font-size:30px;
  }
@@ -161,17 +158,12 @@ img.home-icon{
   margin-top:3%;
 }
 
-.inputMargin {
-  padding-left:10%;
-}
-
 img.find-my-vehicle-picture{
 width:20%;
 }
 
 .searchBtn{
   margin-top:-2%;
-  margin-right:10%;
 }
 img.service-icon{
   width:15%;
@@ -214,6 +206,11 @@ p.instructions{
 }
 
 @media screen and (max-width:320px){
+
+  th {
+    font-size: .8rem;
+  }
+
   p.instructions{
     font-size:8px;
   }
