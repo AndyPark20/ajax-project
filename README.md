@@ -5,9 +5,9 @@
 
  ## Programming technologies implemented for this Application:
 
- - JavaScript
- - CSS
- - HTML
+ - JavaScript(es5 & es6)
+ - CSS3
+ - HTML5
 
  ## Application Features:
 
