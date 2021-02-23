@@ -27,9 +27,6 @@
  - This Application is solely for demonstration purposes on utilizing API within a website.
  - For longevity and reliability of your car, ALWAYS refer back to the manufacture's owners manual for precise details on service intervals.
 
- ## NOTE:
-
- - Please note that model year of 2020 is not available yet.
 
  ## Application Preview:
  ![Figma Project-Final](https://user-images.githubusercontent.com/69870979/102838453-10809000-43b3-11eb-8a7f-bb340e1bd2af.gif)
